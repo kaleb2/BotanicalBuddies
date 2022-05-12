@@ -1,17 +1,25 @@
 import path from "path";
+import cors from "cors";
 import { promises as fs } from "fs";
 import express from "express";
 
 export default function setupRoutes(app)
 {
-    // app.use(express.json());
+    console.log("setupRoutes started.");
+    app.use(cors());
+    app.use(express.json());
 
     const router = express.Router();
 
     // app.use("/api/v1", router);
+    
+    app.get("/", async (req, res) => {
+      return getStaticFile(res, "index.html");
+    });
 
-    app.get("/index", async (req, res) => {
-        return getStaticFile(res, "index.html");
+    app.get("/welcome", async (req, res) => {
+      console.log("you are being welcomed.");
+      return res.status(200).json({ message:"Welcome to Botanical Buddies!"});
     });
 
     app.use((req, res, next) => {
@@ -19,6 +27,8 @@ export default function setupRoutes(app)
         message: "This page doesn't exist at all!",
         });
     });
+
+    console.log("setupRoutes finished.");
 }
 
 const filePathPrefix = path.resolve(__dirname, "..", "public");
