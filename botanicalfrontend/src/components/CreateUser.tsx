@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { User } from "../services/UserService";
 
 const initialUserState = {
@@ -8,7 +8,34 @@ const initialUserState = {
   
   export const CreateUser = () => {
   
-    
+    const [user, setUser] = useState(initialUserState);
+    const [submitted, setSubmitted] = useState(false);
+    const [submitFailed, setSubmitFailed] = useState(false);
+  
+  
+    const handleInputChange = event => {
+      const { name, value } = event.target;
+      setUser({ ...user, [name]: value });
+    };
+  
+    const saveUser = () => {
+      User.create(user)
+        .then(res => {
+          setSubmitted(true);
+          setSubmitFailed(false);
+          console.log(res.data);
+        })
+        .catch(e => {
+          setSubmitFailed(true);
+          console.log("Error creating new user", e);
+        })
+    }
+  
+    const resetUser = () => {
+      setUser(initialUserState);
+      setSubmitted(false);
+    }
+  
     return (
       <div>
         {submitted ? (
