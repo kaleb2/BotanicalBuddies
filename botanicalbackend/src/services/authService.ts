@@ -5,8 +5,9 @@ import { db, User } from "../database/models";
 
 
 export function ConfigurePassportStrategies(app) {
-
   app.use(passport.initialize());
+
+  console.log("configuring passport strategies!");
 
   passport.use(
     'signup',
