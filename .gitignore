@@ -62,3 +62,6 @@ jspm_packages/
 
 dist/
 .vscode/
+package-lock.json
+botanicalbackend/package-lock.json
+botanicalfrontend/package-lock.json

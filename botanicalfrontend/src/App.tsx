@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { WelcomeButton } from "./components/WelcomeButton"
+import { CreateUser } from './components/CreateUser';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <WelcomeButton/>
+        <CreateUser/>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -18,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+
     </div>
   );
 }
