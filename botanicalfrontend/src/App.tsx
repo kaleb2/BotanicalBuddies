@@ -1,27 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
-import { WelcomeButton } from "./components/WelcomeButton"
 import { CreateUser } from './components/CreateUser';
+import { ReactDefault, NotFound, Header} from './components/React';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <WelcomeButton/>
-        <CreateUser/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
 
-    </div>
+  useEffect(() => {
+    console.log("-- App rerenders --");
+  });
+  
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route path="/" element={<ReactDefault />}/>         
+            <Route path="create-user" element={<CreateUser />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+      </BrowserRouter>
+    </>
   );
 }
 
