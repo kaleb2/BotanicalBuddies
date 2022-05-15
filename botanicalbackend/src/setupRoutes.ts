@@ -4,12 +4,15 @@ import { promises as fs } from "fs";
 import express from "express";
 import { checkDuplicateEmail } from "./middlewares/verifyUser";
 import { createUser } from "./services/userService";
+import { ConfigurePassportStrategies } from "./services/authService";
 
 export default function setupRoutes(app)
 {
     console.log("setupRoutes started.");
     app.use(cors());
     app.use(express.json());
+
+    //ConfigurePassportStrategies(app);
 
     const router = express.Router();
 
