@@ -9,6 +9,12 @@ const pgport = process.env.PGPORT;
 
 const connstring = `postgres://${pguser}:${pgpass}@${pghost}:${pgport}/${pgdatabase}`;
 
+export function logConnstring()
+{
+  console.log(process.env.PGUSER);
+  console.log(connstring);
+}
+
 export const db = new Sequelize(connstring);
 
 export const User = db.define('users', {
