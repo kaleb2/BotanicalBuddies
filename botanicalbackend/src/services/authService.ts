@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { db, User } from "../database/models";
+import jwt from "jsonwebtoken";
 
 
 export function ConfigurePassportStrategies(app) {
@@ -91,3 +92,13 @@ const ValidatePassword = async (email, password) => {
   return false;
 
 };
+
+export function generateAccessToken(username) {
+  console.log("Username: ", username);
+  console.log(process.env.TOKEN_SECRET);
+  return jwt.sign(
+    { id: username },
+    process.env.TOKEN_SECRET,
+    { expiresIn: '1800s' },
+  );
+}

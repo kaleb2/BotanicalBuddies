@@ -5,7 +5,8 @@ import express from "express";
 import { checkDuplicateEmail } from "./middlewares/verifyUser";
 import { createUser } from "./services/userService";
 import passport from "passport";
-import { ConfigurePassportStrategies } from "./services/authService";
+import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
+import authenticateToken  from "./middlewares/authenticateToken";
 
 export default function setupRoutes(app)
 {
@@ -27,6 +28,32 @@ export default function setupRoutes(app)
         res.json({ message: "Signup successful" });
       }, 
     );
+
+    router.post(
+      '/login',
+      async (req, res, next) => {
+        passport.authenticate(
+          'login',
+          async (err, user, info) => {
+            console.log("User from passport is: ", user);
+  
+            if (user === false) {
+              res.status(403).send("User or password was invalid");
+              return;
+            }
+  
+            const token = generateAccessToken(user.email);
+            console.log("Login success, got token: ", token);
+            res.status(200).send(token);
+          },
+        )(req, res, next);
+      },
+    );
+
+    router.post("/authTest", authenticateToken, (req, res) => {
+      res.send("GOT THRU AUTH!!!");
+  
+    });
     
 
     router.get("/welcome", async (req, res) => {
