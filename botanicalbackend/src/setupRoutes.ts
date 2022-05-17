@@ -4,6 +4,8 @@ import { promises as fs } from "fs";
 import express from "express";
 import { checkDuplicateEmail } from "./middlewares/verifyUser";
 import { createUser } from "./services/userService";
+import passport from "passport";
+import { ConfigurePassportStrategies } from "./services/authService";
 
 export default function setupRoutes(app)
 {
@@ -11,13 +13,13 @@ export default function setupRoutes(app)
     app.use(cors());
     app.use(express.json());
 
-    //ConfigurePassportStrategies(app);
+    ConfigurePassportStrategies(app);
 
     const router = express.Router();
 
-    router.post("/users", checkDuplicateEmail, createUser );
+    //router.post("/users", checkDuplicateEmail, createUser );
 
-    /*
+    
     router.post("/users", 
       checkDuplicateEmail, 
       passport.authenticate('signup', { session: false} ),
@@ -25,7 +27,7 @@ export default function setupRoutes(app)
         res.json({ message: "Signup successful" });
       }, 
     );
-    */
+    
 
     router.get("/welcome", async (req, res) => {
       console.log("you are being welcomed.");
