@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { User } from "../services/UserService";
+import { UserProfile } from "./UserProfile";
 
 const initialUserState = {
     email: "",
@@ -41,6 +42,7 @@ const initialUserState = {
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
             <h4>Welcome!</h4>
+            <UserProfile/>
             <button type="button" className="btn btn-secondary" onClick={logoutUser}>
               Log out
             </button>
