@@ -35,6 +35,8 @@ export const Header = () => {
       <h1>Botanical Buddies^TM</h1>
       <Link to="/">Dashboard</Link>
       &nbsp; | &nbsp;
+      <Link to="/login">Login</Link>
+      &nbsp; | &nbsp;
       <Link to="/create-user">Create User</Link>
       <br />
       <Outlet />

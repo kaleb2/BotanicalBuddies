@@ -6,5 +6,10 @@ export const User = {
         , { email: user.email, password: user.password }
       )
       
+    },
+    async login(user) {
+      return axios.post("/login"
+        , { email: user.email, password: user.password }
+      )
     }
   }

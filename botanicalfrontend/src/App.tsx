@@ -3,6 +3,7 @@ import './App.css';
 import { CreateUser } from './components/CreateUser';
 import { ReactDefault, NotFound, Header} from './components/React';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Login } from './components/Login';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={<ReactDefault />}/>         
+            <Route path="login" element={<Login />} />
             <Route path="create-user" element={<CreateUser />} />
           </Route>
           <Route path="*" element={<NotFound />} />
