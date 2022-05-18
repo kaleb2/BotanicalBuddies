@@ -1,11 +1,16 @@
 import "dotenv/config";
 import { Sequelize, DataTypes } from "sequelize";
-import { db, User } from "./models";
+import { db, Plant, User } from "./models";
 
 
 const userSeedData = [
   { email: "bingo@bbb.com", password: "bibibi" },
   { email: "bango@bbb.com", password: "bababa" },
+];
+
+const plantSeedData = [
+  { name: "bingo@bbb.com", species: "bibibi", image: "" },
+  { name: "bango@bbb.com", species: "bababa", image: "" },
 ];
 
 const seed = async () => {
@@ -30,12 +35,32 @@ const seed = async () => {
       console.log("Created single user");
     })
     .catch((err) => {
-      console.log('failed to create seed users');
+      console.log('failed to create seed user');
       console.log(err);
-    })
-    .finally(() => {
-      db.close();
     });
+
+    /*Plants*/
+
+    await Plant.sync({ force: true });
+    await Plant.bulkCreate(plantSeedData, { validate: true })
+    .then(() => {
+      console.log('Plants created');
+    }).catch((err) => {
+      console.log('failed to create seed plants');
+      console.log(err);
+    });
+  
+    await Plant.create({ name: "Monstera", species: "bobobo", image: "url" })
+      .then(() => {
+        console.log("Created single plant");
+      })
+      .catch((err) => {
+        console.log('failed to create seed plant');
+        console.log(err);
+      })
+      .finally(() => {
+        db.close();
+      });
 
     console.log("seed finished.");
 };

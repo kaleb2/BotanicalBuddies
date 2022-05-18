@@ -41,3 +41,23 @@ export const User = db.define<UserModelAttrs>('users', {
   },
 
 });
+
+/*Plants*/
+
+interface PlantModelAttrs extends Model {
+  name: string,
+  species: string,  
+  picture: string,
+}
+
+export const Plant = db.define<PlantModelAttrs>('plants', {
+  name: {
+    type: DataTypes.STRING,
+  },
+  species: {
+    type: DataTypes.STRING,
+  },
+  picture: {
+    type: DataTypes.STRING,
+  }
+});

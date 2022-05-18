@@ -7,6 +7,7 @@ import { createUser } from "./services/userService";
 import passport from "passport";
 import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
 import authenticateToken  from "./middlewares/authenticateToken";
+import { createPlant, getPlants } from "./services/plantService";
 
 export default function setupRoutes(app)
 {
@@ -19,6 +20,10 @@ export default function setupRoutes(app)
     const router = express.Router();
 
     //router.post("/users", checkDuplicateEmail, createUser );
+
+    router.post("/plants", createPlant);
+
+    router.get("/plants", getPlants);
 
     
     router.post("/users", 
