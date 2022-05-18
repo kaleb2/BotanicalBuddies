@@ -4,7 +4,6 @@ import logo from '../logo.svg';
 import { Link, Outlet } from "react-router-dom";
 
 export function ReactDefault() {
-
     return (
         <div className="App">
             <header className="App-header">
