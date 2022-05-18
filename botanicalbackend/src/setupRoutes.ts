@@ -24,7 +24,6 @@ export default function setupRoutes(app)
     router.post("/plants", createPlant);
 
     router.get("/plants", getPlants);
-
     
     router.post("/users", 
       checkDuplicateEmail, 
