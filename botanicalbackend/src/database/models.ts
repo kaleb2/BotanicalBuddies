@@ -1,4 +1,5 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { Sequelize, DataTypes, Model } from "sequelize";
+import bcrypt from "bcrypt";
 
 
 const pguser = process.env.PGUSER;
@@ -17,11 +18,26 @@ export function logConnstring()
 
 export const db = new Sequelize(connstring);
 
-export const User = db.define('users', {
+interface UserModelAttrs extends Model {
+  email: string,
+  password: string,  
+}
+
+export const User = db.define<UserModelAttrs>('users', {
   email: {
     type: DataTypes.STRING,
   },
   password: {
     type: DataTypes.STRING,
   },
+}, {
+  hooks: {
+    beforeCreate: async (user: UserModelAttrs) => {
+
+      console.log("Hashing user pw: ", user.password);
+      user.password = await bcrypt.hash(user.password, 10);
+      console.log("Hashed pw: ", user.password);
+    },
+  },
+
 });
