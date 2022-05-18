@@ -37,6 +37,8 @@ export const Header = () => {
       &nbsp; | &nbsp;
       <Link to="/login">Login</Link>
       &nbsp; | &nbsp;
+      <Link to="/user-profile">My Profile</Link>
+      &nbsp; | &nbsp;
       <Link to="/create-user">Create User</Link>
       <br />
       <Outlet />
