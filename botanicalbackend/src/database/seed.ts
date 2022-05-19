@@ -1,16 +1,17 @@
 import "dotenv/config";
-import { Sequelize, DataTypes } from "sequelize";
+import { Sequelize, DataTypes, DATE } from "sequelize";
+import { getJSDocDeprecatedTag } from "typescript";
 import { db, Plant, User } from "./models";
 
 
 const userSeedData = [
-  { email: "bingo@bbb.com", password: "bibibi" },
-  { email: "bango@bbb.com", password: "bababa" },
+  { email: "bingo@bbb.com", password: "bibibi", profilepic: "url", journal: 1 },
+  { email: "bango@bbb.com", password: "bababa", profilepic: "url", journal: 2 },
 ];
 
 const plantSeedData = [
-  { name: "bingo@bbb.com", species: "bibibi", image: "" },
-  { name: "bango@bbb.com", species: "bababa", image: "" },
+  { name: "bingo@bbb.com", species: "bibibi", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "bango@bbb.com", species: "bababa", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
 
 const seed = async () => {
@@ -30,7 +31,7 @@ const seed = async () => {
       console.log(err);
     });
   
-  await User.create({ email: "bongo@bbb.com", password: "bobobo" })
+  await User.create({ email: "bongo@bbb.com", password: "bobobo", profilepic: "url", journal: 3 })
     .then(() => {
       console.log("Created single user");
     })
@@ -50,7 +51,7 @@ const seed = async () => {
       console.log(err);
     });
   
-    await Plant.create({ name: "Monstera", species: "bobobo", image: "url" })
+    await Plant.create({ name: "Monstera", species: "bobobo", image: "url", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
       .then(() => {
         console.log("Created single plant");
       })

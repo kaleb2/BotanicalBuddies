@@ -4,8 +4,11 @@ export function createUser(req, res) {
 
   const email = req.body.email;
   const password = req.body.password;
+  const profilepic = req.body.profilepic;
+  const journal = req.body.journal;
+
   console.log(`in createuser with ${email}:${password}`);
-  User.create({ email, password })
+  User.create({ email, password, profilepic, journal })
     .then(() => {
       console.log("Created single user");
       res.status(200).json({ message: "Created user successfully" });
