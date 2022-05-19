@@ -3,7 +3,7 @@ import cors from "cors";
 import { promises as fs } from "fs";
 import express from "express";
 import { checkDuplicateEmail } from "./middlewares/verifyUser";
-import { createUser } from "./services/userService";
+import { createUser, getUsers } from "./services/userService";
 import passport from "passport";
 import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
 import authenticateToken  from "./middlewares/authenticateToken";
@@ -32,6 +32,8 @@ export default function setupRoutes(app)
         res.json({ message: "Signup successful" });
       }, 
     );
+
+    router.get("/users", getUsers);
 
     router.post(
       '/login',

@@ -19,3 +19,19 @@ export function createUser(req, res) {
       res.status(500).json({ message: err });
     });
 }
+
+
+export function getUsers(req, res) {
+  console.log(`in getusers`);
+  User.findAll()
+    .then(users =>
+      {
+        console.log("Found users");
+        res.status(200).json(users);
+      })
+    .catch((err) => {
+      console.log('failed to find any users');
+      console.log(err);
+      res.status(500).json({ message: err });
+    });
+}
