@@ -3,10 +3,12 @@ import cors from "cors";
 import { promises as fs } from "fs";
 import express from "express";
 import { checkDuplicateEmail } from "./middlewares/verifyUser";
-import { createUser } from "./services/userService";
+import { createUser, getUsers } from "./services/userService";
 import passport from "passport";
 import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
 import authenticateToken  from "./middlewares/authenticateToken";
+import { createPlant, getPlants } from "./services/plantService";
+import { createUserPlant, getUserPlants } from "./services/userPlantService";
 
 export default function setupRoutes(app)
 {
@@ -20,6 +22,13 @@ export default function setupRoutes(app)
 
     //router.post("/users", checkDuplicateEmail, createUser );
 
+    router.post("/plants", createPlant);
+
+    router.get("/plants", getPlants);
+
+    router.get("/userplants", getUserPlants);
+
+    router.post("/userplants", createUserPlant);
     
     router.post("/users", 
       checkDuplicateEmail, 
@@ -28,6 +37,8 @@ export default function setupRoutes(app)
         res.json({ message: "Signup successful" });
       }, 
     );
+
+    router.get("/users", getUsers);
 
     router.post(
       '/login',
