@@ -22,7 +22,6 @@ interface UserModelAttrs extends Model {
   email: string,
   password: string,  
   profilepic: string,
-  //plants: Array<PlantModelAttrs>,
   journal: number
 }
 
@@ -36,9 +35,6 @@ export const User = db.define<UserModelAttrs>('users', {
   profilepic: {
     type: DataTypes.STRING,
   },
-  /*plants: {
-    type: DataTypes.ARRAY,
-  },*/
   journal : {
     type: DataTypes.INTEGER
   },
@@ -83,5 +79,21 @@ export const Plant = db.define<PlantModelAttrs>('plants', {
   },
   lastFertilize: {
     type: DataTypes.DATE,
+  }
+});
+
+/* User Plants */
+
+interface UserPlantModelAttrs extends Model {
+  userid: number,
+  plantid: number
+}
+
+export const UserPlant = db.define<UserPlantModelAttrs>('userplants', {
+  userid: {
+    type: DataTypes.INTEGER,
+  },
+  plantid: {
+    type: DataTypes.INTEGER,
   }
 });

@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Sequelize, DataTypes, DATE } from "sequelize";
 import { getJSDocDeprecatedTag } from "typescript";
-import { db, Plant, User } from "./models";
+import { db, Plant, User, UserPlant } from "./models";
 
 
 const userSeedData = [
@@ -10,9 +10,14 @@ const userSeedData = [
 ];
 
 const plantSeedData = [
-  { name: "bingo@bbb.com", species: "bibibi", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
-  { name: "bango@bbb.com", species: "bababa", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "palm tree", species: "palm tree", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "monstera", species: "ficus", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
+
+const userPlantSeedData = [
+  { userid: 1, plantid: 1},
+  { userid: 2, plantid: 2}
+]
 
 const seed = async () => {
   console.log("Beginning seed");
@@ -59,9 +64,30 @@ const seed = async () => {
         console.log('failed to create seed plant');
         console.log(err);
       })
-      .finally(() => {
+      
+
+
+      /*User Plants*/
+
+    await UserPlant.sync({ force: true });
+    await UserPlant.bulkCreate(userPlantSeedData, { validate: true })
+    .then(() => {
+      console.log('User Plants created');
+    }).catch((err) => {
+      console.log('failed to create seed user plants');
+      console.log(err);
+    });
+  
+    await UserPlant.create({ userid: 1, plantid: 2 })
+      .then(() => {
+        console.log("Created single user plant");
+      })
+      .catch((err) => {
+        console.log('failed to create seed user plant');
+        console.log(err);
+      }).finally(() => {
         db.close();
-      });
+      });  
 
     console.log("seed finished.");
 };
