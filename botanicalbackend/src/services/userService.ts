@@ -20,7 +20,6 @@ export function createUser(req, res) {
     });
 }
 
-
 export function getUsers(req, res) {
   console.log(`in getusers`);
   User.findAll()

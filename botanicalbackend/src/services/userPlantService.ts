@@ -27,10 +27,10 @@ export function getUserPlants(req, res) {
           userid : thisUserId
         }
       })
-      .then(users =>
+      .then(plants =>
         {
           console.log("Found plants for user");
-          res.status(200).json(users);
+          res.status(200).json(plants);
         })
       .catch((err) => {
         console.log('failed to find any plants for user');
