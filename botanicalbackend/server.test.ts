@@ -25,7 +25,6 @@ describe("Post Routes", () => {
   }
 
   it(`responds with 200 status code when creating new user`, async () => {
-
     let res = await request(app)
       .post("/api/v1/users")
       .send(newUser)
@@ -35,11 +34,20 @@ describe("Post Routes", () => {
   });
 
   it(`responds with 400 status code when user already exists`, async () => {
-
     let res = await request(app)
       .post("/api/v1/users")
       .send(newUser)
       .expect(400);
+  });
+
+  it(`responds with 200 status code when logging in newly created user`, async () => {
+    let res = await request(app)
+      .post("/api/v1/login")
+      .send(newUser)
+      .expect(200);
+
+    //arbitrarily selected over 30 for token length
+    expect(res.text.length).toBeGreaterThan(30);
   });
 });
 
