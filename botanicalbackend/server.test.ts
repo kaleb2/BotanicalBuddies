@@ -20,7 +20,7 @@ describe("Get Routes", () => {
 
 describe("Post Routes", () => {
   const newUser = {
-    email: "test" + Math.random() + "@jest.com",
+    email: "test" + Math.floor(Math.random() * 9) + "@jest.com",
     password: "password123"
   }
 
