@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "../services/UserService";
+import { UserProfile } from "./UserProfile";
+import { ReactDefault } from "./React";
 
 const initialUserState = {
     email: "",
@@ -7,12 +10,15 @@ const initialUserState = {
   };
   
   export const Login = () => {
+
+    const navigate = useNavigate();
   
     const [user, setUser] = useState(initialUserState);
     const [submitted, setSubmitted] = useState(false);
     const [submitFailed, setSubmitFailed] = useState(false);
-  
-  
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedOut, setLoggedOut] = useState(false);
+
     const handleInputChange = event => {
       const { name, value } = event.target;
       setUser({ ...user, [name]: value });
@@ -24,6 +30,10 @@ const initialUserState = {
           setSubmitted(true);
           setSubmitFailed(false);
           console.log(res.data);
+          setLoggedIn(true);
+          /* Now hide login button and replace with logout */
+          /* Display my profile button */
+          navigate('/user-profile'); 
         })
         .catch(e => {
           setSubmitFailed(true);
@@ -32,6 +42,9 @@ const initialUserState = {
     }
   
     const logoutUser = () => {
+      /* Hide my profile button */
+      /* Now hide logout button and replace with login */
+      setLoggedOut(true);
       setUser(initialUserState);
       setSubmitted(false);
     }
