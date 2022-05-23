@@ -13,7 +13,7 @@ describe("Static Routes", () => {
       .get("/api/v1/welcome")
       .expect(200);
 
-    expect(res.text).toContain('Welcome to Botanical Buddies!');
+    expect(res.text).toContain('Welcome');
   });
 });
 
