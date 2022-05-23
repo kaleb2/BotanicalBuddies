@@ -4,7 +4,6 @@ import logo from '../logo.svg';
 import { Link, Outlet } from "react-router-dom";
 
 export function ReactDefault() {
-
     return (
         <div className="App">
             <header className="App-header">
@@ -36,6 +35,8 @@ export const Header = () => {
       <Link to="/">Dashboard</Link>
       &nbsp; | &nbsp;
       <Link to="/login">Login</Link>
+      &nbsp; | &nbsp;
+      <Link to="/user-profile">My Profile</Link>
       &nbsp; | &nbsp;
       <Link to="/create-user">Create User</Link>
       <br />
