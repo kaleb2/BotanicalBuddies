@@ -38,4 +38,4 @@ app.MapGet("/knownplants", (PlantsDbContext plantsDb) =>
     plantsDb.Plants.GroupBy(p => p.SpeciesName)
     .Select(p => p.First()).ToList().Select(p => p.SpeciesName).ToList());
 
-app.Run("http://localhost:9100");
+app.Run("http://0.0.0.0:9100");

@@ -18,7 +18,7 @@ public class PlantsDbContext : DbContext {
             
         public static string GetConnectionString()
         {
-            var server = "localhost";
+            var server = "botpostgres";
             var port = "5432";
             var name = "botanicaldb";
             var user = "my_botanical_buddy";
