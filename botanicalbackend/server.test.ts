@@ -38,6 +38,8 @@ describe("Post Routes", () => {
       .post("/api/v1/users")
       .send(newUser)
       .expect(400);
+
+    expect(res.text).toContain('Email is already in use');
   });
 
   it(`responds with 200 status code when logging in newly created user`, async () => {
