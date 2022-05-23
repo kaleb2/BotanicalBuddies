@@ -50,11 +50,3 @@ describe("Post Routes", () => {
     expect(res.text.length).toBeGreaterThan(30);
   });
 });
-
-const verbs = [
-  "get",
-  "post",
-  "patch",
-  "put",
-  "delete",
-];
