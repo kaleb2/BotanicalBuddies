@@ -9,7 +9,13 @@ export const Plant = {
       )
       
     },
-    async get(plantUserId) {
-        return httpClient.get("/plants/"+plantUserId)
-    }
   }
+
+  export async function getPlants(plantUserId) {
+    let res = await httpClient.get("/plants/"+plantUserId);
+  
+    let data = await res.data;
+    console.log(data);
+    return data;
+  }
+  
