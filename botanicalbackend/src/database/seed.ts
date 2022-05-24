@@ -10,8 +10,8 @@ const userSeedData = [
 ];
 
 const plantSeedData = [
-  { name: "palm tree", userId: 1, species: "palm tree", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
-  { name: "monstera", userId: 2, species: "ficus", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "fern", userId: 1, species: "fern", image: "http://localhost:8000/botanicalbuddies/fern.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "monstera", userId: 2, species: "monstera", image: "http://localhost:8000/botanicalbuddies/monstera.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
 
 /*const userPlantSeedData = [
