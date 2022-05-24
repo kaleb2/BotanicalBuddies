@@ -25,7 +25,7 @@ export default function setupRoutes(app)
 
     //router.post("/users", checkDuplicateEmail, createUser );
 
-    router.post("/plants", createPlant);
+    router.post("/plants", Multer({ storage: Multer.memoryStorage() }).single("file"), createPlant);
 
     router.get("/plants/:userId", getPlants);
 
