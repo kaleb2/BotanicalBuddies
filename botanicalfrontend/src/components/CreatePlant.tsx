@@ -77,7 +77,7 @@ const initialPlantState = {
 
 export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDateChange }) => {
     return (
-      <><h2>Create New Plant</h2>
+      <><h2>Add a new plant to your profile!</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
@@ -91,7 +91,7 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
             className="form-control" />
         </div>
         <div className="mb-3">
-          <label htmlFor="userId" className="form-label">User ID</label>
+          <label htmlFor="userId" className="form-label">Your User ID</label>
           <input
             type="number"
             id="userId"
