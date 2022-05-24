@@ -9,7 +9,7 @@ export const UserProfile = event => {
 
             <div className="plantsList">
             <h2>Your plants:</h2>
-                <PlantsList userId={event.userId} />
+                <PlantsList userId={1} />
             </div>
 
             <CreatePlant/>
