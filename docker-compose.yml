@@ -13,11 +13,11 @@ services:
     minio:
         container_name: minio
         image: docker.io/bitnami/minio:2022
-        expose:
-            - "8000"
-            - "8001"
+        ports:
+            - "8000:9000"
+            - "8001:9001"
         environment:
-            - MINIO_DEFAULT_BUCKETS=doggr:public
+            - MINIO_DEFAULT_BUCKETS=botanicalbuddies:public
             - MINIO_ROOT_USER=minioUser
             - MINIO_ROOT_PASSWORD=minioPass
         volumes:

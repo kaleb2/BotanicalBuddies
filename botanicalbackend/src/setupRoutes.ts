@@ -8,6 +8,9 @@ import passport from "passport";
 import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
 import authenticateToken  from "./middlewares/authenticateToken";
 import { createPlant, getPlants } from "./services/plantService";
+import Multer from "multer";
+import Minio from "minio";
+import { UploadFileToMinio } from "./services/minioService";
 //import { createUserPlant, getUserPlants } from "./services/userPlantService";
 
 export default function setupRoutes(app)
@@ -29,6 +32,8 @@ export default function setupRoutes(app)
     /*router.get("/userplants", getUserPlants);
 
     router.post("/userplants", createUserPlant);*/
+
+    router.post("/uploadFile", Multer({storage: Multer.memoryStorage()}).single("file"), UploadFileToMinio);
     
     router.post("/users", 
       checkDuplicateEmail, 
