@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../services/UserService";
 import { UserProfile } from "./UserProfile";
 import { ReactDefault } from "./React";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const initialUserState = {
     email: "",

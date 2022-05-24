@@ -3,6 +3,9 @@ import { CreatePlant } from "./CreatePlant";
 import { PlantsList } from "./PlantsList";
 import { Plant as PlantType} from "../types/StateTypes";
 import getInitialState from "../initialState";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 
 export const UserProfile = event => {

@@ -56,7 +56,7 @@ const seed = async () => {
       console.log(err);
     });
   
-    await Plant.create({ name: "Monstera", userId: 1, species: "bobobo", image: "url", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
+    await Plant.create({ name: "Monstera", userId: 1, species: "bobobo", image: "http://localhost:8000/botanicalbuddies/monstera.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
       .then(() => {
         console.log("Created single plant");
       })

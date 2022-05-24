@@ -2,6 +2,9 @@ import { CreateUser } from "./CreateUser";
 import { WelcomeButton } from "./WelcomeButton";
 import logo from '../logo.svg';
 import { Link, Outlet } from "react-router-dom";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 export function ReactDefault() {
     return (

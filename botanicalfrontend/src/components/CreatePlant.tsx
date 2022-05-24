@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import { httpClient } from "../services/HttpService";
 import { Plant } from "../services/PlantService";
 import DateTimePicker from 'react-datetime-picker';
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const initialPlantState = {
     name: "",

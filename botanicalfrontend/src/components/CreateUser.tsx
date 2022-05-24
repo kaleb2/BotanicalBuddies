@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { User } from "../services/UserService";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const initialUserState = {
     email: "",
