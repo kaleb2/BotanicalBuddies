@@ -1,14 +1,14 @@
-import axios from "./HttpService";
+import { httpClient } from "../services/HttpService";
 
 export const User = {
     async create(user) {
-      return axios.post("/users"
+      return httpClient.post("/users"
         , { email: user.email, password: user.password }
       )
       
     },
     async login(user) {
-      return axios.post("/login"
+      return httpClient.post("/login"
         , { email: user.email, password: user.password }
       )
     }

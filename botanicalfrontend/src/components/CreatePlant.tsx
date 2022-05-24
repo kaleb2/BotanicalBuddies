@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import { httpClient } from "../services/HttpService";
 import { Plant } from "../services/PlantService";
 import DateTimePicker from 'react-datetime-picker';
 
@@ -10,50 +11,71 @@ const initialPlantState = {
     dateAcquired: new Date(),
     lastRepot: new Date(),
     lastFertilize: new Date(),
-  };
-  
-  export const CreatePlant = () => {
-  
-    const [plant, setPlant] = useState(initialPlantState);
-    const [submitted, setSubmitted] = useState(false);
-    const [submitFailed, setSubmitFailed] = useState(false);
-  
-  
-    const handleInputChange = event => {
-      const { name, value } = event.target;
-      setPlant({ ...plant, [name]: value });
-    };
+};
 
-    const handleDateChange = (date: any, input: any) => {
-        //console.log("input = " + input);
-        //console.log("date = " + date);
-        //console.log(input);
-        const newDate = new Date(date.toString());
-        //console.log("setting plant date to " + newDate);
-        setPlant({ ...plant, [input]: newDate });
-        
-    }
-  
-    const savePlant = () => {
-      Plant.create(plant)
-        .then(res => {
+export const CreatePlant = () => {
+
+  const [selectedFile, setSelectedFile] = useState();
+  const [plant, setPlant] = useState(initialPlantState);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitFailed, setSubmitFailed] = useState(false);
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setPlant({ ...plant, [name]: value });
+  };
+
+  const handleDateChange = (date: any, input: any) => {
+    //console.log("input = " + input);
+    //console.log("date = " + date);
+    //console.log(input);
+    const newDate = new Date(date.toString());
+    //console.log("setting plant date to " + newDate);
+    setPlant({ ...plant, [input]: newDate });
+  };
+
+  const onFileChange = event => {
+    // Update the state
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const savePlant = (event) => {
+    const formData = new FormData();
+    // @ts-ignore
+    formData.append('file', selectedFile);
+    // @ts-ignore
+    formData.append('fileName', selectedFile.name);
+    formData.append('name', plant.name);
+    formData.append('species', plant.species);
+    formData.append('userId', plant.userId);
+    formData.append('dateAcquired', plant.dateAcquired.toDateString());
+    formData.append('lastRepot', plant.lastRepot.toDateString());
+    formData.append('lastFertilize', plant.lastFertilize.toDateString());
+
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    httpClient.post("/plants", formData, config)
+      .then((response) => {
+        console.log("Got response from upload file:", response.status);
+        if (response.status === 200) {
           setSubmitted(true);
-          setSubmitFailed(false);
-          console.log(res.data);
-        })
-        .catch(e => {
+        } else {
           setSubmitFailed(true);
-          console.log("Error creating new plant", e);
-        })
-    }
-  
-    const resetPlant = () => {
-      setPlant(initialPlantState);
-      setSubmitted(false);
-    }
-  
-    return (
-      <div>
+        }
+
+      });
+  };
+
+  const resetPlant = () => {
+    setPlant(initialPlantState);
+    setSubmitted(false);
+  }
+
+  return (
+    <div>
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
             <h4>You submitted successfully!</h4>
@@ -67,15 +89,15 @@ const initialPlantState = {
               //we could add a div here and style this separately
               <h2>There was an issue</h2>
             }
-            <CreatePlantForm handleInputChange={handleInputChange} savePlant={savePlant} plant={plant} handleDateChange={handleDateChange}/>
+            <CreatePlantForm handleInputChange={handleInputChange} savePlant={savePlant} plant={plant} handleDateChange={handleDateChange} onFileChange={onFileChange}/>
           </>
         )
         }
       </div>
-    )
-  }
+  );
+};
 
-export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDateChange }) => {
+export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDateChange, onFileChange }) => {
     return (
       <><h2>Add a new plant to your profile!</h2>
       <form>
@@ -115,15 +137,20 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
         </div>
 
         <div className="mb-3">
-          <label htmlFor="image" className="form-label">Image</label>
-          <input
-            type="text"
-            id="image"
-            required
-            value={plant.image}
-            onChange={handleInputChange}
-            name="image"
-            className="form-control" />
+          <label
+            className="label"
+            htmlFor="profilepic">Upload a profile picture (jpg/png):
+          </label>
+          <div>
+            <input
+              className= "botanicalBuddiesFileUpload"
+              type="file"
+              id="profilepic"
+              name="profilepic"
+              accept="image/png, image/jpeg"
+              onChange={onFileChange}
+            />
+          </div>
         </div>
 
         <div className="mb-3">

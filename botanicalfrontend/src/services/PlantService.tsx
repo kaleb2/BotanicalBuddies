@@ -1,8 +1,8 @@
-import axios from "./HttpService";
+import { httpClient } from "../services/HttpService";
 
 export const Plant = {
     async create(plant) {
-      return axios.post("/plants"
+      return httpClient.post("/plants"
         , { name: plant.name, userId: plant.userId, species: plant.species, image: plant.image,
             dateAcquired: plant.dateAcquired, lastRepot: plant.lastRepot,
             lastFertilize: plant.lastFertilize }
@@ -10,6 +10,6 @@ export const Plant = {
       
     },
     async get(plantUserId) {
-        return axios.get("/plants/"+plantUserId)
+        return httpClient.get("/plants/"+plantUserId)
     }
   }
