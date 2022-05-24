@@ -1,4 +1,4 @@
-import { db, UserPlant } from "../database/models";
+/*import { db, UserPlant } from "../database/models";
 
 export function createUserPlant(req, res) {
 
@@ -37,4 +37,4 @@ export function getUserPlants(req, res) {
         console.log(err);
         res.status(500).json({ message: err });
       });
-  }
+  }*/

@@ -54,6 +54,7 @@ export const User = db.define<UserModelAttrs>('users', {
 
 interface PlantModelAttrs extends Model {
   name: string,
+  userId: number,
   species: string,  
   image: string,
   dateAcquired: Date,
@@ -64,6 +65,9 @@ interface PlantModelAttrs extends Model {
 export const Plant = db.define<PlantModelAttrs>('plants', {
   name: {
     type: DataTypes.STRING,
+  },
+  userId: {
+    type: DataTypes.INTEGER,
   },
   species: {
     type: DataTypes.STRING,
@@ -84,7 +88,7 @@ export const Plant = db.define<PlantModelAttrs>('plants', {
 
 /* User Plants */
 
-interface UserPlantModelAttrs extends Model {
+/*interface UserPlantModelAttrs extends Model {
   userid: number,
   plantid: number
 }
@@ -96,4 +100,4 @@ export const UserPlant = db.define<UserPlantModelAttrs>('userplants', {
   plantid: {
     type: DataTypes.INTEGER,
   }
-});
+});*/

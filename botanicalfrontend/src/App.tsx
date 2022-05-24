@@ -5,6 +5,7 @@ import { ReactDefault, NotFound, Header} from './components/React';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
+import { CreatePlant } from './components/CreatePlant';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="user-profile" element={<UserProfile />} />
             <Route path="create-user" element={<CreateUser />} />
+            <Route path="create-plant" element={<CreatePlant />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

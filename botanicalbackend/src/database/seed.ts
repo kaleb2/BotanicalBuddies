@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Sequelize, DataTypes, DATE } from "sequelize";
 import { getJSDocDeprecatedTag } from "typescript";
-import { db, Plant, User, UserPlant } from "./models";
+import { db, Plant, User } from "./models";
 
 
 const userSeedData = [
@@ -10,14 +10,14 @@ const userSeedData = [
 ];
 
 const plantSeedData = [
-  { name: "palm tree", species: "palm tree", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
-  { name: "monstera", species: "ficus", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "palm tree", userId: 1, species: "palm tree", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "monstera", userId: 2, species: "ficus", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
 
-const userPlantSeedData = [
+/*const userPlantSeedData = [
   { userid: 1, plantid: 1},
   { userid: 2, plantid: 2}
-]
+]*/
 
 const seed = async () => {
   console.log("Beginning seed");
@@ -56,18 +56,18 @@ const seed = async () => {
       console.log(err);
     });
   
-    await Plant.create({ name: "Monstera", species: "bobobo", image: "url", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
+    await Plant.create({ name: "Monstera", userId: 1, species: "bobobo", image: "url", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
       .then(() => {
         console.log("Created single plant");
       })
       .catch((err) => {
         console.log('failed to create seed plant');
         console.log(err);
-      })
-      
+      }).finally(() => {
+        db.close();
+      });  
 
-
-      /*User Plants*/
+    /*  //User Plants
 
     await UserPlant.sync({ force: true });
     await UserPlant.bulkCreate(userPlantSeedData, { validate: true })
@@ -87,9 +87,10 @@ const seed = async () => {
         console.log(err);
       }).finally(() => {
         db.close();
-      });  
+      });  */
 
     console.log("seed finished.");
+    
 };
 
 seed();

@@ -38,6 +38,8 @@ export const Header = () => {
       &nbsp; | &nbsp;
       <Link to="/user-profile">My Profile</Link>
       &nbsp; | &nbsp;
+      <Link to="/create-plant">Create Plant</Link>
+      &nbsp; | &nbsp;
       <Link to="/create-user">Create User</Link>
       <br />
       <Outlet />
