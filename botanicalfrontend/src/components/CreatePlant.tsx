@@ -24,10 +24,14 @@ const initialPlantState = {
       setPlant({ ...plant, [name]: value });
     };
 
-    const handleDateChange = event => {
-        const date = new Date(event.toString());
-        console.log("setting plant date to " + date);
-        setPlant({ ...plant, dateAcquired: date });
+    const handleDateChange = (date: any, input: any) => {
+        //console.log("input = " + input);
+        //console.log("date = " + date);
+        //console.log(input);
+        const newDate = new Date(date.toString());
+        //console.log("setting plant date to " + newDate);
+        setPlant({ ...plant, [input]: newDate });
+        
     }
   
     const savePlant = () => {
@@ -127,7 +131,9 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
           <DateTimePicker 
             id="dateAcquired" 
             required 
-            onChange={handleDateChange} 
+            onChange={(e) => 
+                {handleDateChange(e, "dateAcquired")} 
+            }
             value={plant.dateAcquired} 
             name="dateAcquired"
             className="form-control" />
@@ -138,7 +144,9 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
           <DateTimePicker 
             id="lastRepot" 
             required 
-            onChange={handleDateChange} 
+            onChange={(e) => 
+                {handleDateChange(e, "lastRepot")} 
+            }
             value={plant.lastRepot} 
             name="lastRepot"
             className="form-control" />
@@ -149,7 +157,9 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
           <DateTimePicker 
             id="lastFertilize" 
             required 
-            onChange={handleDateChange} 
+            onChange={(e) => 
+                {handleDateChange(e, "lastFertilize")} 
+            }
             value={plant.lastFertilize} 
             name="lastFertilize"
             className="form-control" />
