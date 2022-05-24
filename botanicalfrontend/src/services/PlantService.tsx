@@ -8,5 +8,8 @@ export const Plant = {
             lastFertilize: plant.lastFertilize }
       )
       
+    },
+    async get(plantUserId) {
+        return axios.get("/plants/"+plantUserId)
     }
   }

@@ -24,7 +24,7 @@ export function createPlant(req, res) {
 }
 
 export function getPlants(req, res) {
-    const reqUserId = req.body.userId;
+    const reqUserId = req.params.userId;
 
     console.log(`in getplants`);
     Plant.findAll({where: {

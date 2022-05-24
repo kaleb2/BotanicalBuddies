@@ -33,7 +33,6 @@ const initialUserState = {
           setLoggedIn(true);
           /* Now hide login button and replace with logout */
           /* Display my profile button */
-          navigate('/user-profile'); 
         })
         .catch(e => {
           setSubmitFailed(true);
@@ -57,6 +56,7 @@ const initialUserState = {
             <button type="button" className="btn btn-secondary" onClick={logoutUser}>
               Log out
             </button>
+            <UserProfile userId={1}/>
           </>
         ) : (
           <>   {/* If we've NOT already submitted, show this piece*/}

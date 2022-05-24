@@ -1,7 +1,7 @@
 import { CreatePlant } from "./CreatePlant";
 import { PlantsList } from "./PlantsList";
 
-export function UserProfile() {
+export const UserProfile = event => {
 
     return (
         <div className="profile">
@@ -9,7 +9,7 @@ export function UserProfile() {
 
             <div className="plantsList">
             <h2>Your plants:</h2>
-                <PlantsList/>
+                <PlantsList userId={event.userId} />
             </div>
 
             <CreatePlant/>

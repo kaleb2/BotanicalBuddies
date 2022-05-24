@@ -24,7 +24,7 @@ export default function setupRoutes(app)
 
     router.post("/plants", createPlant);
 
-    router.get("/plants", getPlants);
+    router.get("/plants/:userId", getPlants);
 
     /*router.get("/userplants", getUserPlants);
 
