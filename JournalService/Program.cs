@@ -25,8 +25,8 @@ app.MapPost("/journal", async (Journal journal, JournalsDbContext journalDb) =>
     return Results.Created($"/journal/{journal.UserId}/{journal.JournalTitle}", journal);
 });
 
-app.MapGet("/journal/{userid}/{journalTitle}", async (int userId, string journalTitle, JournalsDbContext journalsDb) =>
-    await journalsDb.Journals.FindAsync(journalTitle, userId)
+app.MapGet("/journal/{userid}/{plantId}", async (int userId, int plantId, JournalsDbContext journalsDb) =>
+    await journalsDb.Journals.FindAsync(plantId, plantId)
         is Journal journal
             ? Results.Ok(journal)
             : Results.NotFound());

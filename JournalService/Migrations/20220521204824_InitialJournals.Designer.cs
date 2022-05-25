@@ -33,8 +33,24 @@ namespace JournalService.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("userId");
 
-                    b.HasKey("JournalTitle", "UserId")
-                        .HasName("PKComposite_TitleId");
+                    b.Property<string>("PlantName")
+                        .HasColumnType("text")
+                        .HasColumnName("plantName");
+
+                    b.Property<int>("PlantId")
+                        .HasColumnType("integer")
+                        .HasColumnName("plantId");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("text")
+                        .HasColumnName("content");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dateCreated");
+
+                    b.HasKey("PlantId", "UserId")
+                        .HasName("PKComposite_PlantId");
 
                     b.ToTable("journals");
 
@@ -42,17 +58,29 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalTitle = "Plant is looking very healthy today!",
-                            UserId = 1
+                            UserId = 1,
+                            PlantName = "Monstera", 
+                            PlantId = 1, 
+                            Content = "What's everyone's thoughts?", 
+                            DateCreated = DateTimeOffset.Now
                         },
                         new
                         {
                             JournalTitle = "Might need to start watering more...",
-                            UserId = 1
+                            UserId = 1,
+                            PlantName = "Fern", 
+                            PlantId = 2, 
+                            Content = "What's everyone's thoughts?", 
+                            DateCreated = DateTimeOffset.Now
                         },
                         new
                         {
                             JournalTitle = "Oh no... it's withering :(",
-                            UserId = 2
+                            UserId = 2,
+                            PlantName = "Fern", 
+                            PlantId = 2, 
+                            Content = "What's everyone's thoughts?", 
+                            DateCreated = DateTimeOffset.Now
                         });
                 });
 #pragma warning restore 612, 618
