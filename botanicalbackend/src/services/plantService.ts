@@ -59,3 +59,23 @@ export function getPlants(req, res) {
       });
   }
 
+  export function getPlant(req, res) {
+    const reqPlantId = req.params.id;
+
+    console.log(`in getplants`);
+    Plant.findOne({where: {
+        id : reqPlantId
+      }
+    })
+      .then(plant =>
+        {
+          console.log("Found plant for id " + reqPlantId);
+          res.status(200).json(plant);
+        })
+      .catch((err) => {
+        console.log('failed to find any plants for id ' + reqPlantId);
+        console.log(err);
+        res.status(500).json({ message: err });
+      });
+  }
+

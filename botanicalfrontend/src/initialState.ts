@@ -1,8 +1,9 @@
 import { State } from "./types/StateTypes";
-import { getPlants, Plant } from "./services/PlantService";
+import { getPlant, getPlants, Plant } from "./services/PlantService";
 
 async function getInitialState(): Promise<State> {
   return {
+    currentProfile: await getPlant(1),
     listOfPlants: await getPlants(1), // change these to use database random
   }
 }

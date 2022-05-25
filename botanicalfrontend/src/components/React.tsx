@@ -5,22 +5,32 @@ import { Link, Outlet } from "react-router-dom";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import { PlantsList } from "./PlantsList";
+import getInitialState from "../initialState";
+import { useEffect, useState } from "react";
+import { Plant as PlantType} from "../types/StateTypes";
 
 export function ReactDefault() {
+    let [listOfPlants, setListOfPlants] = useState<Array<PlantType>>([]);
+
+    useEffect(() => {
+      let init = async () => {
+        try {
+          let initialState = await getInitialState();
+          setListOfPlants(initialState.listOfPlants);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      init();
+    }, [])
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <WelcomeButton/>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
-            </header>
+            <div className="plantsList">
+            <h2>Most recent plants:</h2>
+                <PlantsList listOfPlants={listOfPlants}/>
+            </div>
         </div>
     );
 };

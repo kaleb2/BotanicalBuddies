@@ -18,4 +18,12 @@ export const Plant = {
     console.log(data);
     return data;
   }
+
+  export async function getPlant(plantId) {
+    let res = await httpClient.get("/plant/"+plantId);
+  
+    let data = await res.data;
+    console.log(data);
+    return data;
+  }
   

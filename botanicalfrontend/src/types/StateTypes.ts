@@ -1,4 +1,5 @@
 export type State = {
+    currentProfile: Plant,
     listOfPlants: [],
   };
   

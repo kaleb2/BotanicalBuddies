@@ -7,11 +7,13 @@ import { Plant } from "../services/PlantService";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import { Link } from "react-router-dom";
 
 export type PlantProfileProps = PlantType & { onUnmatchButtonClick: (id: number) => void }
 
 export function PlantProfile(props) {
         let {
+            id,
             name,
             image,
             species,
@@ -31,6 +33,7 @@ export function PlantProfile(props) {
       </div>
       <div className="w-64 flex flex-wrap justify-center">
         <h3 className="w-64 ml-2 text-center">{name}</h3>
+        <Link to={'/plants/' + id}>View plant</Link>
         <p>Species: {species}</p>
         <p> Date acquired: {dateAcquired}</p>
         <p>Last time repot: {lastRepot}</p>
