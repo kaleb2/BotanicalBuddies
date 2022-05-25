@@ -67,4 +67,5 @@ botanicalbackend/package-lock.json
 botanicalfrontend/package-lock.json
 
 # minio
-minio/.minio.sys/
+minio/
+minio/.minio.sys/buckets/
