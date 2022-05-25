@@ -1,6 +1,9 @@
 import { db, Plant } from "../database/models";
 import { minioClient } from "./minioService";
 
+const filehost = process.env.MINIO_HOST;
+const fileport = process.env.MINIO_PORT;
+
 export const createPlant = async (req, res) => {
 
   console.log("About to upload file");
@@ -18,7 +21,7 @@ export const createPlant = async (req, res) => {
   const name = req.body.name;
   const userId = req.body.userId;
   const species = req.body.species;
-  const image = `http://localhost:8000/botanicalbuddies/${req.file.originalname}`;
+  const image = `http://${filehost}:${fileport}/botanicalbuddies/${req.file.originalname}`;
   const dateAcquired = req.body.dateAcquired;
   const lastRepot = req.body.lastRepot;
   const lastFertilize = req.body.lastFertilize;

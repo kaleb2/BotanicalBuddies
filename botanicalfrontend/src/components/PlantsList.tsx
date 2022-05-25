@@ -14,6 +14,10 @@ export function PlantProfile(props) {
         let {
             name,
             image,
+            species,
+            dateAcquired,
+            lastRepot,
+            lastFertilize
         } = props;
     
 
@@ -21,12 +25,16 @@ export function PlantProfile(props) {
         console.log(`Plant List Profile ${name} rerendered`);
       });
 
-      return <div className="col-3">
+      return <div className="col-3 plant-profile">
       <div className="rounded-box botanical-img">
         <img src={image} alt={name} className="img-fluid"/>
       </div>
       <div className="w-64 flex flex-wrap justify-center">
-        <span className="w-64 ml-2 text-center">{name}</span>
+        <h3 className="w-64 ml-2 text-center">{name}</h3>
+        <p>Species: {species}</p>
+        <p> Date acquired: {dateAcquired}</p>
+        <p>Last time repot: {lastRepot}</p>
+        <p>Last time fertilized: {lastFertilize}</p>
       </div>
     </div>;
 

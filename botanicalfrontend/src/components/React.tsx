@@ -33,19 +33,26 @@ export const NotFound = () => (
   );
 
 export const Header = () => {
-    return (<div>
-      <h1>Botanical Buddies^TM</h1>
-      <Link to="/">Dashboard</Link>
-      &nbsp; | &nbsp;
-      <Link to="/login">Login</Link>
-      &nbsp; | &nbsp;
-      <Link to="/user-profile">My Profile</Link>
-      &nbsp; | &nbsp;
-      <Link to="/create-plant">Create Plant</Link>
-      &nbsp; | &nbsp;
-      <Link to="/create-user">Create User</Link>
-      <br />
-      <Outlet />
-    </div>
+    return (
+      <div className="body">
+        <div className="navbar navbar-expand-lg">
+          <div className="container">
+            <h1>Botanical Buddies^TM</h1>
+            <Link to="/">Dashboard</Link>
+            &nbsp; | &nbsp;
+            <Link to="/login">Login</Link>
+            &nbsp; | &nbsp;
+            <Link to="/user-profile">My Profile</Link>
+            &nbsp; | &nbsp;
+            <Link to="/create-plant">Create Plant</Link>
+            &nbsp; | &nbsp;
+            <Link to="/create-user">Create User</Link>
+            <br />
+          </div>
+        </div>
+        <div className="container">
+          <Outlet />
+        </div>
+      </div>
     );
 };
