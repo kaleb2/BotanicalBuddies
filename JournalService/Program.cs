@@ -22,7 +22,7 @@ app.MapPost("/journal", async (Journal journal, JournalsDbContext journalDb) =>
 {
     journalDb.Add(journal);
     await journalDb.SaveChangesAsync();
-    return Results.Created($"/journal/{journal.UserId}/{journal.JournalTitle}", journal);
+    return Results.Created($"/journal/{journal.UserId}/{journal.PlantId}", journal);
 });
 
 app.MapGet("/journal/{userid}/{plantId}", async (int userId, int plantId, JournalsDbContext journalsDb) =>
