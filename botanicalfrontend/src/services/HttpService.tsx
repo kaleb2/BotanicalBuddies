@@ -7,4 +7,11 @@ export const httpClient = axios.create({
   }
 });
 
+export const journalClient = axios.create({
+  baseURL: "http://localhost:9200/",
+  headers: {
+    "Content-type": "application/json"
+  }
+});
+
 
