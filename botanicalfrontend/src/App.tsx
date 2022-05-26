@@ -5,7 +5,7 @@ import { ReactDefault, NotFound, Header} from './components/React';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
-import { CreateJournalEntry } from './components/CreateJournal';
+import { CreateJournalEntry } from './components/CreateJournalEntry';
 
 function App() {
 
