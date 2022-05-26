@@ -41,6 +41,8 @@ export const Header = () => {
       <Link to="/create-user">Create User</Link>
       &nbsp; | &nbsp;
       <Link to="/create-journal-entry">Submit Journal Entry</Link>
+      &nbsp; | &nbsp;
+      <Link to="/journals">Journals</Link>
       <br />
       <Outlet />
     </div>
