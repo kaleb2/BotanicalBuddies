@@ -19,3 +19,15 @@ services:
             - "9100:9100"
         depends_on:
             - "postgres"
+    minio:
+        container_name: minio
+        image: docker.io/bitnami/minio:2022
+        ports:
+            - "8000:9000"
+            - "8001:9001"
+        environment:
+            - MINIO_DEFAULT_BUCKETS=botanicalbuddies:public
+            - MINIO_ROOT_USER=minioUser
+            - MINIO_ROOT_PASSWORD=minioPass
+        volumes:
+            - './minio:/data'

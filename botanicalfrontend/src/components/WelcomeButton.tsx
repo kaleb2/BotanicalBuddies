@@ -1,4 +1,7 @@
 import { Welcome } from "../services/WelcomeService";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 
 

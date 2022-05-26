@@ -5,6 +5,9 @@ import { ReactDefault, NotFound, Header} from './components/React';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
+import { CreatePlant } from './components/CreatePlant';
+import { UserPlant } from './components/UserPlant';
+import { CreateJournalEntry } from './components/CreateJournalEntry';
 
 function App() {
 
@@ -20,7 +23,10 @@ function App() {
             <Route path="/" element={<ReactDefault />}/>         
             <Route path="login" element={<Login />} />
             <Route path="user-profile" element={<UserProfile />} />
+            <Route path="plants/:id" element={<UserPlant />} />
             <Route path="create-user" element={<CreateUser />} />
+            <Route path="create-plant" element={<CreatePlant />} />
+            <Route path="create-journal-entry" element={<CreateJournalEntry />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../services/UserService";
 import { UserProfile } from "./UserProfile";
 import { ReactDefault } from "./React";
+import '../css/BotanicalBuddies.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const initialUserState = {
     email: "",
@@ -33,7 +36,6 @@ const initialUserState = {
           setLoggedIn(true);
           /* Now hide login button and replace with logout */
           /* Display my profile button */
-          navigate('/user-profile'); 
         })
         .catch(e => {
           setSubmitFailed(true);
@@ -57,6 +59,7 @@ const initialUserState = {
             <button type="button" className="btn btn-secondary" onClick={logoutUser}>
               Log out
             </button>
+            <UserProfile userId={1}/>
           </>
         ) : (
           <>   {/* If we've NOT already submitted, show this piece*/}

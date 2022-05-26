@@ -1,9 +1,9 @@
-import axios from "./HttpService";
+import { httpClient } from "../services/HttpService";
 
 export const Welcome = {
 
   async getWelcome() {
-    await axios.get("/welcome").then( (response) => {
+    await httpClient.get("/welcome").then( (response) => {
       console.log(response.data);
       return response.data;
     });
