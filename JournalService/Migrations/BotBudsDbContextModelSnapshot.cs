@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JournalService.Migrations
 {
-    [DbContext(typeof(JournalsDbContext))]
+    [DbContext(typeof(JournalEntriesDbContext))]
     partial class BotBudsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -21,11 +21,19 @@ namespace JournalService.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Journal", b =>
+            modelBuilder.Entity("JournalEntry", b =>
                 {
-                    b.Property<string>("JournalTitle")
+                    b.Property<int>("EntryId")
+                        .HasColumnType("integer")
+                        .HasColumnName("entryId");
+
+                    b.Property<int>("JournalId")
+                        .HasColumnType("integer")
+                        .HasColumnName("journalId");
+
+                    b.Property<string>("EntryTitle")
                         .HasColumnType("text")
-                        .HasColumnName("journalTitle");
+                        .HasColumnName("entryTitle");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
@@ -47,15 +55,17 @@ namespace JournalService.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("dateCreated");
 
-                    b.HasKey("PlantId", "UserId")
-                        .HasName("PKComposite_PlantId");
+                    b.HasKey("EntryId", "JournalId")
+                        .HasName("PKComposite_EntryId");
 
-                    b.ToTable("journals");
+                    b.ToTable("journalentries");
 
                     b.HasData(
                         new
                         {
-                            JournalTitle = "Plant is looking very healthy today!",
+                            EntryId = 1,
+                            JournalId = 1,
+                            EntryTitle = "Plant is looking very healthy today!",
                             UserId = 1,
                             PlantName = "Monstera", 
                             PlantId = 1, 
@@ -64,7 +74,9 @@ namespace JournalService.Migrations
                         },
                         new
                         {
-                            JournalTitle = "Might need to start watering more...",
+                            EntryId = 2,
+                            JournalId = 2,
+                            EntryTitle = "Might need to start watering more...",
                             UserId = 1,
                             PlantName = "Fern", 
                             PlantId = 2, 
@@ -73,7 +85,9 @@ namespace JournalService.Migrations
                         },
                         new
                         {
-                            JournalTitle = "Oh no... it's withering :(",
+                            EntryId = 3,
+                            JournalId = 1,
+                            EntryTitle = "Oh no... it's withering :(",
                             UserId = 2,
                             PlantName = "Fern", 
                             PlantId = 2, 

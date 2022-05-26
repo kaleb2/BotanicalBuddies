@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMvc();
-builder.Services.AddDbContext<JournalsDbContext>(opt => opt.UseNpgsql(JournalsDbContext.GetConnectionString()));
+builder.Services.AddDbContext<JournalEntriesDbContext>(opt => opt.UseNpgsql(JournalEntriesDbContext.GetConnectionString()));
 
 var app = builder.Build();
 
@@ -21,20 +21,20 @@ app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
                                 .AllowAnyMethod()
                                 .AllowAnyHeader());
 
-app.MapPost("/journal", async (Journal journal, JournalsDbContext journalDb) =>
+app.MapPost("/journal", async (JournalEntry journalEntry, JournalEntriesDbContext journalEntriesDb) =>
 {
-    journalDb.Add(journal);
-    await journalDb.SaveChangesAsync();
-    return Results.Created($"/journal/{journal.UserId}/{journal.PlantId}", journal);
+    journalEntriesDb.Add(journalEntry);
+    await journalEntriesDb.SaveChangesAsync();
+    return Results.Created($"/journal/{journalEntry.JournalId}/{journalEntry.EntryId}", journalEntry);
 });
 
-app.MapGet("/journal/{userid}/{plantId}", async (int userId, int plantId, JournalsDbContext journalsDb) =>
-    await journalsDb.Journals.FindAsync(plantId, plantId)
-        is Journal journal
-            ? Results.Ok(journal)
+app.MapGet("/journal/{journalid}/{entryid}", async (int journalId, int entryId, JournalEntriesDbContext journalEntriesDb) =>
+    await journalEntriesDb.JournalEntries.FindAsync(journalId, entryId)
+        is JournalEntry journalEntry
+            ? Results.Ok(journalEntry)
             : Results.NotFound());
 
-app.MapGet("/journal/{userid}", async (int userid, JournalsDbContext journalsDb) =>
-    await journalsDb.Journals.Where(p => p.UserId == userid).ToListAsync());
+app.MapGet("/journal/{journalid}", async (int journalId, JournalEntriesDbContext journalEntriesDb) =>
+    await journalEntriesDb.JournalEntries.Where(p => p.JournalId == journalId).ToListAsync());
 
 app.Run("http://0.0.0.0:9200");

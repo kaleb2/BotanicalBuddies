@@ -1,12 +1,20 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("journals")]
-public class Journal
+[Table("journalentries")]
+public class JournalEntry
 {
     [Required]
-    [Column("journalTitle")]
-    public string JournalTitle {get; set;} = "Unknown";
+    [Column("entryId")]
+    public int EntryId {get; set;}
+
+    [Required]
+    [Column("journalId")]
+    public int JournalId {get; set;}
+
+    [Required]
+    [Column("entryTitle")]
+    public string EntryTitle {get; set;} = "Unknown";
     
     [Required]
     [Column("userId")]
@@ -14,7 +22,7 @@ public class Journal
 
     [Required]
     [Column("plantName")]
-    public string PlantName {get; set;}
+    public string PlantName {get; set;}  = "Unknown";
 
     [Required]
     [Column("plantId")]
@@ -22,7 +30,7 @@ public class Journal
 
     [Required]
     [Column("content")]
-    public string Content {get; set;}
+    public string Content {get; set;}  = "Unknown";
 
     [Column("dateCreated")]
     public DateTimeOffset DateCreated {get; set;}
