@@ -11,8 +11,21 @@ export const Journal = {
             dateCreated: journal.dateCreated
          }
       )  
-    },
-    async getPlantJournal(userId, plantId) {
-      return journalClient.get("/journal/"+userId+"/"+plantId);
     }
+}
+
+export async function getJournalEntries(journalId) {
+  let res = await journalClient.get("/journal/"+journalId+"/");
+
+  let data = await res.data;
+  console.log(data);
+  return data;
+}
+
+export async function getJournalEntry(journalId, entryId) {
+  let res = await journalClient.get("/journal/"+journalId+"/"+entryId+"/");
+
+  let data = await res.data;
+  console.log(data);
+  return data;
 }
