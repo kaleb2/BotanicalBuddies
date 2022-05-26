@@ -38,9 +38,7 @@ export const Header = () => {
       &nbsp; | &nbsp;
       <Link to="/user-profile">My Profile</Link>
       &nbsp; | &nbsp;
-      <Link to="/create-user">Create User</Link>
-      &nbsp; | &nbsp;
-      <Link to="/create-journal-entry">Submit Journal Entry</Link>
+      <Link to="/create-user">Register</Link>
       &nbsp; | &nbsp;
       <Link to="/journals">Journals</Link>
       <br />
