@@ -17,7 +17,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors();
+app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
 
 app.MapPost("/journal", async (Journal journal, JournalsDbContext journalDb) =>
 {
