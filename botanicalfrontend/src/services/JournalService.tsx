@@ -12,4 +12,7 @@ export const Journal = {
          }
       )  
     },
+    async getPlantJournal(userId, plantId) {
+      return journalClient.get("/journal/"+userId+"/"+plantId);
+    }
 }
