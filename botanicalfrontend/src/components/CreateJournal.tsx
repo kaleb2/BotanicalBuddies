@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Journal } from "../services/JournalService";
-import '../css/BotanicalBuddies.css'; 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
 
 const initialJournalState = {
     journalTitle: "",
