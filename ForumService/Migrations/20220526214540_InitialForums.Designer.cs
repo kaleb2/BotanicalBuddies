@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ForumService.Migrations
 {
-    [DbContext(typeof(ThreadDbContext))]
-    [Migration("20220526203844_InitialForums")]
+    [DbContext(typeof(ForumDbContext))]
+    [Migration("20220526214540_InitialForums")]
     partial class InitialForums
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,6 +22,83 @@ namespace ForumService.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Post", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
+
+                    b.Property<int>("ThreadId")
+                        .HasColumnType("integer")
+                        .HasColumnName("threadId");
+
+                    b.Property<int>("PostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("postId");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PostId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dateCreated")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<string>("Tag")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("tag");
+
+                    b.HasKey("UserId", "ThreadId", "PostId")
+                        .HasName("PKComposite_UserThreadPost");
+
+                    b.ToTable("posts");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 2,
+                            ThreadId = 1,
+                            PostId = 1,
+                            Content = "Palms are so tough! Are you keeping it humid? I mist mine everyday.",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Tag = "misting"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            ThreadId = 1,
+                            PostId = 2,
+                            Content = "Also make sure when you water it, let the water filter all the way through the pot.",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Tag = "Palm"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            ThreadId = 2,
+                            PostId = 3,
+                            Content = "I've never heard of this.",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Tag = "Hibiscus"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            ThreadId = 3,
+                            PostId = 4,
+                            Content = "You have to keep the soil very moist and very acidic if you want the plant to flower. Good luck!",
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Tag = "Coffee"
+                        });
+                });
 
             modelBuilder.Entity("Thread", b =>
                 {

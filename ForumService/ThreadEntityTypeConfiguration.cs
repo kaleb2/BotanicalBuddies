@@ -32,6 +32,6 @@ public class ThreadEntityTypeConfiguration: IEntityTypeConfiguration<Thread>
             Tag = "Coffee"});
         Console.WriteLine("Saved thread with UserId=2 about flowering coffee plants");
 
-        Console.WriteLine("PlantEntityTypeConfiguration.Configure End");
+        Console.WriteLine("ThreadEntityTypeConfiguration.Configure End");
     }
 }

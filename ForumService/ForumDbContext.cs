@@ -1,15 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 
-public class ThreadDbContext : DbContext {
-
-    public ThreadDbContext(DbContextOptions<ThreadDbContext> options) 
+public class ForumDbContext : DbContext {
+    public ForumDbContext(DbContextOptions<ForumDbContext> options) 
         : base(options) { }
 
     public DbSet<Thread> Threads => Set<Thread>();
 
+    public DbSet<Post> Posts => Set<Post>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         new ThreadEntityTypeConfiguration().Configure(modelBuilder.Entity<Thread>());
+        new PostEntityTypeConfiguration().Configure(modelBuilder.Entity<Post>());
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

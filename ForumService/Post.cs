@@ -1,23 +1,23 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("threads")]
-public class Thread
+[Table("posts")]
+public class Post
 {
     [Required]
     [Column("userId")]
     public int UserId {get; set;}
 
+    [Required]
     [Column("threadId")]
     public int ThreadId {get; set;}
 
-    [Required]
-    [Column("title")]
-    public string Title {get; set;} = "New Topic";
+    [Column("postId")]
+    public int PostId {get; set;}
 
     [Required]
-    [Column("body")]
-    public string Body {get; set;} = "This is my question?";
+    [Column("content")]
+    public string Content {get; set;} = "This is my content";
 
     [Column("tag")]
     public string Tag {get; set;} = "none";
