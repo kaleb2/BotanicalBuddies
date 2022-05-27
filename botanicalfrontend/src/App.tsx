@@ -7,6 +7,7 @@ import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
 import { CreateJournalEntry } from './components/CreateJournalEntry';
 import { Journals } from './components/Journals';
+import { JournalEntryPage } from './components/JournalEntryPage';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
             <Route path="journals" element={<Journals />} />
+            <Route path="journal-entry/:id" element={<JournalEntryPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
