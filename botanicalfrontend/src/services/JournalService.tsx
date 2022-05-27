@@ -14,6 +14,13 @@ export const Journal = {
     }
 }
 
+export async function getAllJournalEntries() {
+  let res = await journalClient.get("/journal/");
+  let data = await res.data;
+  console.log(data);
+  return data;
+}
+
 export async function getJournalEntries(journalId) {
   let res = await journalClient.get("/journal/"+journalId+"/");
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../types/StateTypes";
 import getInitialState from "../initialState";
@@ -7,6 +7,10 @@ import { JournalEntriesList } from "./JournalEntriesList";
 
 export function Journals() {
 
+    let param = useParams().id ?? 0;
+    let id = +param;
+
+    console.log(id);
     let [listOfEntries, setListOfEntries] = useState<Array<JournalEntryType>>([]);
 
     useEffect(() => {
@@ -23,9 +27,9 @@ export function Journals() {
 
     return (
         <div className="journal">
-            <p>A list of journals</p>
+            <p>A list of entries for journal # {id}</p>
 
-            <JournalEntriesList id={1} listOfEntries={listOfEntries}/>
+            <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             
             <CreateJournalEntry/>
         </div>

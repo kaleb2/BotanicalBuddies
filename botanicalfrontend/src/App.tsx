@@ -41,7 +41,7 @@ function App() {
             <Route path="user-profile" element={<UserProfile />} />
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
-            <Route path="journals" element={<Journals />} />
+            <Route path="journals/:id" element={<Journals />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
