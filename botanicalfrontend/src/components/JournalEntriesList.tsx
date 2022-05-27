@@ -43,7 +43,6 @@ export function JournalEntry(props) {
         <p>Plant: {plantName}</p>
         <p>From Journal ID {journalId}</p>
         <p>{content}</p>
-        <Link to={'/journal-entry/' + entryId}>View Full entry</Link>
         <p>Written by user ID {userId}</p>
         <p>{dateCreated}</p>
       </div>
