@@ -4,27 +4,18 @@ import getInitialState from "../initialState";
 import { getJournalEntry } from "../services/JournalService";
 import { JournalEntry as JournalEntryType} from "../types/StateTypes";
 
-export function JournalEntryPage() {
+export type EntryProps = {
+    entryTitle: string
+  }
 
-    const { id } = useParams();
-
-    let [currentEntry, setCurrentEntry] = useState<JournalEntryType>();
-
-    useEffect(() => {
-        let init = async () => {
-          try {
-            let initialState = await getInitialState();
-            setCurrentEntry(initialState.currentEntry);
-          } catch (err) {
-            console.log(err);
-          }
-        }
-        init();
-      }, [])
+export function JournalEntryPage(props: EntryProps) {
+    let {
+        entryTitle
+      } = props;
 
     return (
         <div className="journal-entry">
-            <h2>{/*currentEntry.entryTitle*/}</h2>
+            <h2>{entryTitle}</h2>
         </div>
     );
 };

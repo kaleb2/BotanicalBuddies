@@ -27,7 +27,6 @@ export function Journals() {
 
             <JournalEntriesList listOfEntries={listOfEntries}/>
             
-
             <CreateJournalEntry/>
         </div>
     );
