@@ -2,8 +2,11 @@ import { journalClient } from "../services/HttpService";
 
 export const Journal = {
     async create(journal) {
+      console.log(journal);
       return journalClient.post("/journal/"
-        , { journalTitle: journal.journalTitle, 
+        , { entryId: journal.entryId,
+            journalId: journal.journalId,
+            entryTitle: journal.entryTitle, 
             userId: journal.userId, 
             plantName: journal.plantName, 
             plantId: journal.plantId, 

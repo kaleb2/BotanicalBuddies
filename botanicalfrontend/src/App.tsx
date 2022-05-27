@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
 import { CreateJournalEntry } from './components/CreateJournalEntry';
-import { Journals } from './components/Journals';
+import { Journal } from './components/Journal';
 import { JournalEntryPage } from './components/JournalEntryPage';
 import { JournalEntry as JournalEntryType} from "./types/StateTypes";
 import getInitialState from './initialState';
@@ -41,7 +41,7 @@ function App() {
             <Route path="user-profile" element={<UserProfile />} />
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
-            <Route path="journals/:id" element={<Journals />} />
+            <Route path="journal/:id" element={<Journal />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -5,7 +5,7 @@ import { JournalEntry as JournalEntryType} from "../types/StateTypes";
 import getInitialState from "../initialState";
 import { JournalEntriesList } from "./JournalEntriesList";
 
-export function Journals() {
+export function Journal() {
 
     let param = useParams().id ?? 0;
     let id = +param;
@@ -31,7 +31,7 @@ export function Journals() {
 
             <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             
-            <CreateJournalEntry/>
+            <CreateJournalEntry journalId={id}/>
         </div>
     );
 };
