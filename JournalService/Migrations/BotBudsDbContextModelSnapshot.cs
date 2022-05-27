@@ -55,8 +55,8 @@ namespace JournalService.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("dateCreated");
 
-                    b.HasKey("EntryId", "JournalId")
-                        .HasName("PKComposite_EntryId");
+                    b.HasKey("EntryId")
+                        .HasName("PK_EntryId");
 
                     b.ToTable("journalentries");
 

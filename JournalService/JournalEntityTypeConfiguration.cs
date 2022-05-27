@@ -6,9 +6,9 @@ public class JournalEntryEntityTypeConfiguration: IEntityTypeConfiguration<Journ
     public void Configure(EntityTypeBuilder<JournalEntry> builder)
     {
         Console.WriteLine("JournalEntryEntityTypeConfiguration.Configure Start");
-        builder.HasKey(p => new {p.JournalId, p.EntryId})
-            .HasName("PKComposite_EntryId");
-        Console.WriteLine("JournalId and EntryId added as composite key.");
+        builder.HasKey(p => p.EntryId)
+            .HasName("PK_EntryId");
+        Console.WriteLine("EntryId added as key.");
 
         builder.HasData(new JournalEntry{EntryId=1, JournalId=1, EntryTitle="Plant is looking very healthy today!", UserId=1, PlantName="Monstera", PlantId=1, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
         Console.WriteLine("Added Plant is looking very healthy today!");

@@ -24,7 +24,7 @@ namespace JournalService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PKComposite_EntryId", x => new { x.entryId, x.journalId });
+                    table.PrimaryKey("PK_EntryId", x => x.entryId);
                 });
 
             migrationBuilder.InsertData(
