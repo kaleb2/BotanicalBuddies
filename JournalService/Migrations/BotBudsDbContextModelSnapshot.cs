@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JournalService.Migrations
 {
-    [DbContext(typeof(JournalEntriesDbContext))]
+    [DbContext(typeof(JournalDbContext))]
     partial class BotBudsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

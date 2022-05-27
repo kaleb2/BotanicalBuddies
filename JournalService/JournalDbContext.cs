@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-public class JournalEntriesDbContext : DbContext {
+public class JournalDbContext : DbContext {
 
-        public JournalEntriesDbContext(DbContextOptions<JournalEntriesDbContext> options) 
+        public JournalDbContext(DbContextOptions<JournalDbContext> options) 
             : base(options) { }
 
         public DbSet<JournalEntry> JournalEntries => Set<JournalEntry>();
