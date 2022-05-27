@@ -37,11 +37,13 @@ export function JournalEntry(props) {
         console.log(`Journal Entry ${entryTitle} rerendered`);
       });
 
-      return <div className="col-3 journal-entry">
+      return <div className="col-12 journal-entry">
       <div className="w-64 flex flex-wrap justify-center">
-        <h3 className="w-64 ml-2 text-center">{entryTitle}</h3>
-        <Link to={'/journal-entry/' + entryId}>View plant</Link>
-        <p>Author Id: {userId}</p>
+        <h2 className="w-64 ml-2 text-center">{entryTitle}</h2>
+        <p>Plant: {plantName}</p>
+        <p>{content}</p>
+        <Link to={'/journal-entry/' + entryId}>View Full entry</Link>
+        <p>Written by user ID {userId}</p>
         <p>{dateCreated}</p>
       </div>
     </div>;
@@ -49,26 +51,26 @@ export function JournalEntry(props) {
 }
 
 export type JournalEntriesListProps = {
+    id: number,
     listOfEntries: Array<JournalEntryType>,
   }
 
 
 export function JournalEntriesList({
+    id,
     listOfEntries
   }: JournalEntriesListProps) {
-
-
-    let { id } = useParams();
-    
-
     return (
         <div className="row">
             <br/>
             {listOfEntries.map(
-                entry =>
-                <JournalEntry
-                    key={entry.entryTitle}
-                    {...entry} />
+                entry => {
+                    if (entry.journalId === id) {
+                        return <JournalEntry
+                        key={entry.entryTitle}
+                        {...entry} />
+                    }
+                }
             )}
         </div>
     );

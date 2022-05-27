@@ -11,15 +11,16 @@ import { JournalEntryPage } from './components/JournalEntryPage';
 import { JournalEntry as JournalEntryType} from "./types/StateTypes";
 import getInitialState from './initialState';
 
+
 function App() {
 
-  let [currentEntry, setCurrentEntry] = useState<JournalEntryType | null>(null);
+  //let [currentEntry, setCurrentEntry] = useState<JournalEntryType | null>(null);
 
   useEffect(() => {
     let init = async () => {
       try {
-        let initialState = await getInitialState();
-        setCurrentEntry(initialState.currentEntry);
+        //let initialState = await getInitialState();
+        //setCurrentEntry(initialState.currentEntry);
       } catch (err) {
         console.log(err);
       }
@@ -28,7 +29,7 @@ function App() {
     console.log("-- App rerenders --");
   });
 
-  let entry = <JournalEntryPage {...currentEntry!} />;
+  //let entry = <JournalEntryPage {...currentEntry!} />;
   
   return (
     <>
@@ -41,7 +42,6 @@ function App() {
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
             <Route path="journals" element={<Journals />} />
-            <Route path="journal-entry/:id" element={entry} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

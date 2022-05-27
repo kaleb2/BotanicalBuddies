@@ -25,7 +25,7 @@ export function Journals() {
         <div className="journal">
             <p>A list of journals</p>
 
-            <JournalEntriesList listOfEntries={listOfEntries}/>
+            <JournalEntriesList id={1} listOfEntries={listOfEntries}/>
             
             <CreateJournalEntry/>
         </div>
