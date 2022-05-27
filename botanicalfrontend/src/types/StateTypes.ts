@@ -1,6 +1,7 @@
 export type State = {
     currentEntry: JournalEntry,
-    listOfEntries: []
+    listOfEntries: [],
+    listOfJournals: []
   };
   
   export type Plant = {
@@ -19,5 +20,11 @@ export type State = {
     plantId: number,
     content: string,
     dateCreated: Date
+  }
+
+  export type Journal = {
+    journalId: number,
+    journalTitle: string,
+    userId: number
   }
   

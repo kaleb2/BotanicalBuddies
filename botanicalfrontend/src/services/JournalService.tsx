@@ -39,3 +39,11 @@ export async function getJournalEntry(journalId, entryId) {
   console.log(data);
   return data;
 }
+
+export async function getJournals() {
+  let res = await journalClient.get("/journals/");
+
+  let data = await res.data;
+  console.log(data);
+  return data;
+}

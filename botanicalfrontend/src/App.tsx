@@ -7,20 +7,20 @@ import { Login } from './components/Login';
 import { UserProfile } from './components/UserProfile';
 import { CreateJournalEntry } from './components/CreateJournalEntry';
 import { Journal } from './components/Journal';
-import { JournalEntryPage } from './components/JournalEntryPage';
-import { JournalEntry as JournalEntryType} from "./types/StateTypes";
+import { JournalsList } from './components/JournalsList';
 import getInitialState from './initialState';
+import { Journal as JournalType} from "./types/StateTypes";
 
 
 function App() {
 
-  //let [currentEntry, setCurrentEntry] = useState<JournalEntryType | null>(null);
+  let [listOfJournals, setListOfJournals] = useState<Array<JournalType>>([]);
 
   useEffect(() => {
     let init = async () => {
       try {
-        //let initialState = await getInitialState();
-        //setCurrentEntry(initialState.currentEntry);
+        let initialState = await getInitialState();
+        setListOfJournals(initialState.listOfJournals);
       } catch (err) {
         console.log(err);
       }
@@ -28,8 +28,6 @@ function App() {
     init();
     console.log("-- App rerenders --");
   });
-
-  //let entry = <JournalEntryPage {...currentEntry!} />;
   
   return (
     <>
@@ -42,6 +40,7 @@ function App() {
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
             <Route path="journal/:id" element={<Journal />} />
+            <Route path="journals" element={<JournalsList listOfJournals={listOfJournals}/> } />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
