@@ -22,7 +22,7 @@ export type JournalProps = JournalType & { onUnmatchButtonClick: (id: number) =>
 
 export function JournalListing(props) {
         let {
-            journalId,
+            journalid,
             journalTitle,
             userId,
             dateCreated
@@ -36,7 +36,7 @@ export function JournalListing(props) {
       return <div className="col-12 journal">
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2 text-center">{journalTitle}</h2>
-        <Link to={"/journal/"+journalId}>Read More</Link>
+        <Link to={"/journal/"+journalid}>Read More</Link>
       </div>
     </div>;
 

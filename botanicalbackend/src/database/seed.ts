@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { Sequelize, DataTypes, DATE } from "sequelize";
 import { getJSDocDeprecatedTag } from "typescript";
-import { db, Plant, User, UserPlant } from "./models";
+import { db, Plant, User, Journal } from "./models";
 
 
 const userSeedData = [
@@ -14,9 +14,9 @@ const plantSeedData = [
   { name: "monstera", species: "ficus", image: "", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
 
-const userPlantSeedData = [
-  { userid: 1, plantid: 1},
-  { userid: 2, plantid: 2}
+const journalSeedData = [
+  { journalid: 1, journalTitle:"Userr's journal 1", userid: 1, dateCreated: Date.now()},
+  { journalid: 2, journalTitle:"Userr's journal 2", userid: 2, dateCreated: Date.now()}
 ]
 
 const seed = async () => {
@@ -67,23 +67,23 @@ const seed = async () => {
       
 
 
-      /*User Plants*/
+      /*Journals*/
 
-    await UserPlant.sync({ force: true });
-    await UserPlant.bulkCreate(userPlantSeedData, { validate: true })
+    await Journal.sync({ force: true });
+    await Journal.bulkCreate(journalSeedData, { validate: true })
     .then(() => {
-      console.log('User Plants created');
+      console.log('Journals created');
     }).catch((err) => {
-      console.log('failed to create seed user plants');
+      console.log('failed to create seed journals');
       console.log(err);
     });
   
-    await UserPlant.create({ userid: 1, plantid: 2 })
+    await Journal.create({ journalid: 3, journaltitle: "New journal #3", userid: 1, dateCreated: Date.now() })
       .then(() => {
-        console.log("Created single user plant");
+        console.log("Created single journal");
       })
       .catch((err) => {
-        console.log('failed to create seed user plant');
+        console.log('failed to create seed journal');
         console.log(err);
       }).finally(() => {
         db.close();

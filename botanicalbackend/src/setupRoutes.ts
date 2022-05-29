@@ -8,7 +8,7 @@ import passport from "passport";
 import { ConfigurePassportStrategies, generateAccessToken } from "./services/authService";
 import authenticateToken  from "./middlewares/authenticateToken";
 import { createPlant, getPlants } from "./services/plantService";
-import { createUserPlant, getUserPlants } from "./services/userPlantService";
+import { createJournal, getJournals } from "./services/JournalService";
 
 export default function setupRoutes(app)
 {
@@ -26,9 +26,9 @@ export default function setupRoutes(app)
 
     router.get("/plants", getPlants);
 
-    router.get("/userplants", getUserPlants);
+    router.get("/journal", getJournals);
 
-    router.post("/userplants", createUserPlant);
+    router.post("/journal", createJournal);
     
     router.post("/users", 
       checkDuplicateEmail, 

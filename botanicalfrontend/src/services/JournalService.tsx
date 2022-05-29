@@ -1,4 +1,4 @@
-import { journalClient } from "../services/HttpService";
+import HttpService, { journalClient } from "../services/HttpService";
 
 export const Journal = {
     async createEntry(journalEntry) {
@@ -50,7 +50,7 @@ export async function getJournalEntry(journalId, entryId) {
 }
 
 export async function getJournals() {
-  let res = await journalClient.get("/journals/");
+  let res = await HttpService.get("/journal");
 
   let data = await res.data;
   console.log(data);
