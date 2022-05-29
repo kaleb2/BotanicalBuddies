@@ -14,7 +14,7 @@ export function Journals() {
 };*/
 
 import { CreateJournalEntry } from "./CreateJournalEntry";
-import { JournalEntry as JournalEntryType} from "../types/StateTypes";
+import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 

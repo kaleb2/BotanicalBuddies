@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Journal } from "../services/JournalService";
+import { Journal } from "../../services/JournalService";
 
 const initialJournalEntryState = {
     entryId: 0,
@@ -30,7 +30,7 @@ const initialJournalEntryState = {
       console.log("journalId = " + journalId);
       journalEntry.journalId = journalId;
       console.log("journalEntry.journalId = " + journalEntry.journalId);
-        Journal.create(journalEntry)
+        Journal.createEntry(journalEntry)
           .then(res => {
             setSubmitted(true);
             setSubmitFailed(false);

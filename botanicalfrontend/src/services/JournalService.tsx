@@ -1,16 +1,25 @@
 import { journalClient } from "../services/HttpService";
 
 export const Journal = {
-    async create(journal) {
-      console.log(journal);
+    async createEntry(journalEntry) {
+      console.log(journalEntry);
       return journalClient.post("/journal/"
-        , { entryId: journal.entryId,
-            journalId: journal.journalId,
-            entryTitle: journal.entryTitle, 
+        , { entryId: journalEntry.entryId,
+            journalId: journalEntry.journalId,
+            entryTitle: journalEntry.entryTitle, 
+            userId: journalEntry.userId, 
+            plantName: journalEntry.plantName, 
+            plantId: journalEntry.plantId, 
+            content: journalEntry.content,
+            dateCreated: journalEntry.dateCreated
+         }
+      )  
+    },
+    async createNewJournal(journal) {
+      console.log(journal);
+      return journalClient.post("/journals/"
+        , { journalId: journal.journalId,
             userId: journal.userId, 
-            plantName: journal.plantName, 
-            plantId: journal.plantId, 
-            content: journal.content,
             dateCreated: journal.dateCreated
          }
       )  

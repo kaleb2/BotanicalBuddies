@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CreateJournalEntry } from "./CreateJournalEntry";
-import { JournalEntry as JournalEntryType} from "../types/StateTypes";
-import getInitialState from "../initialState";
+import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
+import getInitialState from "../../initialState";
 import { JournalEntriesList } from "./JournalEntriesList";
-import { getAllJournalEntries } from "../services/JournalService";
+import { getAllJournalEntries } from "../../services/JournalService";
 
 export function Journal() {
 
