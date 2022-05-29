@@ -1,6 +1,4 @@
 export type State = {
-    currentEntry: JournalEntry,
-    listOfEntries: [],
     listOfJournals: []
   };
   

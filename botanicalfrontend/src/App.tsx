@@ -10,6 +10,8 @@ import { Journal } from './components/Journal';
 import { JournalsList } from './components/JournalsList';
 import getInitialState from './initialState';
 import { Journal as JournalType} from "./types/StateTypes";
+import { JournalEntry as JournalEntryType} from "./types/StateTypes";
+import { JournalEntry } from './components/JournalEntry';
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
             <Route path="journal/:id" element={<Journal />} />
             <Route path="journals" element={<JournalsList listOfJournals={listOfJournals}/> } />
+            <Route path="journal-entry/:id" element={<JournalEntry /> } />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

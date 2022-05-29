@@ -29,10 +29,7 @@ app.MapPost("/journal", async (JournalEntry journalEntry, JournalDbContext journ
 });
 
 app.MapGet("/journal/{journalid}/{entryid}", async (int journalId, int entryId, JournalDbContext journalEntriesDb) =>
-    await journalEntriesDb.JournalEntries.FindAsync(journalId, entryId)
-        is JournalEntry journalEntry
-            ? Results.Ok(journalEntry)
-            : Results.NotFound());
+    await journalEntriesDb.JournalEntries.Where(p => p.JournalId == journalId && p.EntryId == entryId).FirstOrDefaultAsync());
 
 app.MapGet("/journal/{journalid}", async (int journalId, JournalDbContext journalEntriesDb) =>
     await journalEntriesDb.JournalEntries.Where(p => p.JournalId == journalId).ToListAsync());

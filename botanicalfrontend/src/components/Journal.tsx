@@ -4,6 +4,7 @@ import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../types/StateTypes";
 import getInitialState from "../initialState";
 import { JournalEntriesList } from "./JournalEntriesList";
+import { getAllJournalEntries } from "../services/JournalService";
 
 export function Journal() {
 
@@ -14,16 +15,14 @@ export function Journal() {
     let [listOfEntries, setListOfEntries] = useState<Array<JournalEntryType>>([]);
 
     useEffect(() => {
-        let init = async () => {
-          try {
-            let initialState = await getInitialState();
-            setListOfEntries(initialState.listOfEntries);
-          } catch (err) {
-            console.log(err);
+      let mounted = true;
+      getAllJournalEntries().then(items => {
+          if (mounted) {
+              setListOfEntries(items);
           }
-        }
-        init();
-      }, [])
+      });
+      return;
+    }, []);
 
     return (
         <div className="journal">
