@@ -35,19 +35,12 @@ const initialUserState = {
         })
     }
   
-    const resetUser = () => {
-      setUser(initialUserState);
-      setSubmitted(false);
-    }
-  
     return (
       <div>
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
-            <h4>You submitted successfully!</h4>
-            <button type="button" className="btn btn-secondary" onClick={resetUser}>
-              Reset
-            </button>
+            <h4>Account created successfully!</h4>
+            <Link to="/login">Sign in</Link>
           </>
         ) : (
           <>   {/* If we've NOT already submitted, show this piece*/}
