@@ -7,7 +7,8 @@ const initialJournalState = {
     dateCreated: new Date(),
   };
 
-  export function CreateJournal(props) {
+  export function CreateJournal(userId) {
+    console.log("userid: " + userId);
 
     const [journal, setJournal] = useState(initialJournalState);
     const [submitted, setSubmitted] = useState(false);

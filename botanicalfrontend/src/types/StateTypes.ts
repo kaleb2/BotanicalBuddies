@@ -26,3 +26,8 @@ export type State = {
     userId: number
   }
   
+  export type User = {
+    userId: number,
+    email: string,
+    password: string
+  }

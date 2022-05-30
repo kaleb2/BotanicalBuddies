@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { getJournals } from "../services/JournalService";
-import { JournalsList } from "./Journal/JournalsList";
+import { JournalsList, ProfileJournalsList } from "./Journal/JournalsList";
 import { Journal as JournalType} from "../types/StateTypes";
+import { User as UserType} from "../types/StateTypes";
+import { CreateJournal } from "./Journal/CreateJournal";
 
 export function UserProfile() {
 
@@ -20,7 +22,10 @@ export function UserProfile() {
     return (
         <div className="profile">
             <p>This is your profile!</p>
-            <JournalsList listOfJournals={listOfJournals}/>
+            <ProfileJournalsList listOfJournals={listOfJournals}/>
+
+            <h1>Create a new journal</h1>
+            <CreateJournal />
         </div>
     );
 };

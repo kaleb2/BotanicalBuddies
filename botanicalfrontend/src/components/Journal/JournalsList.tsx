@@ -54,9 +54,29 @@ export function JournalsList({
         <div className="row">
             <br/>
             {listOfJournals.map(
-                entry => {
+                journal => 
+                {
                     return <JournalListing
-                    {...entry} />
+                    {...journal} />
+                }
+            )}
+        </div>
+    );
+};
+
+export function ProfileJournalsList({
+    listOfJournals
+  }: JournalsListProps) {
+    return (
+        <div className="row">
+            <br/>
+            {listOfJournals.map(
+                journal => 
+                {
+                    if (journal.userId === 1 ) {
+                        return <JournalListing
+                    {...journal} />
+                    }
                 }
             )}
         </div>

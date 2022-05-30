@@ -12,6 +12,7 @@ import getInitialState from './initialState';
 import { Journal as JournalType} from "./types/StateTypes";
 import { JournalEntry as JournalEntryType} from "./types/StateTypes";
 import { JournalEntry } from './components/Journal/JournalEntry';
+import { AllJournals } from './components/Journal/AllJournals';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="user-profile" element={<UserProfile />} />
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
+            <Route path="journals/" element={<AllJournals />} />
             <Route path="journal/:id" element={<Journal />} />
             <Route path="journal-entry/:id" element={<JournalEntry /> } />
           </Route>

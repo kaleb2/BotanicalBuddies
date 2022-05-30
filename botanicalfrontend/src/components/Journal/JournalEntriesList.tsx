@@ -16,7 +16,12 @@ export function Journals() {
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { User as UserType } from "../../types/StateTypes";
+
+const initialUserState = {
+    userId: 0
+}
 
 export type JournalEntryProps = JournalEntryType & { onUnmatchButtonClick: (id: number) => void }
 

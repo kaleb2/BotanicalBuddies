@@ -11,5 +11,8 @@ export const User = {
       return axios.post("/login"
         , { email: user.email, password: user.password }
       )
-    }
+    }/*,
+    async get(userId) {
+      return axios.get("/users/"+userId)
+    }*/
   }
