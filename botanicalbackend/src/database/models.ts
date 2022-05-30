@@ -86,18 +86,26 @@ export const Plant = db.define<PlantModelAttrs>('plants', {
   }
 });
 
-/* User Plants */
+/* Journals */
 
-/*interface UserPlantModelAttrs extends Model {
-  userid: number,
-  plantid: number
+interface JournalModelAttrs extends Model {
+  journalId: number,
+  journalTitle: string,
+  userId: number,
+  dateCreated: Date
 }
 
-export const UserPlant = db.define<UserPlantModelAttrs>('userplants', {
-  userid: {
+export const Journal = db.define<JournalModelAttrs>('journals', {
+  journalid: {
     type: DataTypes.INTEGER,
   },
-  plantid: {
+  journalTitle: {
+    type: DataTypes.STRING,
+  },
+  userId: {
     type: DataTypes.INTEGER,
+  },
+  dateCreated: {
+    type: DataTypes.DATE,
   }
-});*/
+});

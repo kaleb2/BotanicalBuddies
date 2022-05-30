@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 
-public class PlantsDbContext : DbContext {
+public class JournalDbContext : DbContext {
 
-        public PlantsDbContext(DbContextOptions<PlantsDbContext> options) 
+        public JournalDbContext(DbContextOptions<JournalDbContext> options) 
             : base(options) { }
 
-        public DbSet<Plant> Plants => Set<Plant>();
+        public DbSet<JournalEntry> JournalEntries => Set<JournalEntry>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new PlantEntityTypeConfiguration().Configure(modelBuilder.Entity<Plant>());
+            new JournalEntryEntityTypeConfiguration().Configure(modelBuilder.Entity<JournalEntry>());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

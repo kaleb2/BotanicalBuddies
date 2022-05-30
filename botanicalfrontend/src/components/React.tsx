@@ -1,6 +1,3 @@
-import { CreateUser } from "./CreateUser";
-import { WelcomeButton } from "./WelcomeButton";
-import logo from '../logo.svg';
 import { Link, Outlet } from "react-router-dom";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -58,7 +55,7 @@ export const Header = () => {
             &nbsp; | &nbsp;
             <Link to="/create-user">Create User</Link>
             &nbsp; | &nbsp;
-            <Link to="/create-journal-entry">Submit Journal Entry</Link>
+            <Link to="/journals">Journals</Link>
             <br />
           </div>
         </div>

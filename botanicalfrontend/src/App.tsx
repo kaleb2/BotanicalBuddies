@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './App.css';
 import { CreateUser } from './components/CreateUser';
 import { ReactDefault, NotFound, Header} from './components/React';
@@ -8,12 +7,12 @@ import { UserProfile } from './components/UserProfile';
 import { CreatePlant } from './components/CreatePlant';
 import { UserPlant } from './components/UserPlant';
 import { CreateJournalEntry } from './components/CreateJournalEntry';
+import { AllJournals } from './components/Journal/AllJournals';
+import { JournalEntry } from './components/Journal/JournalEntry';
+import { Journal } from './components/Journal/Journal';
+
 
 function App() {
-
-  useEffect(() => {
-    console.log("-- App rerenders --");
-  });
   
   return (
     <>
@@ -27,6 +26,9 @@ function App() {
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-plant" element={<CreatePlant />} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
+            <Route path="journals/" element={<AllJournals />} />
+            <Route path="journal/:id" element={<Journal />} />
+            <Route path="journal-entry/:id" element={<JournalEntry /> } />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

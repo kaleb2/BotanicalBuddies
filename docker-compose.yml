@@ -10,13 +10,22 @@ services:
             - POSTGRES_DB=botanicaldb
             - POSTGRES_USER=my_botanical_buddy
             - POSTGRES_PASSWORD=b0tBudz41851322
-    plantservice:
-        container_name: botplantservice
-        build: ./PlantService
+    #plantservice:
+    #    container_name: botplantservice
+    #    build: ./PlantService
+    #    expose:
+    #        - "9100"
+    #    ports:
+    #        - "9100:9100"
+    #    depends_on:
+    #        - "postgres"
+    journalservice:
+        container_name: botjournalservice
+        build: ./JournalService
         expose:
-            - "9100"
+            - "9200"
         ports:
-            - "9100:9100"
+            - "9200:9200"
         depends_on:
             - "postgres"
     minio:

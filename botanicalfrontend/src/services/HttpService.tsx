@@ -13,5 +13,3 @@ export const journalClient = axios.create({
     "Content-type": "application/json"
   }
 });
-
-
