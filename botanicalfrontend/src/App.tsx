@@ -13,6 +13,7 @@ import { CreatePlant } from './components/Plant/CreatePlant';
 import { PlantPage } from './components/Plant/PlantPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Header } from './components/Header';
+import { Forums } from './components/Forums';
 
 function Page() {
   return (
@@ -76,6 +77,7 @@ function App() {
                   <JournalEntry />
                 </ProtectedRoute>
               }/>
+              <Route path="forums" element={<Forums/>}/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

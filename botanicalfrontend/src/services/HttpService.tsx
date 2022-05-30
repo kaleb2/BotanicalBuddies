@@ -13,3 +13,10 @@ export const journalClient = axios.create({
     "Content-type": "application/json"
   }
 });
+
+export const forumClient = axios.create({
+  baseURL: "http://localhost:9150",
+  headers: {
+    "Content-type": "application/json"
+  }
+});

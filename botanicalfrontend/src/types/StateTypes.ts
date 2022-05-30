@@ -35,3 +35,21 @@ export type State = {
     email: string,
     password: string
   }
+  
+  export type Thread = {
+    userId: number,
+    threadId: number,
+    title: string,
+    body: string,
+    tag: string,
+    dateCreated: Date
+  }
+
+  export type Post = {
+    userId: number,
+    threadId: number,
+    postId: number
+    content: string,
+    tag: string,
+    dateCreated: Date
+  }
