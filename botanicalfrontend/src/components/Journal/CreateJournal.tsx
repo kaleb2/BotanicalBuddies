@@ -66,7 +66,7 @@ const initialJournalState = {
     return (
       <><h2>Create New Journal</h2>
       <form>
-      <div className="mb-3">
+        <div className="mb-3">
           <label htmlFor="content" className="form-label">JournalId</label>
           <input
             type="number"
@@ -87,6 +87,18 @@ const initialJournalState = {
             value={journal.userId}
             onChange={handleInputChange}
             name="userId"
+            className="form-control" />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="content" className="form-label">Journal Title</label>
+          <input
+            type="text"
+            id="journalTitle"
+            required
+            value={journal.journalTitle}
+            onChange={handleInputChange}
+            name="journalTitle"
             className="form-control" />
         </div>
   

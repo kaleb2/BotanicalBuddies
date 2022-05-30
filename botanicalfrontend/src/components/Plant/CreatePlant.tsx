@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { httpClient } from "../services/HttpService";
-import { Plant } from "../services/PlantService";
+import { httpClient } from "../../services/HttpService";
 import DateTimePicker from 'react-datetime-picker';
-import '../css/BotanicalBuddies.css'; 
+import '../../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
@@ -102,7 +101,7 @@ export const CreatePlant = () => {
 
 export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDateChange, onFileChange }) => {
     return (
-      <><h2>Add a new plant to your profile!</h2>
+      <>
       <form>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>

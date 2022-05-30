@@ -22,7 +22,7 @@ export type JournalProps = JournalType & { onUnmatchButtonClick: (id: number) =>
 
 export function JournalListing(props) {
         let {
-            journalid,
+            journalId,
             journalTitle,
             userId,
             dateCreated
@@ -33,10 +33,11 @@ export function JournalListing(props) {
         console.log(`Journal  ${journalTitle} rerendered`);
       });
 
-      return <div className="col-12 journal">
+      return <div className="journal">
       <div className="w-64 flex flex-wrap justify-center">
-        <h2 className="w-64 ml-2 text-center">{journalTitle}</h2>
-        <Link to={"/journal/"+journalid}>Read More</Link>
+        <h2 className="w-64 ml-2">{journalTitle}</h2>
+        <p>Journal ID {journalId} | Written by user ID {userId} on {dateCreated}</p>
+        <Link to={"/journal/"+journalId}>Read More</Link>
       </div>
     </div>;
 
@@ -74,8 +75,8 @@ export function ProfileJournalsList({
                 journal => 
                 {
                     if (journal.userId === 1 ) {
-                        return <JournalListing
-                    {...journal} />
+                        return <div className="col-3 journal"><JournalListing
+                    {...journal} /></div>
                     }
                 }
             )}

@@ -96,7 +96,7 @@ interface JournalModelAttrs extends Model {
 }
 
 export const Journal = db.define<JournalModelAttrs>('journals', {
-  journalid: {
+  journalId: {
     type: DataTypes.INTEGER,
   },
   journalTitle: {

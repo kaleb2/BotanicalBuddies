@@ -15,8 +15,8 @@ const plantSeedData = [
 ];
 
 const journalSeedData = [
-  { journalid: 1, journalTitle:"Userr's journal 1", userId: 1, dateCreated: Date.now()},
-  { journalid: 2, journalTitle:"Userr's journal 2", userId: 2, dateCreated: Date.now()}
+  { journalId: 1, journalTitle:"Userr's journal 1", userId: 1, dateCreated: Date.now()},
+  { journalId: 2, journalTitle:"Userr's journal 2", userId: 2, dateCreated: Date.now()}
 ]
 
 const seed = async () => {

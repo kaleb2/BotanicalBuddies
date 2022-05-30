@@ -72,7 +72,7 @@ const initialJournalEntryState = {
 
   export const CreateJournalEntryForm = ({ handleInputChange, saveJournalEntry, journalEntry }) => {
     return (
-      <><h2>Create New Journal Entry</h2>
+      <>
       <form>
 
         <div className="mb-3">

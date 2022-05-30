@@ -19,6 +19,14 @@ export const Plant = {
     return data;
   }
 
+  export async function getAllPlants() {
+    let res = await httpClient.get("/plants");
+  
+    let data = await res.data;
+    console.log(data);
+    return data;
+  }
+
   export async function getPlant(plantId) {
     let res = await httpClient.get("/plant/"+plantId);
   

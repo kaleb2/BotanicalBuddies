@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { PlantsList } from "./PlantsList";
+import { PlantsList } from "./Plant/PlantsList";
 import getInitialState from "../initialState";
 import { useEffect, useState } from "react";
 import { Plant as PlantType} from "../types/StateTypes";

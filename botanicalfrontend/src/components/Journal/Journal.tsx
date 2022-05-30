@@ -30,7 +30,20 @@ export function Journal() {
 
             <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             
-            <CreateJournalEntry journalId={id}/>
+            <div className="accordion" id="accordionJournal">
+                <div className="accordion-item">
+                  <h2 className="accordion-header" id="headingJournal">
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJournal" aria-expanded="true" aria-controls="collapseJournal">
+                      Add a new entry to journal
+                    </button>
+                  </h2>
+                  <div id="collapseJournal" className="accordion-collapse collapse" aria-labelledby="headingJournal" data-bs-parent="#accordionJournal">
+                    <div className="accordion-body">
+                        <CreateJournalEntry journalId={id}/>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     );
 };

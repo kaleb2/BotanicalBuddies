@@ -5,6 +5,7 @@ import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
 import getInitialState from "../../initialState";
 import { JournalEntriesList } from "./JournalEntriesList";
 import { getAllJournalEntries, getJournalEntry } from "../../services/JournalService";
+import { PlantPage } from "../Plant/PlantPage";
 
 const initialEntryState = {
     entryId: 0,
@@ -19,16 +20,18 @@ const initialEntryState = {
 
 export function JournalEntry() {
 
-    let param = useParams().id ?? 0;
-    let id = +param;
+    const {id, journalId} = useParams();
 
     console.log(id);
     let [journalEntry, setJournalEntry] = useState(initialEntryState);
 
     useEffect(() => {
-      console.log("get journal 1/" + id);
+      console.log("journalID = " + journalId);
+      console.log("get journal /" + id);
       let mounted = true;
-      getJournalEntry(1, id).then(item => {
+      getJournalEntry(journalId, id).then(item => {
+          console.log("journal=");
+          console.log(item);
           if (mounted) {
               setJournalEntry(item);
           }
@@ -40,8 +43,10 @@ export function JournalEntry() {
         <div className="journal">
             <h1>{journalEntry.entryTitle}</h1>
             <div className="row">
-                <br />
-                {journalEntry.content}
+                <div className="col-md-8">
+                    <br />
+                    {journalEntry.content}
+                </div>
             </div>
         </div>
     );

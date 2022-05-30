@@ -1,9 +1,27 @@
 /*Styles*/
 
-.plant-profile {
-    padding: 20px;
+.plant-profile .justify-center{
+    padding: 30px;
 }
 
 .react-datetime-picker__wrapper {
     border: 0px !important;
+}
+
+.accordion-header button {
+    font-weight: bold;
+}
+
+.journal .justify-center{
+    padding: 30px;
+}
+
+.journalSection, .plantSection {
+    margin-bottom:100px;
+}
+
+.plant-profile-page img {
+    max-width: 400px;
+    float: left;
+    margin-right: 30px;
 }
