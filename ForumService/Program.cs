@@ -1,11 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 
+string OriginsAllowed = "OriginsAllowed";
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMvc();
 builder.Services.AddDbContext<ForumDbContext>(opt => opt.UseNpgsql(ForumDbContext.GetConnectionString()));
+builder.Services.AddCors(opts => 
+{
+    opts.AddPolicy(OriginsAllowed,
+        policy => 
+        { 
+            policy.WithOrigins("http://localhost:3000");
+        });
+});
 
 var app = builder.Build();
 
@@ -16,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors(OriginsAllowed);
 
 // 404 ignore other requests
 app.Map("/", () => Results.NotFound());
@@ -25,7 +35,15 @@ app.Map("/forums", () => Results.NotFound());
 // get all threads
 app.MapGet("/forums/threads", async (ForumDbContext db) =>
 {
+    Console.WriteLine("Entering /forums/threads");
     var threads = await db.Threads.ToListAsync();
+    if (threads != null) {
+        foreach (var t in threads)
+        {
+            Console.WriteLine($"{t.ThreadId}, {t.Title}.");
+        }
+    }
+    
     return threads != null?
         Results.Ok(threads):
         Results.NoContent();
