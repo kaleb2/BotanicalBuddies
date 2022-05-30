@@ -25,3 +25,9 @@
     float: left;
     margin-right: 30px;
 }
+
+.plant-profile a {
+    text-align: center;
+    width: 100%;
+    display: block;
+}

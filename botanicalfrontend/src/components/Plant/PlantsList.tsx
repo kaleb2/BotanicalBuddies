@@ -34,10 +34,6 @@ export function PlantProfile(props) {
       <div className="w-64 flex flex-wrap justify-center">
         <h3 className="w-64 ml-2 text-center">{name}</h3>
         <Link to={'/plants/' + id}>View plant</Link>
-        <p>Species: {species}</p>
-        <p> Date acquired: {dateAcquired}</p>
-        <p>Last time repot: {lastRepot}</p>
-        <p>Last time fertilized: {lastFertilize}</p>
       </div>
     </div>;
 

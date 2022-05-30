@@ -36,8 +36,9 @@ export function JournalListing(props) {
       return <div className="journal">
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2">{journalTitle}</h2>
-        <p>Journal ID {journalId} | Written by user ID {userId} on {dateCreated}</p>
-        <Link to={"/journal/"+journalId}>Read More</Link>
+        <p>Written by user ID {userId} on {dateCreated}</p>
+        <p>Plant: </p>
+        <Link to={"/journal/"+journalId}>View Journal</Link>
       </div>
     </div>;
 
