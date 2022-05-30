@@ -72,15 +72,3 @@ obj/
 bin/
 
 # minio
-minio/
-minio/.minio.sys/buckets/
-addplant-backend
-minio/.root_password
-minio/.root_user
-minio/.minio.sys/buckets/.bloomcycle.bin
-minio/.minio.sys/buckets/.tracker.bin
-minio/.minio.sys/buckets/.usage-cache.bin
-minio/.minio.sys/buckets/.usage.json
-minio/.minio.sys/buckets/.minio.sys/buckets/.usage-cache.bin/fs.json
-minio/.minio.sys/buckets/.minio.sys/buckets/botanicalbuddies/.usage-cache.bin/fs.json
-minio/.minio.sys/buckets/botanicalbuddies/.usage-cache.bin
