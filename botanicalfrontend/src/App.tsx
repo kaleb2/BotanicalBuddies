@@ -11,6 +11,7 @@ import { AllJournals } from './components/Journal/AllJournals';
 import { JournalEntry } from './components/Journal/JournalEntry';
 import { Journal } from './components/Journal/Journal';
 
+const userId = 1;
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
             <Route path="user-profile/:id" element={<UserProfile />} />
             <Route path="plants/:id" element={<PlantPage />} />
             <Route path="create-user" element={<CreateUser />} />
-            <Route path="create-plant" element={<CreatePlant />} />
+            <Route path="create-plant" element={<CreatePlant userId={userId}/>} />
             <Route path="create-journal-entry" element={<CreateJournalEntry />} />
             <Route path="journals/" element={<AllJournals />} />
             <Route path="journal/:id" element={<Journal />} />
