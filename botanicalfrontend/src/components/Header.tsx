@@ -16,7 +16,7 @@ export const Header = () => {
                 <div className="container">
                     <div><h4>Botanical Buddies<sup>TM</sup></h4></div>
                     &nbsp; | &nbsp;
-                    <Link to="/user-profile">My Profile</Link>
+                    <Link to="/user-profile/1">My Profile</Link>
                     &nbsp; | &nbsp;
                     <Link to="/create-plant">Create Plant</Link>
                     &nbsp; | &nbsp;
