@@ -6,7 +6,9 @@ import { PlantsList } from "./Plant/PlantsList";
 import getInitialState from "../initialState";
 import { useEffect, useState } from "react";
 import { Plant as PlantType} from "../types/StateTypes";
-import { useAuth} from "../services/AuthService";
+import { getUserIdFromStorage, useAuth} from "../services/AuthService";
+
+const userId = getUserIdFromStorage();
 
 export function ReactDefault() {
     let [listOfPlants, setListOfPlants] = useState<Array<PlantType>>([]);
@@ -54,18 +56,16 @@ export const Header = () => {
           <div className="container">
             <h3>Botanical Buddies</h3><sup>TM</sup>
             &nbsp; | &nbsp;
-            <Link to="/user-profile/1">My Profile</Link>
-            &nbsp; | &nbsp;
             <Link to="/create-plant">Create Plant</Link>
-            &nbsp; | &nbsp;
-            <Link to="/create-journal-entry">Journals</Link>
-            &nbsp; | &nbsp;
-            <Link to="/forums">Forums</Link>
             &nbsp; | &nbsp;
             <Link to="/journals">Journals</Link>
             &nbsp; | &nbsp;
+            <Link to="/forums">Forums</Link>
+            &nbsp; | &nbsp;
             { context?.token != null  ?
-              <Link className="link-primary" to="/login" onClick={handleLogout}>Logout</Link>
+              <><Link to={"/user-profile/"+userId}>My Profile</Link>
+               &nbsp; | &nbsp;
+              <Link className="link-primary" to="/login" onClick={handleLogout}>Logout</Link></>
               :
               <Link className="link-primary" to="/login">Login</Link>
             }

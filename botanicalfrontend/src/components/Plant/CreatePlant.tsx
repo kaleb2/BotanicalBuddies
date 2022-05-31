@@ -20,6 +20,8 @@ export function CreatePlant(props) {
     userId
   } = props;
 
+  console.log("user ID prop = "+userId);
+
   const [selectedFile, setSelectedFile] = useState();
   const [plant, setPlant] = useState(initialPlantState);
   const [submitted, setSubmitted] = useState(false);
@@ -56,6 +58,9 @@ export function CreatePlant(props) {
     formData.append('dateAcquired', plant.dateAcquired.toDateString());
     formData.append('lastRepot', plant.lastRepot.toDateString());
     formData.append('lastFertilize', plant.lastFertilize.toDateString());
+
+    console.log(formData);
+    console.log(formData.values);
 
     const config = {
       headers: {

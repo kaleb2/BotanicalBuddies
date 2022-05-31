@@ -2,6 +2,7 @@ import { httpClient } from "../services/HttpService";
 
 export const Plant = {
     async create(plant) {
+      console.log(plant);
       return httpClient.post("/plants"
         , { name: plant.name, userId: plant.userId, species: plant.species, image: plant.image,
             dateAcquired: plant.dateAcquired, lastRepot: plant.lastRepot,

@@ -50,7 +50,7 @@ export async function getJournalEntry(journalId, entryId) {
 }
 
 export async function getJournals() {
-  let res = await httpClient.get("/journal");
+  let res = await httpClient.get("/journals");
 
   let data = await res.data;
   console.log(data);
@@ -59,7 +59,15 @@ export async function getJournals() {
 }
 
 export async function getJournalsForUser(userId) {
-  let res = await httpClient.get("/journal/"+userId);
+  let res = await httpClient.get("/journals/"+userId);
+
+  let data = await res.data;
+  console.log(data);
+  return data;
+}
+
+export async function getJournal(journalId) {
+  let res = await httpClient.get("/journal/"+journalId);
 
   let data = await res.data;
   console.log(data);

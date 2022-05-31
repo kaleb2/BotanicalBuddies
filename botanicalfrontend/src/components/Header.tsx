@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../services/AuthService";
+import { getUserIdFromStorage, useAuth } from "../services/AuthService";
+
+
 
 export const Header = () => {
     const context = useAuth();
+    const userId = getUserIdFromStorage();
 
     const handleLogout = () => {
       console.log("Setting token to null");
@@ -16,11 +19,11 @@ export const Header = () => {
                 <div className="container">
                     <div><h4>Botanical Buddies<sup>TM</sup></h4></div>
                     &nbsp; | &nbsp;
-                    <Link to="/user-profile/1">My Profile</Link>
+                    <Link to={"/user-profile/"+userId}>My Profile</Link>
                     &nbsp; | &nbsp;
                     <Link to="/create-plant">Create Plant</Link>
                     &nbsp; | &nbsp;
-                    <Link to="/create-journal-entry">Journals</Link>
+                    <Link to="/journals">Journals</Link>
                     &nbsp; | &nbsp;
                     <Link to="/forums">Forums</Link>
                     &nbsp; | &nbsp;

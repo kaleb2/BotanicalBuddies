@@ -26,7 +26,7 @@ export const createPlant = async (req, res) => {
   const lastRepot = req.body.lastRepot;
   const lastFertilize = req.body.lastFertilize;
 
-  console.log(`in createplant with ${name}:${species}:${image}`);
+  console.log(`in createplant with ${name}:${species}:${image}:${userId}:${dateAcquired}:${lastRepot}:${lastFertilize}`);
   Plant.create({ name, userId, species, image, dateAcquired, lastRepot, lastFertilize })
     .then(() => {
       console.log("Created single plant");

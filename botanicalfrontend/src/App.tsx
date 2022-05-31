@@ -3,7 +3,7 @@ import { CreateUser } from './components/CreateUser';
 import { NotFound} from './components/NotFound';
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Login } from './components/Login';
-import { AuthProvider } from './services/AuthService';
+import { AuthProvider, getUserIdFromStorage } from './services/AuthService';
 import { UserProfile } from './components/UserProfile';
 import { CreateJournalEntry } from './components/Journal/CreateJournalEntry';
 import { AllJournals } from './components/Journal/AllJournals';
@@ -26,7 +26,7 @@ function Page() {
   );
 }
 
-const userId = 1;
+const userId = getUserIdFromStorage();
 
 function App() {
   
@@ -56,12 +56,12 @@ function App() {
               <Route path="create-user" element={<CreateUser />} />
               <Route path="create-plant" element={
                 <ProtectedRoute>
-                  <CreatePlant />
+                  <CreatePlant userId={userId}/>
                 </ProtectedRoute>
               }/>
               <Route path="create-journal-entry" element={
                 <ProtectedRoute>
-                  <CreateJournalEntry />
+                  <CreateJournalEntry userId={userId}/>
                 </ProtectedRoute>
               }/>
               <Route path="journals/" element={

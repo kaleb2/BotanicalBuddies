@@ -32,11 +32,11 @@ export default function setupRoutes(app)
 
     router.post("/uploadFile", Multer({storage: Multer.memoryStorage()}).single("file"), UploadFileToMinio);
     
-    router.get("/journal", getJournals);
+    router.get("/journals", getJournals);
 
-    router.get("/journal/:userId", getJournalsForUser);
+    router.get("/journals/:userId", getJournalsForUser);
 
-    router.get("/journal/:userId/:journalId", getJournal);
+    router.get("/journal/:journalId", getJournal);
 
     router.post("/journal", createJournal);
     
