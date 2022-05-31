@@ -13,7 +13,8 @@ import { CreatePlant } from './components/Plant/CreatePlant';
 import { PlantPage } from './components/Plant/PlantPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Header } from './components/Header';
-import { Forums } from './components/Forums';
+import { ForumsPage } from './components/ForumsPage';
+import { ThreadPage } from './components/ThreadPage';
 
 function Page() {
   return (
@@ -51,6 +52,7 @@ function App() {
                   <PlantPage />
                 </ProtectedRoute>
               }/>
+              <Route path="thread/:id" element={<ThreadPage />}/>
               <Route path="create-user" element={<CreateUser />} />
               <Route path="create-plant" element={
                 <ProtectedRoute>
@@ -77,7 +79,7 @@ function App() {
                   <JournalEntry />
                 </ProtectedRoute>
               }/>
-              <Route path="forums" element={<Forums/>}/>
+              <Route path="forums" element={<ForumsPage />}/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -2,6 +2,7 @@ import {httpClient} from "./HttpService";
 import React from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {Location} from "react-router";
+import { Console } from "console";
 
 // https://www.robinwieruch.de/react-router-authentication/
 // PLEASE SEE HERE FOR IN-DEPTH EXPLANATIONS
@@ -44,13 +45,15 @@ export const AuthProvider = ({children}) => {
   const location = useLocation();
 
   const [token, setToken] = React.useState(initialToken);
+  const [userId, setUserId] = React.useState(-1);
 
   const handleLogin = async (email, password) => {
     console.log("in handle login with email: {} and pw {}", email, password);
     try {
       let token = await getLoginTokenFromServer(email, password);
       console.log("Got token in handle login", token);
-      saveToken(token);
+      let id = await findUserId(email);
+      saveToken(token, id);
       console.log("After saving token");
       await updateAxios(token);
       console.log("After updating axios");
@@ -70,10 +73,23 @@ export const AuthProvider = ({children}) => {
     // Don't need a navigate here, as our Protected Route will defend us
   };
 
-  const saveToken =  (token) => {
+  const findUserId = async (email: string) : Promise<number> =>
+  {
+    console.log("finding users")
+      let res = await httpClient.get("/users");
+      console.log(res);
+      let user = res.data.find((us) => us.email === email);
+      console.log(user);
+      return parseInt(user.id, 10);
+  }
+
+  const saveToken =  (token, userId) => {
     console.log("Saving token");
     setToken(token);
+    setUserId(userId);
+    console.log(userId);
     localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("userId", JSON.stringify(userId));
   };
 
   return (
@@ -93,9 +109,18 @@ export const useAuth = () => {
 
 export function getTokenFromStorage() {
   const tokenString = localStorage.getItem('token');
+  console.log(tokenString);
   // @ts-ignore
   const userToken = JSON.parse(tokenString);
   return userToken?.token;
+}
+
+export function getUserIdFromStorage() : number  {
+  console.log("getting user id.")
+  const userIdString = localStorage.getItem("userId");
+  console.log("userId from storage:"+userIdString);
+  // @ts-ignore
+  return parseInt(userIdString, 10);
 }
 
 export async function getLoginTokenFromServer(email: string, password: string) {
@@ -104,7 +129,7 @@ export async function getLoginTokenFromServer(email: string, password: string) {
     email,
     password
   });
-
+  console.log(res.data);
   return res.data;
 }
 

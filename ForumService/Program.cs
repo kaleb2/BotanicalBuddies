@@ -13,7 +13,9 @@ builder.Services.AddCors(opts =>
     opts.AddPolicy(OriginsAllowed,
         policy => 
         { 
-            policy.WithOrigins("http://localhost:3000");
+            policy.WithOrigins("http://localhost:3000")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
         });
 });
 
@@ -61,6 +63,7 @@ app.MapGet("/forums/{userid:int}/threads", async (int userId, ForumDbContext db)
 // create a new thread belonging to a userid
 app.MapPost("/forums/{userid:int}/threads", async (int userid, Thread thread, ForumDbContext db) =>
 {
+    Console.WriteLine($"entering thread creation: {userid}, {thread.Title}, {thread.Body}");
     thread.UserId = userid;
     db.Add(thread);
     await db.SaveChangesAsync();
