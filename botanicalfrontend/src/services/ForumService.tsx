@@ -51,3 +51,20 @@ export async function postThread(title: string, body: string, tag: string)
     console.log(res);
     return data;
 }
+
+export async function postPost(content: string, tag: string, threadid: number)
+{
+    let userid = getUserIdFromStorage();
+    console.log(`creating post: ${content}, ${tag}, threadid: ${threadid}, userid: ${userid}`);
+    let res = await forumClient.post(`/forums/posts/${userid}/${threadid}`, 
+        {
+            userId: userid,
+            content: content,
+            tag: tag,
+            dateCreated: new Date()
+        });
+    console.log(`response received: ${res.status}`);
+    let data = await res.data;
+    console.log(res);
+    return data;
+}

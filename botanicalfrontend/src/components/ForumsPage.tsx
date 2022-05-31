@@ -18,7 +18,7 @@ export const ForumsPage = event =>
 {
   const navigate = useNavigate();
 
-    let [threads, setListofThreads] = useState<Array<Thread>>([]);
+    const [threads, setListofThreads] = useState<Array<Thread>>([]);
     const [threadCreation, setThreadCreation] = useState(false);
     const [thread, setThread] = useState(initialThreadState);
 
@@ -58,9 +58,9 @@ export const ForumsPage = event =>
           <div>
             <h1>Threads</h1>
             <br/>
-            {threads.map(t => <ThreadLink
+            {threads.length > 0 ? threads.map(t => <ThreadLink
                 key={t.threadId}
-                {...t} />)}
+                {...t} />): <p>No threads yet... Create one won't you?</p>}
           </div>
           <div>
           {threadCreation ? (
@@ -143,7 +143,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
       </div>
 
       <button type="button" className="btn btn-primary" onClick={createThread}>
-        Create an Thread
+        Create a Thread
       </button>
     </form></>
   )
