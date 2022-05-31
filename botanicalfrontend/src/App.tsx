@@ -26,8 +26,6 @@ function Page() {
   );
 }
 
-const userId = getUserIdFromStorage();
-
 function App() {
   
   return (
@@ -38,7 +36,7 @@ function App() {
             <Route path="/" element={<Page />}>
               <Route path="/" element={
                 <ProtectedRoute>
-                  <UserProfile id={userId}/>
+                  <UserProfile id={getUserIdFromStorage()}/>
                 </ProtectedRoute>
               }/>  
               <Route path="login" element={<Login />} />
@@ -56,12 +54,12 @@ function App() {
               <Route path="create-user" element={<CreateUser />} />
               <Route path="create-plant" element={
                 <ProtectedRoute>
-                  <CreatePlant userId={userId}/>
+                  <CreatePlant userId={getUserIdFromStorage()}/>
                 </ProtectedRoute>
               }/>
               <Route path="create-journal-entry" element={
                 <ProtectedRoute>
-                  <CreateJournalEntry userId={userId}/>
+                  <CreateJournalEntry userId={getUserIdFromStorage()}/>
                 </ProtectedRoute>
               }/>
               <Route path="journals/" element={

@@ -140,7 +140,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 1, 
-                            JournalTitle = "I water it everyday and it still won't love me.", 
+                            JournalTitle = "User #1's Plant Journal", 
                             UserId = 1, 
                             PlantId = 1, 
                             DateCreated = DateTimeOffset.Now 
@@ -148,7 +148,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 2, 
-                            JournalTitle = "Has anybody ever grown a hibiscus plant indoors before?", 
+                            JournalTitle = "User #2's Plant Journal", 
                             UserId = 2, 
                             PlantId = 1, 
                             DateCreated = DateTimeOffset.Now 
@@ -156,7 +156,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 3, 
-                            JournalTitle = "How do I get my coffee plant to produce beans?", 
+                            JournalTitle = "User #1's OTHER Plant Journal", 
                             UserId = 1, 
                             PlantId = 3, 
                             DateCreated = DateTimeOffset.Now 

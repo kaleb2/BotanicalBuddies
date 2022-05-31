@@ -58,9 +58,9 @@ namespace JournalService.Migrations
                 columns: new[] { "journalId", "journalTitle", "userId", "plantId", "dateCreated" },
                 values: new object[,]
                 {
-                    { 1, "I water it everyday and it still won't love me.", 1, 1, DateTimeOffset.Now },
-                    { 2, "Has anybody ever grown a hibiscus plant indoors before?", 2, 1,DateTimeOffset.Now },
-                    { 3,  "How do I get my coffee plant to produce beans?", 1, 3, DateTimeOffset.Now }
+                    { 1, "User #1's Plant Journal", 1, 1, DateTimeOffset.Now },
+                    { 2, "User #2's Plant Journal", 2, 1,DateTimeOffset.Now },
+                    { 3,  "User #1's OTHER Plant Journal", 1, 3, DateTimeOffset.Now }
                 });
         }
 

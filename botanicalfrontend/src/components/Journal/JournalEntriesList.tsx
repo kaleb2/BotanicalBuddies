@@ -23,8 +23,6 @@ const initialUserState = {
     userId: 0
 }
 
-export type JournalEntryProps = JournalEntryType & { onUnmatchButtonClick: (id: number) => void }
-
 export function JournalEntryListing(props) {
         let {
             entryId,

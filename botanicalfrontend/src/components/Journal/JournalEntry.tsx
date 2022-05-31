@@ -47,9 +47,11 @@ export function JournalEntry() {
           console.log(item);
           if (mounted) {
               setJournalEntry(item);
-              getPlant(id).then(item => {
+              getPlant(item.plantId).then(item => {
+                console.log("Plant = ");
                 console.log(item);
                 setPlant(item);
+                console.log("This plant = ");
                 console.log(plant);
             });
           }

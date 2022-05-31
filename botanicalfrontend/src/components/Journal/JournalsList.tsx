@@ -3,8 +3,6 @@ import { Journal as JournalType} from "../../types/StateTypes";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-export type JournalProps = JournalType & { onUnmatchButtonClick: (id: number) => void }
-
 export function JournalListing(props) {
         let {
             journalId,

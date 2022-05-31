@@ -98,6 +98,63 @@ namespace JournalService.Migrations
                             DateCreated = DateTimeOffset.Now
                         });
                 });
+
+            modelBuilder.Entity("Journal", b =>
+                {
+                    b.Property<int>("JournalId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("journalId");
+
+                    b.Property<string>("JournalTitle")
+                        .HasColumnType("text")
+                        .HasColumnName("journalTitle");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
+
+                    b.Property<int>("PlantId")
+                        .HasColumnType("integer")
+                        .HasColumnName("plantId");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dateCreated")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.HasKey("JournalId")
+                        .HasName("PK_JournalId");
+
+                    b.ToTable("journals");
+
+                    b.HasData(
+                        new
+                        {
+                            JournalId = 1, 
+                            JournalTitle = "User #1's Plant Journal", 
+                            UserId = 1, 
+                            PlantId = 1, 
+                            DateCreated = DateTimeOffset.Now
+                        },
+                        new
+                        {
+                            JournalId = 2, 
+                            JournalTitle = "User #2's Plant Journal", 
+                            UserId = 2, 
+                            PlantId = 2, 
+                            DateCreated = DateTimeOffset.Now
+                        },
+                        new
+                        {
+                            JournalId = 3, 
+                            JournalTitle = "User #1's OTHER Plant Journal", 
+                            UserId = 1, 
+                            PlantId = 3, 
+                            DateCreated = DateTimeOffset.Now
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }
