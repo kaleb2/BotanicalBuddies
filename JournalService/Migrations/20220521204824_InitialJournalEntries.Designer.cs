@@ -26,6 +26,7 @@ namespace JournalService.Migrations
             modelBuilder.Entity("JournalEntry", b =>
                 {
                     b.Property<int>("EntryId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("entryId");
 
@@ -54,8 +55,10 @@ namespace JournalService.Migrations
                         .HasColumnName("content");
 
                     b.Property<DateTimeOffset>("DateCreated")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("dateCreated");
+                        .HasColumnName("dateCreated")
+                        .HasDefaultValueSql("NOW()");
 
                     b.HasKey("EntryId")
                         .HasName("PK_EntryId");

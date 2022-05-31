@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -13,14 +14,14 @@ namespace JournalService.Migrations
                 name: "journalentries",
                 columns: table => new
                 {
-                    entryId = table.Column<int>(type: "integer", nullable: false),
+                    entryId = table.Column<int>(type: "integer", nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     journalId = table.Column<int>(type: "integer", nullable: false),
                     entryTitle = table.Column<string>(type: "text", nullable: false),
                     userId = table.Column<int>(type: "integer", nullable: false),
                     plantName = table.Column<string>(type: "text", nullable: false),
                     plantId = table.Column<int>(type: "integer", nullable: false),
                     content = table.Column<string>(type: "text", nullable: false),
-                    dateCreated = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    dateCreated = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
                 },
                 constraints: table =>
                 {
