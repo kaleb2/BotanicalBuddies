@@ -110,7 +110,7 @@ export function CreatePlant(props) {
 export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDateChange, onFileChange }) => {
     return (
       <>
-      <form>
+      <form className="container">
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
           <input

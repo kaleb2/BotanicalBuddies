@@ -63,17 +63,19 @@ export function JournalEntriesList({
     listOfEntries
   }: JournalEntriesListProps) {
     return (
-        <div className="row">
-            <br/>
-            {listOfEntries.map(
-                entry => {
-                    if (entry.journalId === id) {
-                        return <JournalEntryListing
-                        key={entry.entryTitle}
-                        {...entry} />
+        <div className="container">
+            <div className="row">
+                <br/>
+                {listOfEntries.map(
+                    entry => {
+                        if (entry.journalId === id) {
+                            return <JournalEntryListing
+                            key={entry.entryTitle}
+                            {...entry} />
+                        }
                     }
-                }
-            )}
+                )}
+            </div>
         </div>
     );
 };

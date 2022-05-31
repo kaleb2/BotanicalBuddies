@@ -36,6 +36,7 @@ export function Journal() {
                 if (mounted) {
                     setJournal(item[0]);
                     console.log(journal);
+                    console.log(journal.userId  + "===" + savedUserId)
                     console.log(savedUserId === journal.userId);
                 }
             });
@@ -45,11 +46,12 @@ export function Journal() {
     }, []);
 
     return (
-        <div className="journal">
+        <div className="journal container">
             <h1>A list of entries for {journal.journalTitle}</h1>
 
             <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             
+            { savedUserId === journal.userId  ?
             <div className="accordion" id="accordionJournal">
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingJournal">
@@ -57,17 +59,18 @@ export function Journal() {
                       Add a new entry to journal
                     </button>
                   </h2>
-                  { savedUserId === journal.userId  ?
+                  
                   <div id="collapseJournal" className="accordion-collapse collapse" aria-labelledby="headingJournal" data-bs-parent="#accordionJournal">
                     <div className="accordion-body">
                         <CreateJournalEntry journalId={id}/>
                     </div>
                   </div>
-                  :
-                  <br/>
-                  }
+                  
                 </div>
               </div>
+              :
+                <br/>
+              }
         </div>
     );
 };

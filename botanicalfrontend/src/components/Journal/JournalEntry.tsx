@@ -40,7 +40,7 @@ export function JournalEntry() {
     }, []);
 
     return (
-        <div className="journal">
+        <div className="journal container">
             <h1>{journalEntry.entryTitle}</h1>
             <div className="row">
                 <div className="col-md-8">

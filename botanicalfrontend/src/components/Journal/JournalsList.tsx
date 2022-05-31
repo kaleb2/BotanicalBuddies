@@ -44,16 +44,16 @@ export function JournalsList({
     listOfJournals
   }: JournalsListProps) {
     return (
-        <div className="row">
-            <br/>
-            {listOfJournals.map(
-                journal => 
-                {
-                    return <JournalListing
-                    {...journal} />
-                }
-            )}
-        </div>
+            <div className="row">
+                <br/>
+                {listOfJournals.map(
+                    journal => 
+                    {
+                        return <JournalListing
+                        {...journal} />
+                    }
+                )}
+            </div>
     );
 };
 

@@ -43,7 +43,7 @@ export const UserProfile = event => {
     }, []);
 
     return (
-        <div className="profile">
+        <div className="profile container">
             <p>This is your profile!</p>
             <div className="plantSection">
               <div className="plantsList">

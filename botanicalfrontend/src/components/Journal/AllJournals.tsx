@@ -18,7 +18,7 @@ export function AllJournals() {
     }, []);
 
     return (
-        <div className="journals">
+        <div className="journals container">
             <h1>All Journals</h1>
             <JournalsList listOfJournals={listOfJournals}/>
         </div>
