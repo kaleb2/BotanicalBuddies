@@ -30,6 +30,8 @@ namespace JournalService.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("entryId");
 
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EntryId"));
+
                     b.Property<int>("JournalId")
                         .HasColumnType("integer")
                         .HasColumnName("journalId");
@@ -98,6 +100,66 @@ namespace JournalService.Migrations
                             PlantId = 2, 
                             Content = "What's everyone's thoughts?", 
                             DateCreated = DateTimeOffset.Now
+                        });
+                });
+
+            modelBuilder.Entity("Journal", b =>
+                {
+                    b.Property<int>("JournalId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("journalId");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("JournalId"));
+
+                    b.Property<string>("journalTitle")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("journalTitle");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
+
+                    b.Property<int>("PlantId")
+                        .HasColumnType("integer")
+                        .HasColumnName("plantId");
+
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dateCreated")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.HasKey("JournalId")
+                        .HasName("PK_JournalId");
+
+                    b.ToTable("journals");
+
+                    b.HasData(
+                        new
+                        {
+                            JournalId = 1, 
+                            JournalTitle = "I water it everyday and it still won't love me.", 
+                            UserId = 1, 
+                            PlantId = 1, 
+                            DateCreated = DateTimeOffset.Now 
+                        },
+                        new
+                        {
+                            JournalId = 2, 
+                            JournalTitle = "Has anybody ever grown a hibiscus plant indoors before?", 
+                            UserId = 2, 
+                            PlantId = 1, 
+                            DateCreated = DateTimeOffset.Now 
+                        },
+                        new
+                        {
+                            JournalId = 3, 
+                            JournalTitle = "How do I get my coffee plant to produce beans?", 
+                            UserId = 1, 
+                            PlantId = 3, 
+                            DateCreated = DateTimeOffset.Now 
                         });
                 });
 #pragma warning restore 612, 618

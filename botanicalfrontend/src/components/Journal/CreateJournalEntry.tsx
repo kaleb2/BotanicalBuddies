@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { getUserIdFromStorage } from "../../services/AuthService";
 import { Journal } from "../../services/JournalService";
 
 const initialJournalEntryState = {
     entryId: 0,
     entryTitle: "",
     journalId: 0,
-    userId: "",
+    userId: 0,
     plantName: "",
     plantId: "",
     content: "",
@@ -27,8 +28,9 @@ const initialJournalEntryState = {
     };
 
     const saveJournalEntry = () => {
-      console.log("journalId = " + journalId);
       journalEntry.journalId = journalId;
+      journalEntry.userId = getUserIdFromStorage();
+      console.log("journalEntry.userId = " + journalEntry.userId);
       console.log("journalEntry.journalId = " + journalEntry.journalId);
         Journal.createEntry(journalEntry)
           .then(res => {
@@ -74,19 +76,6 @@ const initialJournalEntryState = {
     return (
       <>
       <form>
-
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">EntryId</label>
-          <input
-            type="number"
-            id="entryId"
-            required
-            value={journalEntry.entryId}
-            onChange={handleInputChange}
-            name="entryId"
-            className="form-control" />
-        </div>
-
         <div className="mb-3">
           <label htmlFor="entryTitle" className="form-label">Title</label>
           <input
@@ -96,18 +85,6 @@ const initialJournalEntryState = {
             value={journalEntry.entryTitle}
             onChange={handleInputChange}
             name="entryTitle"
-            className="form-control" />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">UserId</label>
-          <input
-            type="number"
-            id="userId"
-            required
-            value={journalEntry.userId}
-            onChange={handleInputChange}
-            name="userId"
             className="form-control" />
         </div>
   

@@ -1,24 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-public class JournalEntryEntityTypeConfiguration: IEntityTypeConfiguration<JournalEntry>
+public class JournalEntityTypeConfiguration: IEntityTypeConfiguration<Journal>
 {
-    public void Configure(EntityTypeBuilder<JournalEntry> builder)
+    public void Configure(EntityTypeBuilder<Journal> builder)
     {
-        Console.WriteLine("JournalEntryEntityTypeConfiguration.Configure Start");
-        builder.HasKey(p => p.EntryId)
-            .HasName("PK_EntryId");
-        Console.WriteLine("EntryId added as key.");
+        Console.WriteLine("JournalEntityTypeConfiguration.Configure Start");
+        builder.HasKey(p => p.JournalId)
+            .HasName("PK_JournalId");
+        Console.WriteLine("JournalId added as key.");
 
-        builder.HasData(new JournalEntry{EntryId=1, JournalId=1, EntryTitle="Plant is looking very healthy today!", UserId=1, PlantName="Monstera", PlantId=1, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
+        builder.HasData(new Journal{JournalId=1, JournalTitle="I water it everyday and it still won't love me.", UserId=1, PlantId=1, DateCreated=DateTimeOffset.Now });
         Console.WriteLine("Added Plant is looking very healthy today!");
 
-        builder.HasData(new JournalEntry() {EntryId=2, JournalId=2, EntryTitle="Might need to start watering more...", UserId=1, PlantName="Fern", PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
+        builder.HasData(new Journal() {JournalId=2, JournalTitle="Has anybody ever grown a hibiscus plant indoors before?", UserId=2, PlantId=1, DateCreated=DateTimeOffset.Now });
         Console.WriteLine("Added Might need to start watering more...");
 
-        builder.HasData(new JournalEntry() {EntryId=3, JournalId=1, EntryTitle="Oh no... it's withering :(", UserId=2, PlantName="Fern", PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
-            Console.WriteLine("Added Oh no... it's withering :(");
+        builder.HasData(new Journal() {JournalId=3, JournalTitle="How do I get my coffee plant to produce beans?", UserId=1, PlantId=3, DateCreated=DateTimeOffset.Now});
+        Console.WriteLine("Added Oh no... it's withering :(");
 
-        Console.WriteLine("JournalEntryEntityTypeConfiguration.Configure End");
+        Console.WriteLine("JournalEntityTypeConfiguration.Configure End");
     }
 }

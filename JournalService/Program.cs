@@ -21,7 +21,20 @@ app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
                                 .AllowAnyMethod()
                                 .AllowAnyHeader());
 
-app.MapPost("/journal", async (JournalEntry journalEntry, JournalDbContext journalEntriesDb) =>
+app.MapPost("/journal", async (Journal journal, JournalDbContext journalsDb) =>
+{
+    journalsDb.Add(journal);
+    await journalsDb.SaveChangesAsync();
+    return Results.Created($"/journal/{journal.JournalId}/", journal);
+});
+
+app.MapGet("/journal/", async (JournalDbContext journalsDb) =>
+    await journalsDb.Journals.ToListAsync());
+
+app.MapGet("/journal/{journalid}/", async (int journalId, JournalDbContext journalsDb) =>
+    await journalsDb.Journals.Where(p => p.JournalId == journalId).FirstOrDefaultAsync());
+
+app.MapPost("/journalentry", async (JournalEntry journalEntry, JournalDbContext journalEntriesDb) =>
 {
     journalEntriesDb.Add(journalEntry);
     await journalEntriesDb.SaveChangesAsync();
@@ -31,10 +44,10 @@ app.MapPost("/journal", async (JournalEntry journalEntry, JournalDbContext journ
 app.MapGet("/journal/{journalid}/{entryid}", async (int journalId, int entryId, JournalDbContext journalEntriesDb) =>
     await journalEntriesDb.JournalEntries.Where(p => p.JournalId == journalId && p.EntryId == entryId).FirstOrDefaultAsync());
 
-app.MapGet("/journal/{journalid}", async (int journalId, JournalDbContext journalEntriesDb) =>
-    await journalEntriesDb.JournalEntries.Where(p => p.JournalId == journalId).ToListAsync());
+app.MapGet("/journalentry/{entryid}", async (int entryId, JournalDbContext journalEntriesDb) =>
+    await journalEntriesDb.JournalEntries.Where(p => p.EntryId == entryId).FirstOrDefaultAsync());
 
-app.MapGet("/journal/", async (JournalDbContext journalEntriesDb) =>
+app.MapGet("/journalentry/", async (JournalDbContext journalEntriesDb) =>
     await journalEntriesDb.JournalEntries.ToListAsync());
 
 app.Run("http://0.0.0.0:9200");

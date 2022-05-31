@@ -16,6 +16,10 @@ public class Journal
     [Column("userId")]
     public int UserId {get; set;}
 
+    [Required]
+    [Column("plantId")]
+    public int PlantId {get; set;}
+
     [Column("dateCreated")]
     public DateTimeOffset DateCreated {get; set;}
 }

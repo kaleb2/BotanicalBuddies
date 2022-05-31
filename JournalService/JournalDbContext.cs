@@ -7,9 +7,12 @@ public class JournalDbContext : DbContext {
 
         public DbSet<JournalEntry> JournalEntries => Set<JournalEntry>();
 
+        public DbSet<Journal> Journals => Set<Journal>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new JournalEntryEntityTypeConfiguration().Configure(modelBuilder.Entity<JournalEntry>());
+            new JournalEntityTypeConfiguration().Configure(modelBuilder.Entity<Journal>());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
