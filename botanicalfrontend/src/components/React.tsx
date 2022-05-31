@@ -6,6 +6,7 @@ import { PlantsList } from "./Plant/PlantsList";
 import getInitialState from "../initialState";
 import { useEffect, useState } from "react";
 import { Plant as PlantType} from "../types/StateTypes";
+import { useAuth} from "../services/AuthService";
 
 export function ReactDefault() {
     let [listOfPlants, setListOfPlants] = useState<Array<PlantType>>([]);
@@ -40,22 +41,34 @@ export const NotFound = () => (
   );
 
 export const Header = () => {
+    const context = useAuth();
+
+    const handleLogout = () => {
+      console.log("Setting token to null");
+      context?.handleLogout();
+    }
+
     return (
       <div className="body">
         <div className="navbar navbar-expand-lg">
           <div className="container">
-            <h1>Botanical Buddies^TM</h1>
-            <Link to="/">Dashboard</Link>
-            &nbsp; | &nbsp;
-            <Link to="/login">Login</Link>
+            <h3>Botanical Buddies</h3><sup>TM</sup>
             &nbsp; | &nbsp;
             <Link to="/user-profile/1">My Profile</Link>
             &nbsp; | &nbsp;
             <Link to="/create-plant">Create Plant</Link>
             &nbsp; | &nbsp;
-            <Link to="/create-user">Create User</Link>
+            <Link to="/create-journal-entry">Journals</Link>
+            &nbsp; | &nbsp;
+            <Link to="/forums">Forums</Link>
             &nbsp; | &nbsp;
             <Link to="/journals">Journals</Link>
+            &nbsp; | &nbsp;
+            { context?.token != null  ?
+              <Link className="link-primary" to="/login" onClick={handleLogout}>Logout</Link>
+              :
+              <Link className="link-primary" to="/login">Login</Link>
+            }
             <br />
           </div>
         </div>

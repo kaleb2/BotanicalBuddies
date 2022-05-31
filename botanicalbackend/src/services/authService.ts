@@ -95,7 +95,6 @@ const ValidatePassword = async (email, password) => {
 
 export function generateAccessToken(username) {
   console.log("Username: ", username);
-  console.log(process.env.TOKEN_SECRET);
   return jwt.sign(
     { id: username },
     process.env.TOKEN_SECRET,

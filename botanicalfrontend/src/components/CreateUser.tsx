@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { User } from "../services/UserService";
+import { Link } from "react-router-dom";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -34,19 +35,12 @@ const initialUserState = {
         })
     }
   
-    const resetUser = () => {
-      setUser(initialUserState);
-      setSubmitted(false);
-    }
-  
     return (
       <div>
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
-            <h4>You submitted successfully!</h4>
-            <button type="button" className="btn btn-secondary" onClick={resetUser}>
-              Reset
-            </button>
+            <h4>Account created successfully!</h4>
+            <Link to="/login">Sign in</Link>
           </>
         ) : (
           <>   {/* If we've NOT already submitted, show this piece*/}
@@ -64,7 +58,7 @@ const initialUserState = {
 
 export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
     return (
-      <><h2>Create New User</h2>
+      <><h2>Create New Account</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
@@ -81,7 +75,7 @@ export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
           <input
-            type="text"
+            type="password"
             id="password"
             required
             value={user.password}
@@ -91,8 +85,12 @@ export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
         </div>
   
         <button type="button" className="btn btn-primary" onClick={saveUser}>
-          Create
+          Create an Account
         </button>
+        <div>
+          <text>Already have an account? </text>
+          <Link to="/login">Sign in</Link>
+        </div>
       </form></>
     )
   }
