@@ -34,6 +34,9 @@ app.MapGet("/journal/", async (JournalDbContext journalsDb) =>
 app.MapGet("/journal/{journalid}/", async (int journalId, JournalDbContext journalsDb) =>
     await journalsDb.Journals.Where(p => p.JournalId == journalId).FirstOrDefaultAsync());
 
+app.MapGet("/journals/{userid}/", async (int userId, JournalDbContext journalsDb) =>
+    await journalsDb.Journals.Where(p => p.UserId == userId).ToListAsync());
+
 app.MapPost("/journalentry", async (JournalEntry journalEntry, JournalDbContext journalEntriesDb) =>
 {
     journalEntriesDb.Add(journalEntry);

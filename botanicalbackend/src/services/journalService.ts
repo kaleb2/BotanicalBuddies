@@ -1,4 +1,4 @@
-import { db, Journal } from "../database/models";
+/*import { db, Journal } from "../database/models";
 
 export function createJournal(req, res) {
   const journalTitle = req.body.journalTitle;
@@ -71,4 +71,4 @@ export function getJournals(req, res) {
         console.log(err);
         res.status(500).json({ message: err });
       });
-  }
+  }*/

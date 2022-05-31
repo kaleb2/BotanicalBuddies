@@ -1,23 +1,21 @@
-import { httpClient, journalClient } from "../services/HttpService";
+import { journalClient } from "../services/HttpService";
 
 export const Journal = {
     async createEntry(journalEntry) {
       console.log(journalEntry);
-      return journalClient.post("/journal/"
-        , { entryId: journalEntry.entryId,
-            journalId: journalEntry.journalId,
+      return journalClient.post("/journalentry/"
+        , { journalId: journalEntry.journalId,
             entryTitle: journalEntry.entryTitle, 
             userId: journalEntry.userId, 
             plantName: journalEntry.plantName, 
             plantId: journalEntry.plantId, 
-            content: journalEntry.content,
-            dateCreated: journalEntry.dateCreated
+            content: journalEntry.content
          }
       )  
     },
     async createNewJournal(journal) {
       console.log(journal);
-      return httpClient.post("/journal/"
+      return journalClient.post("/journal/"
         , { userId: journal.userId, 
             journalTitle: journal.journalTitle,
             plantId: journal.plantId
@@ -27,7 +25,7 @@ export const Journal = {
 }
 
 export async function getAllJournalEntries() {
-  let res = await journalClient.get("/journal/");
+  let res = await journalClient.get("/journalentry/");
   let data = await res.data;
   console.log(data);
   return data;
@@ -42,15 +40,16 @@ export async function getJournalEntries(journalId) {
 }
 
 export async function getJournalEntry(journalId, entryId) {
+  console.log("in get journal entry");
   let res = await journalClient.get("/journal/"+journalId+"/"+entryId+"/");
-
   let data = await res.data;
   console.log(data);
   return data;
 }
 
 export async function getJournals() {
-  let res = await httpClient.get("/journals");
+  console.log("in get all journals");
+  let res = await journalClient.get("/journal");
 
   let data = await res.data;
   console.log(data);
@@ -59,7 +58,7 @@ export async function getJournals() {
 }
 
 export async function getJournalsForUser(userId) {
-  let res = await httpClient.get("/journals/"+userId);
+  let res = await journalClient.get("/journals/"+userId);
 
   let data = await res.data;
   console.log(data);
@@ -67,7 +66,8 @@ export async function getJournalsForUser(userId) {
 }
 
 export async function getJournal(journalId) {
-  let res = await httpClient.get("/journal/"+journalId);
+  console.log("in get journal");
+  let res = await journalClient.get("/journal/"+journalId);
 
   let data = await res.data;
   console.log(data);

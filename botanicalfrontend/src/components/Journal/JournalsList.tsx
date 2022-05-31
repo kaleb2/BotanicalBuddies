@@ -7,7 +7,7 @@ export type JournalProps = JournalType & { onUnmatchButtonClick: (id: number) =>
 
 export function JournalListing(props) {
         let {
-            id,
+            journalId,
             journalTitle,
             userId,
             plantId,
@@ -24,7 +24,7 @@ export function JournalListing(props) {
         <h2 className="w-64 ml-2">{journalTitle}</h2>
         <p>Written by user ID {userId} on {createdAt}</p>
         <p>Plant: {plantId}</p>
-        <Link to={"/journal/"+id}>View Journal</Link>
+        <Link to={"/journal/"+journalId}>View Journal</Link>
       </div>
     </div>;
 

@@ -34,7 +34,7 @@ export function Journal() {
               getJournal(id).then(item => {
                 console.log(item);
                 if (mounted) {
-                    setJournal(item[0]);
+                    setJournal(item);
                     console.log(journal);
                     console.log(journal.userId  + "===" + savedUserId)
                     console.log(savedUserId === journal.userId);
@@ -47,7 +47,9 @@ export function Journal() {
 
     return (
         <div className="journal container">
-            <h1>A list of entries for {journal.journalTitle}</h1>
+            <h1>{journal.journalTitle}</h1>
+            <hr/>
+            <p>Entries:</p>
 
             <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             

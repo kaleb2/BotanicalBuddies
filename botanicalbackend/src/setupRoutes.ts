@@ -12,7 +12,7 @@ import Minio from "minio";
 import { UploadFileToMinio } from "./services/minioService";
 //import { createUserPlant, getUserPlants } from "./services/userPlantService";
 import { createPlant, getPlants, getPlant } from "./services/plantService";
-import { createJournal, getJournal, getJournals, getJournalsForUser } from "./services/JournalService";
+//import { createJournal, getJournal, getJournals, getJournalsForUser } from "./services/JournalService";
 
 export default function setupRoutes(app)
 {
@@ -32,13 +32,13 @@ export default function setupRoutes(app)
 
     router.post("/uploadFile", Multer({storage: Multer.memoryStorage()}).single("file"), UploadFileToMinio);
     
-    router.get("/journals", getJournals);
+    /*router.get("/journals", getJournals);
 
     router.get("/journals/:userId", getJournalsForUser);
 
     router.get("/journal/:journalId", getJournal);
 
-    router.post("/journal", createJournal);
+    router.post("/journal", createJournal);*/
     
     router.post("/users", 
       checkDuplicateEmail, 
