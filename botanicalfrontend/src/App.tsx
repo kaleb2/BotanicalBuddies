@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Header />}>
             <Route path="/" element={<ReactDefault />}/>         
             <Route path="login" element={<Login />} />
-            <Route path="user-profile" element={<UserProfile />} />
+            <Route path="user-profile/:id" element={<UserProfile />} />
             <Route path="plants/:id" element={<PlantPage />} />
             <Route path="create-user" element={<CreateUser />} />
             <Route path="create-plant" element={<CreatePlant />} />

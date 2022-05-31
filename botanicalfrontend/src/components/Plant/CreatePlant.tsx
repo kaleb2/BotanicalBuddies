@@ -15,7 +15,10 @@ const initialPlantState = {
     lastFertilize: new Date(),
 };
 
-export const CreatePlant = () => {
+export function CreatePlant(props) {
+  let {
+    userId
+  } = props;
 
   const [selectedFile, setSelectedFile] = useState();
   const [plant, setPlant] = useState(initialPlantState);
@@ -49,7 +52,7 @@ export const CreatePlant = () => {
     formData.append('fileName', selectedFile.name);
     formData.append('name', plant.name);
     formData.append('species', plant.species);
-    formData.append('userId', plant.userId);
+    formData.append('userId', props.userId);
     formData.append('dateAcquired', plant.dateAcquired.toDateString());
     formData.append('lastRepot', plant.lastRepot.toDateString());
     formData.append('lastFertilize', plant.lastFertilize.toDateString());
@@ -112,17 +115,6 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
             value={plant.name}
             onChange={handleInputChange}
             name="name"
-            className="form-control" />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="userId" className="form-label">Your User ID</label>
-          <input
-            type="number"
-            id="userId"
-            required
-            value={plant.userId}
-            onChange={handleInputChange}
-            name="userId"
             className="form-control" />
         </div>
   

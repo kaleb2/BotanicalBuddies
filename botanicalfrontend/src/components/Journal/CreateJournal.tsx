@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { Journal } from "../../services/JournalService";
 
 const initialJournalState = {
-    journalId: 0,
-    userId: "",
-    dateCreated: new Date(),
+    userId: 0,
+    journalTitle: "",
+    plantId: 0,
   };
 
-  export function CreateJournal(userId) {
-    console.log("userid: " + userId);
+  export function CreateJournal(props) {
+    let {
+      userId
+    } = props;
+    console.log("userid: " + props.userId);
+
 
     const [journal, setJournal] = useState(initialJournalState);
     const [submitted, setSubmitted] = useState(false);
@@ -20,8 +24,8 @@ const initialJournalState = {
     };
 
     const saveJournal = () => {
+      journal.userId =  props.userId;
       console.log(journal);
-        journal.dateCreated = new Date(Date.now());
         Journal.createNewJournal(journal)
           .then(res => {
             setSubmitted(true);
@@ -67,30 +71,6 @@ const initialJournalState = {
       <><h2>Create New Journal</h2>
       <form>
         <div className="mb-3">
-          <label htmlFor="content" className="form-label">JournalId</label>
-          <input
-            type="number"
-            id="journalId"
-            required
-            value={journal.journalId}
-            onChange={handleInputChange}
-            name="journalId"
-            className="form-control" />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">UserId</label>
-          <input
-            type="number"
-            id="userId"
-            required
-            value={journal.userId}
-            onChange={handleInputChange}
-            name="userId"
-            className="form-control" />
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="content" className="form-label">Journal Title</label>
           <input
             type="text"
@@ -99,6 +79,18 @@ const initialJournalState = {
             value={journal.journalTitle}
             onChange={handleInputChange}
             name="journalTitle"
+            className="form-control" />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="content" className="form-label">PlantId</label>
+          <input
+            type="number"
+            id="plantId"
+            required
+            value={journal.plantId}
+            onChange={handleInputChange}
+            name="plantId"
             className="form-control" />
         </div>
   

@@ -21,8 +21,7 @@ export const db = new Sequelize(connstring);
 interface UserModelAttrs extends Model {
   email: string,
   password: string,  
-  profilepic: string,
-  journal: number
+  profilepic: string
 }
 
 export const User = db.define<UserModelAttrs>('users', {
@@ -34,9 +33,6 @@ export const User = db.define<UserModelAttrs>('users', {
   },
   profilepic: {
     type: DataTypes.STRING,
-  },
-  journal : {
-    type: DataTypes.INTEGER
   },
 }, {
   hooks: {
@@ -89,23 +85,19 @@ export const Plant = db.define<PlantModelAttrs>('plants', {
 /* Journals */
 
 interface JournalModelAttrs extends Model {
-  journalId: number,
   journalTitle: string,
   userId: number,
-  dateCreated: Date
+  plantId: number
 }
 
 export const Journal = db.define<JournalModelAttrs>('journals', {
-  journalId: {
-    type: DataTypes.INTEGER,
-  },
   journalTitle: {
     type: DataTypes.STRING,
   },
   userId: {
     type: DataTypes.INTEGER,
   },
-  dateCreated: {
-    type: DataTypes.DATE,
+  plantId: {
+    type: DataTypes.INTEGER,
   }
 });

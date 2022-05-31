@@ -17,10 +17,10 @@ export const Journal = {
     },
     async createNewJournal(journal) {
       console.log(journal);
-      return journalClient.post("/journals/"
-        , { journalId: journal.journalId,
-            userId: journal.userId, 
-            dateCreated: journal.dateCreated
+      return httpClient.post("/journal/"
+        , { userId: journal.userId, 
+            journalTitle: journal.journalTitle,
+            plantId: journal.plantId
          }
       )  
     }
@@ -51,6 +51,15 @@ export async function getJournalEntry(journalId, entryId) {
 
 export async function getJournals() {
   let res = await httpClient.get("/journal");
+
+  let data = await res.data;
+  console.log(data);
+  return data;
+  
+}
+
+export async function getJournalsForUser(userId) {
+  let res = await httpClient.get("/journal/"+userId);
 
   let data = await res.data;
   console.log(data);

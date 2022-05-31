@@ -1,18 +1,3 @@
-/*import { Link } from "react-router-dom";
-import { CreateJournalEntry } from "./CreateJournalEntry";
-
-export function Journals() {
-
-    return (
-        <div className="journal">
-            <p>A list of journal entries</p>
-            <Link to="/journal-entry">Entry #1</Link>
-
-            <CreateJournalEntry/>
-        </div>
-    );
-};*/
-
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { Journal as JournalType} from "../../types/StateTypes";
 import { Link, useParams } from "react-router-dom";
@@ -22,10 +7,11 @@ export type JournalProps = JournalType & { onUnmatchButtonClick: (id: number) =>
 
 export function JournalListing(props) {
         let {
-            journalId,
+            id,
             journalTitle,
             userId,
-            dateCreated
+            plantId,
+            createdAt
         } = props;
     
 
@@ -36,9 +22,9 @@ export function JournalListing(props) {
       return <div className="journal">
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2">{journalTitle}</h2>
-        <p>Written by user ID {userId} on {dateCreated}</p>
-        <p>Plant: </p>
-        <Link to={"/journal/"+journalId}>View Journal</Link>
+        <p>Written by user ID {userId} on {createdAt}</p>
+        <p>Plant: {plantId}</p>
+        <Link to={"/journal/"+id}>View Journal</Link>
       </div>
     </div>;
 
@@ -46,6 +32,11 @@ export function JournalListing(props) {
 
 export type JournalsListProps = {
     listOfJournals: Array<JournalType>,
+  }
+
+  export type ProfileJournalsListProps = {
+    listOfJournals: Array<JournalType>,
+    userId: string
   }
 
 
@@ -67,15 +58,17 @@ export function JournalsList({
 };
 
 export function ProfileJournalsList({
-    listOfJournals
-  }: JournalsListProps) {
+    listOfJournals,
+    userId
+  }: ProfileJournalsListProps) {
+    var userIdNum: number = +userId;
     return (
         <div className="row">
             <br/>
             {listOfJournals.map(
                 journal => 
                 {
-                    if (journal.userId === 1 ) {
+                    if (journal.userId === userIdNum) {
                         return <div className="col-3 journal"><JournalListing
                     {...journal} /></div>
                     }

@@ -5,8 +5,8 @@ import { db, Plant, User, Journal } from "./models";
 
 
 const userSeedData = [
-  { email: "bingo@bbb.com", password: "bibibi", profilepic: "url", journal: 1 },
-  { email: "bango@bbb.com", password: "bababa", profilepic: "url", journal: 2 },
+  { email: "bingo@bbb.com", password: "bibibi", profilepic: "url" },
+  { email: "bango@bbb.com", password: "bababa", profilepic: "url"},
 ];
 
 const plantSeedData = [
@@ -15,8 +15,8 @@ const plantSeedData = [
 ];
 
 const journalSeedData = [
-  { journalId: 1, journalTitle:"Userr's journal 1", userId: 1, dateCreated: Date.now()},
-  { journalId: 2, journalTitle:"Userr's journal 2", userId: 2, dateCreated: Date.now()}
+  { journalTitle:"Userr's journal 1", userId: 1, plantId: 1, dateCreated: Date.now()},
+  { journalTitle:"Userr's journal 2", userId: 2, plantId: 2, dateCreated: Date.now()}
 ]
 
 const seed = async () => {
@@ -36,7 +36,7 @@ const seed = async () => {
       console.log(err);
     });
   
-  await User.create({ email: "bongo@bbb.com", password: "bobobo", profilepic: "url", journal: 3 })
+  await User.create({ email: "bongo@bbb.com", password: "bobobo", profilepic: "url" })
     .then(() => {
       console.log("Created single user");
     })
@@ -76,7 +76,7 @@ const seed = async () => {
       console.log(err);
     });
   
-    await Journal.create({ journalId: 3, journalTitle: "New journal #3", userId: 1, dateCreated: Date.now() })
+    await Journal.create({ journalTitle: "New journal #3", userId: 1, plantId: 3, dateCreated: Date.now() })
       .then(() => {
         console.log("Created single journal");
       })

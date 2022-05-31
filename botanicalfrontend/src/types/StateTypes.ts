@@ -23,9 +23,11 @@ export type State = {
   }
 
   export type Journal = {
-    journalId: number,
+    id: number,
     journalTitle: string,
-    userId: number
+    userId: number,
+    plantId: number,
+    createdAt: Date
   }
   
   export type User = {

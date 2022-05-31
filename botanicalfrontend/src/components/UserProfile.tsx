@@ -9,15 +9,18 @@ import 'bootstrap/dist/js/bootstrap.js';
 import { ProfileJournalsList } from "./Journal/JournalsList";
 import { CreateJournal } from "./Journal/CreateJournal";
 import { Journal as JournalType} from "../types/StateTypes";
-import { getJournals } from "../services/JournalService";
+import { getJournals, getJournalsForUser } from "../services/JournalService";
 import { getPlants } from "../services/PlantService";
+import { useParams } from "react-router-dom";
 
 
 export const UserProfile = event => {
+    let { id } = useParams();
 
     let [listOfPlants, setListOfPlants] = useState<Array<PlantType>>([]);
     let [listOfJournals, setListOfJournals] = useState<Array<JournalType>>([]);
-    let userId = 1;
+    
+    let userId = id ?? "";
 
     useEffect(() => {
       let mounted = true;
@@ -31,7 +34,7 @@ export const UserProfile = event => {
 
     useEffect(() => {
       let mounted = true;
-      getJournals().then(items => {
+      getJournalsForUser(userId).then(items => {
         if (mounted) {
           setListOfJournals(items);
         }
@@ -57,7 +60,7 @@ export const UserProfile = event => {
                   </h2>
                   <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                    <CreatePlant/>
+                    <CreatePlant userId={userId}/>
                     </div>
                   </div>
                 </div>
@@ -66,7 +69,7 @@ export const UserProfile = event => {
 
             <div className="journalSection">
               <h2>My Journals:</h2>
-              <ProfileJournalsList listOfJournals={listOfJournals}/>
+              <ProfileJournalsList listOfJournals={listOfJournals} userId={userId}/>
 
               <div className="accordion" id="accordionJournal">
                 <div className="accordion-item">
@@ -77,7 +80,7 @@ export const UserProfile = event => {
                   </h2>
                   <div id="collapseJournal" className="accordion-collapse collapse" aria-labelledby="headingJournal" data-bs-parent="#accordionJournal">
                     <div className="accordion-body">
-                    <CreateJournal />
+                    <CreateJournal userId={userId}/>
                     </div>
                   </div>
                 </div>
