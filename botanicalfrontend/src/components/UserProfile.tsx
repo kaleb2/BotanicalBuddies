@@ -67,6 +67,7 @@ export const UserProfile = event => {
     return (
         <div className="profile container">
             <h1>Hello, {user.name}!</h1>
+            <hr />
             <div className="plantSection">
               <div className="plantsList">
               <h2>My Plants:</h2>

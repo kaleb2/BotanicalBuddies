@@ -49,7 +49,6 @@ export function PlantsList({
 
     return (
         <div className="row">
-            <div className="col-12">Plants</div>
             <br/>
             {listOfPlants.map(
                 profile =>

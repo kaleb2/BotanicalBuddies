@@ -20,6 +20,7 @@ export function AllJournals() {
     return (
         <div className="journals container">
             <h1>All Journals</h1>
+            <hr />
             <JournalsList listOfJournals={listOfJournals}/>
         </div>
     );
