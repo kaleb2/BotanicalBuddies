@@ -11,8 +11,13 @@ export const User = {
       return httpClient.post("/login"
         , { email: user.email, password: user.password }
       )
-    }/*,
-    async get(userId) {
-      return axios.get("/users/"+userId)
-    }*/
+    }
+  }
+
+  export async function getUser(userId) {
+    let res = await httpClient.get("/users/"+userId)
+
+    let data = await res.data;
+    console.log(data);
+    return data;
   }

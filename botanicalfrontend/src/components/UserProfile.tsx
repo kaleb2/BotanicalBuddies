@@ -10,20 +10,39 @@ import { ProfileJournalsList } from "./Journal/JournalsList";
 import { CreateJournal } from "./Journal/CreateJournal";
 import { Journal as JournalType} from "../types/StateTypes";
 import { getJournals, getJournalsForUser } from "../services/JournalService";
+import { getUser, User } from "../services/UserService";
 import { getPlants } from "../services/PlantService";
 import { useParams } from "react-router-dom";
 
+const initialUserState = {
+  name: "",
+  email: "",
+  userId: 0
+};
 
 export const UserProfile = event => {
     let { id } = useParams();
 
     let [listOfPlants, setListOfPlants] = useState<Array<PlantType>>([]);
     let [listOfJournals, setListOfJournals] = useState<Array<JournalType>>([]);
+    let [user, setUser] = useState(initialUserState);
+
     
     let userId = id ?? "";
 
     useEffect(() => {
       let mounted = true;
+      getUser(userId).then(item => {
+        if (mounted) {
+          setUser(item);
+        }
+      });
+      return;
+    }, []);
+
+    useEffect(() => {
+      let mounted = true;
+
       getPlants(userId).then(items => {
           if (mounted) {
               setListOfPlants(items);
@@ -44,7 +63,7 @@ export const UserProfile = event => {
 
     return (
         <div className="profile container">
-            <p>This is your profile!</p>
+            <h1>Hello, {user.name}!</h1>
             <div className="plantSection">
               <div className="plantsList">
               <h2>My Plants:</h2>

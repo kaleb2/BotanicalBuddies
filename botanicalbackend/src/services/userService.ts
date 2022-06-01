@@ -34,3 +34,22 @@ export function getUsers(req, res) {
       res.status(500).json({ message: err });
     });
 }
+
+export function getUser(req, res) {
+  const reqUserId = req.params.id;
+  console.log(`in getuser`);
+  User.findOne({where: {
+      id : reqUserId
+    }
+    })
+    .then(user =>
+      {
+        console.log("Found user");
+        res.status(200).json(user);
+      })
+    .catch((err) => {
+      console.log('failed to find any users');
+      console.log(err);
+      res.status(500).json({ message: err });
+    });
+}
