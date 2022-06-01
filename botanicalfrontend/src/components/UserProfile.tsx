@@ -6,7 +6,7 @@ import getInitialState from "../initialState";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { ProfileJournalsList } from "./Journal/JournalsList";
+import { ProfileJournalsList } from "./Journal/JournalListing";
 import { CreateJournal } from "./Journal/CreateJournal";
 import { Journal as JournalType} from "../types/StateTypes";
 import { getJournals, getJournalsForUser } from "../services/JournalService";

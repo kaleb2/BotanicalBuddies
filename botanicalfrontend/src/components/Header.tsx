@@ -21,8 +21,6 @@ export const Header = () => {
                     &nbsp; | &nbsp;
                     <Link to={"/user-profile/"+userId}>My Profile</Link>
                     &nbsp; | &nbsp;
-                    <Link to="/create-plant">Create Plant</Link>
-                    &nbsp; | &nbsp;
                     <Link to="/journals">Journals</Link>
                     &nbsp; | &nbsp;
                     <Link to="/forums">Forums</Link>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getJournals } from "../../services/JournalService";
-import { JournalsList } from "./JournalsList";
+import { JournalsList } from "./JournalListing";
 import { Journal as JournalType} from "../../types/StateTypes";
 
 export function AllJournals() {
