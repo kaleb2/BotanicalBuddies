@@ -13,6 +13,7 @@ import { getJournals, getJournalsForUser } from "../services/JournalService";
 import { getUser, User } from "../services/UserService";
 import { getPlants } from "../services/PlantService";
 import { useParams } from "react-router-dom";
+import { getUserIdFromStorage } from "../services/AuthService";
 
 const initialUserState = {
   name: "",
@@ -28,7 +29,9 @@ export const UserProfile = event => {
     let [user, setUser] = useState(initialUserState);
 
     
-    let userId = id ?? "";
+    let userId = id ?? getUserIdFromStorage().toString();
+
+    console.log("userID = "+userId);
 
     useEffect(() => {
       let mounted = true;

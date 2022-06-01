@@ -63,19 +63,13 @@ function App() {
                 </ProtectedRoute>
               }/>
               <Route path="journals/" element={
-                <ProtectedRoute>
                   <AllJournals />
-                </ProtectedRoute>
               } />
               <Route path="journal/:id" element={
-                <ProtectedRoute>
                   <Journal />
-                </ProtectedRoute>
               }/>
               <Route path="journal-entry/:journalId/:id" element={
-                <ProtectedRoute>
                   <JournalEntry />
-                </ProtectedRoute>
               }/>
               <Route path="forums" element={<ForumsPage />}/>
             </Route>

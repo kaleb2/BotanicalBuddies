@@ -20,12 +20,16 @@ export const db = new Sequelize(connstring);
 
 interface UserModelAttrs extends Model {
   email: string,
+  name: string,
   password: string,  
   profilepic: string
 }
 
 export const User = db.define<UserModelAttrs>('users', {
   email: {
+    type: DataTypes.STRING,
+  },
+  name: {
     type: DataTypes.STRING,
   },
   password: {

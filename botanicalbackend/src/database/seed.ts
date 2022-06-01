@@ -5,8 +5,8 @@ import { db, Plant, User } from "./models";
 
 
 const userSeedData = [
-  { email: "bingo@bbb.com", password: "bibibi", profilepic: "url" },
-  { email: "bango@bbb.com", password: "bababa", profilepic: "url"},
+  { email: "bingo@bbb.com", name: "Bingo", password: "bibibi", profilepic: "url" },
+  { email: "bango@bbb.com", name: "Bango", password: "bababa", profilepic: "url"},
 ];
 
 const plantSeedData = [
@@ -31,7 +31,7 @@ const seed = async () => {
       console.log(err);
     });
   
-  await User.create({ email: "bongo@bbb.com", password: "bobobo", profilepic: "url" })
+  await User.create({ email: "bongo@bbb.com", name: "Bongo", password: "bobobo", profilepic: "url" })
     .then(() => {
       console.log("Created single user");
     })
