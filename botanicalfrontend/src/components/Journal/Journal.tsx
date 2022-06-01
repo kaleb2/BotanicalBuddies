@@ -22,6 +22,8 @@ export function Journal() {
     let param = useParams().id ?? 0;
     let id = +param;
 
+    const context = useAuth();
+
     console.log(id);
     let [listOfEntries, setListOfEntries] = useState<Array<JournalEntryType>>([]);
     const [journal, setJournal] = useState(initialJournalState);
@@ -53,7 +55,7 @@ export function Journal() {
 
             <JournalEntriesList id={id} listOfEntries={listOfEntries}/>
             
-            { savedUserId === journal.userId  ?
+            { savedUserId === journal.userId && context?.token ?
             <div className="accordion" id="accordionJournal">
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingJournal">

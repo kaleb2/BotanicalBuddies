@@ -65,7 +65,7 @@ export function JournalEntry() {
                 <div className="col-md-9">
                     <h1>{journalEntry.entryTitle}</h1>
                     <br />
-                    <p>Written by user ID {journalEntry.userId} on {journalEntry.dateCreated.toString()}</p>
+                    <p>{new Date(journalEntry.dateCreated).toLocaleString()}</p>
                     {journalEntry.content}
                 </div>
                 <div className="col-md-3">
@@ -73,9 +73,9 @@ export function JournalEntry() {
                     <img src={plant.image} alt={plant.name} className="img-fluid float-left"/>
                     <h4 className="w-64 ml-2">{plant.name}</h4>
                     <p>Species: {plant.species}</p>
-                    <p>Date acquired: {plant.dateAcquired.toString()}</p>
-                    <p>Last time repot: {plant.lastRepot.toString()}</p>
-                    <p>Last time fertilized: {plant.lastFertilize.toString()}</p>
+                    <p>Date acquired: {new Date(plant.dateAcquired).toLocaleString()}</p>
+                    <p>Last time repot: {new Date(plant.lastRepot).toLocaleString()}</p>
+                    <p>Last time fertilized: {new Date(plant.lastFertilize).toLocaleString()}</p>
                 </div>
             </div>
         </div>

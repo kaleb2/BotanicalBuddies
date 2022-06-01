@@ -9,7 +9,7 @@ export function JournalListing(props) {
             journalTitle,
             userId,
             plantId,
-            createdAt
+            dateCreated
         } = props;
     
 
@@ -20,7 +20,7 @@ export function JournalListing(props) {
       return <div className="journal">
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2">{journalTitle}</h2>
-        <p>Written by user ID {userId} on {createdAt}</p>
+        <p>{new Date(dateCreated).toLocaleString()}</p>
         <p>Plant: {plantId}</p>
         <Link to={"/journal/"+journalId}>View Journal</Link>
       </div>

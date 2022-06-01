@@ -40,7 +40,7 @@ export function PlantPage() {
 
     
       return (
-        <div className="plant-profile plant-profile-page">
+        <div className="container plant-profile plant-profile-page">
             <div className="w-64 flex flex-wrap">
                 <img src={plant.image} alt={plant.name} className="img-fluid float-left"/>
                 <h1 className="w-64 ml-2">{plant.name}</h1>

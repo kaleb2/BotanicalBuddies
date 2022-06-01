@@ -43,7 +43,7 @@ export function JournalEntryListing(props) {
       return <div className="col-12 journal-entry">
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2">{entryTitle}</h2>
-        <p>Plant: {plantName} | From Journal ID {journalId} | Written by user ID {userId} on {dateCreated}</p>
+        <p>{new Date(dateCreated).toLocaleString()}</p>
         <Link to={"/journal-entry/"+journalId+"/"+entryId}>Read More</Link>
       </div>
     </div>;
