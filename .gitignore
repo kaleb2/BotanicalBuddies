@@ -84,3 +84,5 @@ minio/.minio.sys/config/config.json
 minio/.minio.sys/config/iam/format.json
 minio/.minio.sys/buckets/botanicalbuddies/.usage-cache.bin
 minio/botanicalbuddies/palmy.jpg
+minio/.root_password
+minio/.root_user
