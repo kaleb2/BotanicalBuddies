@@ -72,3 +72,15 @@ obj/
 bin/
 
 # minio
+minio/.minio.sys/format.json
+minio/.minio.sys/buckets/.background-heal.json
+minio/.minio.sys/buckets/.bloomcycle.bin
+minio/.minio.sys/buckets/.tracker.bin
+minio/.minio.sys/buckets/.usage-cache.bin
+minio/.minio.sys/buckets/.usage.json
+minio/.minio.sys/buckets/.minio.sys/buckets/.usage-cache.bin/fs.json
+minio/.minio.sys/buckets/.minio.sys/buckets/botanicalbuddies/.usage-cache.bin/fs.json
+minio/.minio.sys/config/config.json
+minio/.minio.sys/config/iam/format.json
+minio/.minio.sys/buckets/botanicalbuddies/.usage-cache.bin
+minio/botanicalbuddies/palmy.jpg
