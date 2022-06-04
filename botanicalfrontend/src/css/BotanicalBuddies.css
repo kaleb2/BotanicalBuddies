@@ -53,3 +53,17 @@
 .link:hover {
     color: #5c003c
 }
+
+.btn.botbutton {
+    background-color: #f3cfc6;
+    color: black;
+    border: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn.botbutton:hover {
+    background-color: #5c003c;
+    color: white;
+    border: black;
+}

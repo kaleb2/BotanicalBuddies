@@ -69,13 +69,13 @@ export const ForumsPage = event =>
           {threadCreation ? (
             <>   
               <CreateThreadForm handleInputChange={handleInputChange} createThread={createThread} thread={thread} />
-              <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={closeThreadCreation}>
+              <button type="button" className="btn botbutton" onClick={closeThreadCreation}>
                 Cancel
               </button>
             </>
           ) : (
             <>     
-              <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={openThreadCreation}>
+              <button type="button" className="btn botbutton" onClick={openThreadCreation}>
                 Create a new thread
               </button>
             </>
@@ -148,7 +148,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
           className="form-control" />
       </div>
 
-      <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={createThread}>
+      <button type="button" className="btn botbutton" onClick={createThread}>
         Create a Thread
       </button>
     </form></>
