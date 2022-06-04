@@ -79,13 +79,13 @@ export function ThreadPage() {
                 {postCreation ? (
                     <>   
                     <CreatePostForm handleInputChange={handleInputChange} createPost={createPost} post={post} />
-                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={closePostCreation}>
+                    <button type="button" className="btn botbutton" onClick={closePostCreation}>
                         Cancel
                     </button>
                     </>
                 ) : (
                     <>     
-                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={openPostCreation}>
+                    <button type="button" className="btn botbutton" onClick={openPostCreation}>
                         Create a new post
                     </button>
                     </>
@@ -147,7 +147,7 @@ export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
             className="form-control" />
         </div>
   
-        <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={createPost}>
+        <button type="button" className="btn botbutton" onClick={createPost}>
           Create a Post
         </button>
       </form></>

@@ -36,11 +36,11 @@ const initialUserState = {
     }
   
     return (
-      <div>
+      <div className="container">
         {submitted ? (
           <>     {/* If we've already submitted, show this piece*/}
             <h4>Account created successfully!</h4>
-            <Link to="/login">Sign in</Link>
+            <Link to="/login" className="link">Sign in</Link>
           </>
         ) : (
           <>   {/* If we've NOT already submitted, show this piece*/}
@@ -84,12 +84,12 @@ export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
             className="form-control" />
         </div>
   
-        <button type="button" className="btn btn-primary" onClick={saveUser}>
+        <button type="button" className="btn botbutton" onClick={saveUser}>
           Create an Account
         </button>
         <div>
           <text>Already have an account? </text>
-          <Link to="/login">Sign in</Link>
+          <Link to="/login" className="link">Sign in</Link>
         </div>
       </form></>
     )
