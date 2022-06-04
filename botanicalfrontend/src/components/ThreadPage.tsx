@@ -6,6 +6,8 @@ import '../css/BotanicalBuddies.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import { useParams } from "react-router-dom";
+import { User as UserType } from "../types/StateTypes";
+import { getUsers } from "../services/UserService";
 
 const initialThreadState = {
     content: "",
@@ -20,6 +22,7 @@ export function ThreadPage() {
     const [postCreation, setPostCreation] = useState(false);
     const [post, setPost] = useState(initialThreadState);
     const [refreshPosts, setRefreshPosts] = useState(false);
+    const [users, setUsers] = useState<Array<UserType>>([]);
 
     useEffect(() => {
         let init = async () => {
@@ -30,6 +33,8 @@ export function ThreadPage() {
             setListofPosts(posts);
             let thread = await getThread(threadId);
             setThread(thread);
+            setUsers(await getUsers());
+            console.log(users);
             setRefreshPosts(false);
           } catch (err) {
             console.log(err);
@@ -60,32 +65,57 @@ export function ThreadPage() {
         setRefreshPosts(true);
     }
     
+  const PostCard = (props) =>
+  {
+    let {
+      userId,
+      threadId,
+      postId,
+      content,
+      tag,
+      dateCreated,
+      userName
+  } = props;
+
+  let date = new Date(dateCreated);
+  //@ts-ignore
+  let postUser = users.find((us) => us.id === userId);
+
+  return(
+      <div>
+          <text style={{margin: "20px"}}>{content}</text><br/>
+          <text style={{margin: "20px", color: "green"}}>{postUser?.name} | {date.toLocaleString()} | #{tag}</text>
+          <hr/>
+      </div>);
+  }
+
     let dateString = ""+thread?.dateCreated.toString();
     let date = new Date(dateString);
-
+    // I don't understand why this is causing an issue.
+    //@ts-ignore
+    let threadUser = users.find((us) => us.id === thread?.userId);
     return (
         <div className="threadContainer">
             <div>
                 <h2>{thread?.title}</h2>
                 <p style={{margin: "5px"}}>{thread?.body}</p>
-                <text style={{margin: "5px", color: "green"}}>{date.toLocaleString()} | #{thread?.tag}</text>
+                <text style={{margin: "5px", color: "green"}}>{threadUser?.name} | {date.toLocaleString()} | #{thread?.tag}</text>
                 <hr/>
                 <br/>
                 {posts.length > 0 ? posts.map(p => <PostCard
-                    key={p.postId}
-                    {...p} />):<p>No posts in this thread yet... Create one won't you?</p>}
+                    {...p}/>):<p>No posts in this thread yet... Create one won't you?</p>}
             </div>
             <div>
                 {postCreation ? (
                     <>   
                     <CreatePostForm handleInputChange={handleInputChange} createPost={createPost} post={post} />
-                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={closePostCreation}>
+                    <button type="button" className="btn botbutton" onClick={closePostCreation}>
                         Cancel
                     </button>
                     </>
                 ) : (
                     <>     
-                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={openPostCreation}>
+                    <button type="button" className="btn botbutton" onClick={openPostCreation}>
                         Create a new post
                     </button>
                     </>
@@ -94,27 +124,6 @@ export function ThreadPage() {
             </div>
         </div>
     )
-}
-
-function PostCard(props) {
-    let {
-        userId,
-        threadId,
-        postId,
-        content,
-        tag,
-        dateCreated
-    } = props;
-
-    let date = new Date(dateCreated);
-
-    return(
-        <div>
-            <text style={{margin: "20px"}}>{content}</text><br/>
-            <text style={{margin: "20px", color: "green"}}>{date.toLocaleString()} | #{tag}</text>
-            <hr/>
-        </div>);
-
 }
 
 export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
@@ -147,7 +156,7 @@ export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
             className="form-control" />
         </div>
   
-        <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={createPost}>
+        <button type="button" className="btn botbutton" onClick={createPost}>
           Create a Post
         </button>
       </form></>
