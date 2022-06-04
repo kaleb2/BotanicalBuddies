@@ -45,3 +45,11 @@
     width: 100%;
     display: block;
 }
+
+.link {
+    color: #414f55;
+  }
+
+.link:hover {
+    color: #5c003c
+}

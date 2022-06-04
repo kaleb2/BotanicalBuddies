@@ -31,7 +31,7 @@ export function PlantProfile(props) {
       </div>
       <div className="w-64 flex flex-wrap justify-center">
         <h3 className="w-64 ml-2 text-center">{name}</h3>
-        <Link to={'/plants/' + id}>View plant</Link>
+        <Link to={'/plants/' + id} className="link">View plant</Link>
       </div>
     </div>;
 

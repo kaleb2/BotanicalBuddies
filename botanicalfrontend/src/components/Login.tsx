@@ -71,13 +71,13 @@ export const Login = () => {
       </div>
 
       <div>
-        <button type="button" style={{backgroundColor: "green", border: "black"}} className="btn btn-primary" onClick={onSubmitLogin}>
+        <button type="button" style={{backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={onSubmitLogin}>
           Sign In
         </button>
       </div>
       <div>
         <text>Don't have an account? </text>
-        <Link to="/create-user">Create an account</Link>
+        <Link to="/create-user" className="link">Create an account</Link>
       </div>
     </div>
   );
