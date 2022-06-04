@@ -71,7 +71,7 @@ export const Login = () => {
       </div>
 
       <div>
-        <button type="button" className="btn btn-primary" onClick={onSubmitLogin}>
+        <button type="button" style={{backgroundColor: "green", border: "black"}} className="btn btn-primary" onClick={onSubmitLogin}>
           Sign In
         </button>
       </div>

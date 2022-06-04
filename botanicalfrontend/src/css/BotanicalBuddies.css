@@ -27,6 +27,13 @@
     padding: 20px
 }
 
+.threadContainer {
+    text-align: left;
+    width: 100%;
+    display: block;
+    padding: 20px
+}
+
 .plant-profile-page img {
     max-width: 400px;
     float: left;
