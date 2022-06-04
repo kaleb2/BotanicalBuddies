@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Journal } from "../../services/JournalService";
 
 const initialJournalState = {

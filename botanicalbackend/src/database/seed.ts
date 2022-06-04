@@ -1,6 +1,4 @@
 import "dotenv/config";
-import { Sequelize, DataTypes, DATE } from "sequelize";
-import { getJSDocDeprecatedTag } from "typescript";
 import { db, Plant, User } from "./models";
 
 
@@ -10,8 +8,8 @@ const userSeedData = [
 ];
 
 const plantSeedData = [
-  { name: "fern", userId: 1, species: "fern", image: "http://localhost:8000/botanicalbuddies/fern.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
-  { name: "monstera", userId: 2, species: "monstera", image: "http://localhost:8000/botanicalbuddies/monstera.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "fern", userId: 1, species: "fern", image: "http://"+process.env.MINIO_HOST+":"+process.env.MINIO_PORT+"/botanicalbuddies/fern.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
+  { name: "monstera", userId: 2, species: "monstera", image: "http://"+process.env.MINIO_HOST+":"+process.env.MINIO_PORT+"/botanicalbuddies/monstera.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() },
 ];
 
 const seed = async () => {

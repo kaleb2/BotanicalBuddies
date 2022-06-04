@@ -29,17 +29,7 @@ export default function setupRoutes(app)
     router.get("/plants/:userId", getPlants);
 
     router.get("/plant/:id", getPlant);
-
-    router.post("/uploadFile", Multer({storage: Multer.memoryStorage()}).single("file"), UploadFileToMinio);
-    
-    /*router.get("/journals", getJournals);
-
-    router.get("/journals/:userId", getJournalsForUser);
-
-    router.get("/journal/:journalId", getJournal);
-
-    router.post("/journal", createJournal);*/
-    
+  
     router.post("/users", 
       checkDuplicateEmail, 
       passport.authenticate('signup', { session: false} ),
@@ -72,28 +62,13 @@ export default function setupRoutes(app)
         )(req, res, next);
       },
     );
-
-    router.post("/authTest", authenticateToken, (req, res) => {
-      res.send("GOT THRU AUTH!!!");
-  
-    });
     
-
     router.get("/welcome", async (req, res) => {
       console.log("you are being welcomed.");
       return res.status(200).json({ message:"Welcome to Botanical Buddies!"});
     });
 
     app.use("/api/v1", router);
-    
-    // app.get("/", async (req, res) => {
-    //   return getStaticFile(res, "index.html");
-    // });
-
-    // app.get("/welcome", async (req, res) => {
-    //   console.log("you are being welcomed.");
-    //   return res.status(200).json({ message:"Welcome to Botanical Buddies!"});
-    // });
 
     app.use((req, res, next) => {
         return res.status(404).json({

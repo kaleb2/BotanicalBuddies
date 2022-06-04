@@ -1,14 +1,11 @@
-import { CreateJournalEntry } from "./CreateJournalEntry";
 import { Journal as JournalType} from "../../types/StateTypes";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 export function JournalListing(props) {
         let {
             journalId,
             journalTitle,
-            userId,
-            plantId,
             dateCreated
         } = props;
     

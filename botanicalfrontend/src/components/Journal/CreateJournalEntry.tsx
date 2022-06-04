@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getUserIdFromStorage } from "../../services/AuthService";
 import { Journal } from "../../services/JournalService";
 

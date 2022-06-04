@@ -1,37 +1,13 @@
-/*import { Link } from "react-router-dom";
-import { CreateJournalEntry } from "./CreateJournalEntry";
 
-export function Journals() {
-
-    return (
-        <div className="journal">
-            <p>A list of journal entries</p>
-            <Link to="/journal-entry">Entry #1</Link>
-
-            <CreateJournalEntry/>
-        </div>
-    );
-};*/
-
-import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { User as UserType } from "../../types/StateTypes";
-
-const initialUserState = {
-    userId: 0
-}
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export function JournalEntryListing(props) {
         let {
             entryId,
             journalId,
             entryTitle,
-            userId,
-            plantName,
-            plantId,
-            content,
             dateCreated
         } = props;
     
@@ -77,3 +53,5 @@ export function JournalEntriesList({
         </div>
     );
 };
+
+

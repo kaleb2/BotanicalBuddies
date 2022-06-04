@@ -8,17 +8,14 @@ import setupRoutes from "./src/setupRoutes";
 const app = express();
 setupRoutes(app);
 
-describe("Get Routes", () => {
-  it(`responds with "welcome" text and 200 status code`, async () => {
+describe("User Routes", () => {
+  it(`responds with 200 status code when getting`, async () => {
     let res = await request(app)
-      .get("/api/v1/welcome")
+      .get("/api/v1/users")
       .expect(200);
-
-    expect(res.text).toContain('Welcome');
+    
   });
-});
 
-describe("Post Routes", () => {
   const newUser = {
     email: "test" + Math.floor(Math.random() * 9) + "@jest.com",
     password: "password123"
@@ -50,5 +47,21 @@ describe("Post Routes", () => {
 
     //arbitrarily selected over 30 for token length
     expect(res.text.length).toBeGreaterThan(30);
+  });
+});
+
+describe("Plant Routes", () => {
+  it(`responds with 200 status code when getting first user's plants`, async () => {
+    let res = await request(app)
+      .get("/api/v1/plants/1")
+      .expect(200);
+  });
+});
+
+describe("Plant Routes", () => {
+  it(`responds with 200 status code when getting first user's plants`, async () => {
+    let res = await request(app)
+      .get("/api/v1/plants/1")
+      .expect(200);
   });
 });

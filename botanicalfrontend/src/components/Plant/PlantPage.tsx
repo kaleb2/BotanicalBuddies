@@ -45,9 +45,9 @@ export function PlantPage() {
                 <img src={plant.image} alt={plant.name} className="img-fluid float-left"/>
                 <h1 className="w-64 ml-2">{plant.name}</h1>
                 <p>Species: {plant.species}</p>
-                <p>Date acquired: {plant.dateAcquired.toString()}</p>
-                <p>Last time repot: {plant.lastRepot.toString()}</p>
-                <p>Last time fertilized: {plant.lastFertilize.toString()}</p>
+                <p>Date acquired: {new Date(plant.dateAcquired).toLocaleString()}</p>
+                <p>Last time repot: {new Date(plant.lastRepot).toLocaleString()}</p>
+                <p>Last time fertilized: {new Date(plant.lastFertilize).toLocaleString()}</p>
             </div>
         </div> 
       );

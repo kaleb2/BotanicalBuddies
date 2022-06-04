@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
-import getInitialState from "../../initialState";
 import { JournalEntriesList } from "./JournalEntriesList";
-import { getAllJournalEntries, getJournalEntries, getJournal } from "../../services/JournalService";
+import { getAllJournalEntries, getJournal } from "../../services/JournalService";
 import { getUserIdFromStorage, useAuth } from "../../services/AuthService";
-import { journalClient } from "../../services/HttpService";
 
 const initialJournalState = {
   userId: 0,

@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { CreateJournalEntry } from "./CreateJournalEntry";
-import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
-import getInitialState from "../../initialState";
-import { JournalEntriesList } from "./JournalEntriesList";
-import { getAllJournalEntries, getJournalEntry } from "../../services/JournalService";
-import { PlantPage } from "../Plant/PlantPage";
+import { useParams } from "react-router-dom";
+import { getJournalEntry } from "../../services/JournalService";
 import { getPlant } from "../../services/PlantService";
 
 const initialEntryState = {
