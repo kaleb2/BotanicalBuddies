@@ -20,7 +20,8 @@ export function ConfigurePassportStrategies(app) {
       async (email, password, done) => {
         console.log("In pp middleware");
         try {
-          const user = await User.create({ email, password });
+          let name = email.substr(0, email.indexOf('@'));
+          const user = await User.create({ email, name, password });
           console.log("Created successfully");
           return done(null, user);
         } catch (error) {
