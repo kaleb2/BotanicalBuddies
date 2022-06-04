@@ -71,7 +71,11 @@ function App() {
               <Route path="journal-entry/:journalId/:id" element={
                   <JournalEntry />
               }/>
-              <Route path="forums" element={<ForumsPage />}/>
+              <Route path="forums" element={
+                <ProtectedRoute>
+                  <ForumsPage />
+                </ProtectedRoute>
+              }/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

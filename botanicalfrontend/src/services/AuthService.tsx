@@ -57,7 +57,7 @@ export const AuthProvider = ({children}) => {
       console.log("After saving token");
       await updateAxios(token);
       console.log("After updating axios");
-      const origin = getPathname(location) || "/user-profile";
+      const origin = getPathname(location) || `/user-profile/${id}`;
       navigate(origin);
       return true;
     } catch (err) {
