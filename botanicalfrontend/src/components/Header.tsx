@@ -19,16 +19,16 @@ export const Header = () => {
                 <div className="container">
                     <div><h4>Botanical Buddies<sup>TM</sup></h4></div>
                     &nbsp; | &nbsp;
-                    <Link to={"/user-profile/"+userId}>My Profile</Link>
+                    <Link to={"/user-profile/"+userId} className="link">My Profile</Link>
                     &nbsp; | &nbsp;
-                    <Link to="/journals">Journals</Link>
+                    <Link to="/journals" className="link">Journals</Link>
                     &nbsp; | &nbsp;
-                    <Link to="/forums">Forums</Link>
+                    <Link to="/forums" className="link">Forums</Link>
                     &nbsp; | &nbsp;
                     { context?.token != null  ?
-                        <Link className="link-primary" to="/login" onClick={handleLogout}>Logout</Link>
+                        <Link className="link" to="/login" onClick={handleLogout}>Logout</Link>
                         :
-                        <Link className="link-primary" to="/login">Login</Link>
+                        <Link className="link" to="/login">Login</Link>
                     }
                     <br />
                 </div>

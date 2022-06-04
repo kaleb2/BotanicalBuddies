@@ -60,11 +60,16 @@ export function ThreadPage() {
         setRefreshPosts(true);
     }
     
+    let dateString = ""+thread?.dateCreated.toString();
+    let date = new Date(dateString);
+
     return (
-        <div className="profile">
+        <div className="threadContainer">
             <div>
-                <h1>{thread?.title}</h1>
-                <p>{thread?.body}</p>
+                <h2>{thread?.title}</h2>
+                <p style={{margin: "5px"}}>{thread?.body}</p>
+                <text style={{margin: "5px", color: "green"}}>{date.toLocaleString()} | #{thread?.tag}</text>
+                <hr/>
                 <br/>
                 {posts.length > 0 ? posts.map(p => <PostCard
                     key={p.postId}
@@ -74,13 +79,13 @@ export function ThreadPage() {
                 {postCreation ? (
                     <>   
                     <CreatePostForm handleInputChange={handleInputChange} createPost={createPost} post={post} />
-                    <button type="button" className="btn btn-primary" onClick={closePostCreation}>
+                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={closePostCreation}>
                         Cancel
                     </button>
                     </>
                 ) : (
                     <>     
-                    <button type="button" className="btn btn-primary" onClick={openPostCreation}>
+                    <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={openPostCreation}>
                         Create a new post
                     </button>
                     </>
@@ -101,11 +106,13 @@ function PostCard(props) {
         dateCreated
     } = props;
 
+    let date = new Date(dateCreated);
+
     return(
         <div>
-            <text>{content}</text><br/>
-            <text>{dateCreated}</text><br/>
-            <text>{tag}</text>
+            <text style={{margin: "20px"}}>{content}</text><br/>
+            <text style={{margin: "20px", color: "green"}}>{date.toLocaleString()} | #{tag}</text>
+            <hr/>
         </div>);
 
 }
@@ -117,6 +124,7 @@ export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
         <div className="mb-3">
           <label htmlFor="content" className="form-label">Content</label>
           <input
+            style={{margin: "5px"}}
             type="text"
             id="content"
             required
@@ -129,6 +137,7 @@ export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
         <div className="mb-3">
           <label htmlFor="tag" className="form-label">Tag</label>
           <input
+            style={{margin: "5px"}}
             type="text"
             id="tag"
             required
@@ -138,7 +147,7 @@ export const CreatePostForm = ({ handleInputChange, createPost, post }) => {
             className="form-control" />
         </div>
   
-        <button type="button" className="btn btn-primary" onClick={createPost}>
+        <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={createPost}>
           Create a Post
         </button>
       </form></>

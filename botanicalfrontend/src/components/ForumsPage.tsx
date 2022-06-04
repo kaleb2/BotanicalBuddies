@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { getThreads, postThread } from '../services/ForumService';
 import { Thread } from '../types/Thread';
 import { Link, useNavigate } from "react-router-dom";
-import { create } from "domain";
+import '../css/BotanicalBuddies.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import { ListGroupItem } from "react-bootstrap";
 
 export type Threads = {
     lsitOfThreads: Array<Thread>
@@ -54,25 +57,25 @@ export const ForumsPage = event =>
 
     console.log(threads);
     return (
-        <div className="row">
-          <div>
+        <div className="threads container">
+          <div className="threadList">
             <h1>Threads</h1>
-            <br/>
-            {threads.length > 0 ? threads.map(t => <ThreadLink
-                key={t.threadId}
-                {...t} />): <p>No threads yet... Create one won't you?</p>}
+            <hr/>
+              {threads.length > 0 ? threads.map(t => <ThreadLink
+                  key={t.threadId}
+                  {...t} />): <p>No threads yet... Create one won't you?</p>}
           </div>
           <div>
           {threadCreation ? (
             <>   
               <CreateThreadForm handleInputChange={handleInputChange} createThread={createThread} thread={thread} />
-              <button type="button" className="btn btn-primary" onClick={closeThreadCreation}>
+              <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={closeThreadCreation}>
                 Cancel
               </button>
             </>
           ) : (
             <>     
-              <button type="button" className="btn btn-primary" onClick={openThreadCreation}>
+              <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={openThreadCreation}>
                 Create a new thread
               </button>
             </>
@@ -96,8 +99,8 @@ function ThreadLink(props) {
     let path = `/thread/${props.threadId}`;
 
     return(
-        <div>
-            <Link to={path}>{props.title}</Link>
+        <div style={{padding: "2px"}}>
+            <Link to={path} className="link">{props.title}</Link>
         </div>);
 
 }
@@ -109,6 +112,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
       <div className="mb-3">
         <label htmlFor="title" className="form-label">Title</label>
         <input
+          style={{margin: "5px"}}
           type="text"
           id="title"
           required
@@ -121,6 +125,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
       <div className="mb-3">
         <label htmlFor="body" className="form-label">Body</label>
         <input
+          style={{margin: "5px"}}
           type="text"
           id="body"
           required
@@ -133,6 +138,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
       <div className="mb-3">
         <label htmlFor="tag" className="form-label">Tag</label>
         <input
+          style={{margin: "5px"}}
           type="text"
           id="tag"
           required
@@ -142,7 +148,7 @@ export const CreateThreadForm = ({ handleInputChange, createThread, thread }) =>
           className="form-control" />
       </div>
 
-      <button type="button" className="btn btn-primary" onClick={createThread}>
+      <button type="button" style={{marginTop: "10px", backgroundColor: "#f3cfc6", color: "black", border: "black"}} className="btn btn-primary" onClick={createThread}>
         Create a Thread
       </button>
     </form></>
