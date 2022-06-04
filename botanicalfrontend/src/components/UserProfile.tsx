@@ -6,11 +6,11 @@ import getInitialState from "../initialState";
 import '../css/BotanicalBuddies.css'; 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { ProfileJournalsList } from "./Journal/JournalListing";
+import { JournalsList } from "./Journal/JournalListing";
 import { CreateJournal } from "./Journal/CreateJournal";
 import { Journal as JournalType} from "../types/StateTypes";
-import { getJournals, getJournalsForUser } from "../services/JournalService";
-import { getUser, User } from "../services/UserService";
+import { getJournalsForUser } from "../services/JournalService";
+import { getUser } from "../services/UserService";
 import { getPlants } from "../services/PlantService";
 import { useParams } from "react-router-dom";
 import { getUserIdFromStorage } from "../services/AuthService";
@@ -92,7 +92,7 @@ export const UserProfile = event => {
 
             <div className="journalSection">
               <h2>My Journals:</h2>
-              <ProfileJournalsList listOfJournals={listOfJournals} userId={userId}/>
+              <JournalsList listOfJournals={listOfJournals}/>
 
               <div className="accordion" id="accordionJournal">
                 <div className="accordion-item">

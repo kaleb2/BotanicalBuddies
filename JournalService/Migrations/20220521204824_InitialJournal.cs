@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JournalService.Migrations
 {
-    public partial class InitialJournalEntries : Migration
+    public partial class InitialJournal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

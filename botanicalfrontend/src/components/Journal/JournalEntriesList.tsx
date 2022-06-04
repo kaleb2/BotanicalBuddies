@@ -40,15 +40,14 @@ export function JournalEntriesList({
         <div className="container">
             <div className="row">
                 <br/>
-                {listOfEntries.map(
+                {listOfEntries.length > 0 ? listOfEntries.map(
                     entry => {
-                        if (entry.journalId === id) {
                             return <JournalEntryListing
                             key={entry.entryTitle}
                             {...entry} />
-                        }
+                        
                     }
-                )}
+                ): <p>No entries yet...</p>}
             </div>
         </div>
     );

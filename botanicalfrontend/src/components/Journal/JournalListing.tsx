@@ -40,34 +40,13 @@ export function JournalsList({
     return (
             <div className="row">
                 <br/>
-                {listOfJournals.map(
+                {listOfJournals.length > 0 ? listOfJournals.map(
                     journal => 
                     {
                         return <JournalListing
                         {...journal} />
                     }
-                )}
+                ): <p>No journals yet...</p>}
             </div>
-    );
-};
-
-export function ProfileJournalsList({
-    listOfJournals,
-    userId
-  }: ProfileJournalsListProps) {
-    var userIdNum: number = +userId;
-    return (
-        <div className="row">
-            <br/>
-            {listOfJournals.map(
-                journal => 
-                {
-                    if (journal.userId === userIdNum) {
-                        return <div className="col-3 journal"><JournalListing
-                    {...journal} /></div>
-                    }
-                }
-            )}
-        </div>
     );
 };

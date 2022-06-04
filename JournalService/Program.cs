@@ -53,4 +53,7 @@ app.MapGet("/journalentry/{entryid}", async (int entryId, JournalDbContext journ
 app.MapGet("/journalentry/", async (JournalDbContext journalEntriesDb) =>
     await journalEntriesDb.JournalEntries.ToListAsync());
 
+app.MapGet("/journalentries/{journalId}", async (int journalId, JournalDbContext journalEntriesDb) =>
+    await journalEntriesDb.JournalEntries.Where(p=> p.JournalId == journalId).ToListAsync());
+
 app.Run("http://0.0.0.0:9200");

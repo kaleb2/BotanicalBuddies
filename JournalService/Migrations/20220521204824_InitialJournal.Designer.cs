@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace JournalService.Migrations
 {
     [DbContext(typeof(JournalDbContext))]
-    [Migration("20220521204824_InitialJournalEntries")]
-    partial class InitialJournalEntries
+    [Migration("20220521204824_InitialJournal")]
+    partial class InitialJournal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

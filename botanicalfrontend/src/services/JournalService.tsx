@@ -32,7 +32,7 @@ export async function getAllJournalEntries() {
 }
 
 export async function getJournalEntries(journalId) {
-  let res = await journalClient.get("/journal/"+journalId+"/");
+  let res = await journalClient.get("/journalentries/"+journalId+"/");
 
   let data = await res.data;
   console.log(data);

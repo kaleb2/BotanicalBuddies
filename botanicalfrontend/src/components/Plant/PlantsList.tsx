@@ -44,12 +44,12 @@ export function PlantsList({
     return (
         <div className="row">
             <br/>
-            {listOfPlants.map(
+            {listOfPlants.length > 0 ? listOfPlants.map(
                 profile =>
                 <PlantProfile
                     key={profile.name}
                     {...profile} />
-            )}
+            ): <p>No plants yet...</p>}
         </div>
     );
 };

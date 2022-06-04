@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
 import { JournalEntriesList } from "./JournalEntriesList";
-import { getAllJournalEntries, getJournal } from "../../services/JournalService";
+import { getAllJournalEntries, getJournal, getJournalEntries } from "../../services/JournalService";
 import { getUserIdFromStorage, useAuth } from "../../services/AuthService";
 
 const initialJournalState = {
@@ -28,7 +28,7 @@ export function Journal() {
 
     useEffect(() => {
       let mounted = true;
-      getAllJournalEntries().then(items => {
+      getJournalEntries(id).then(items => {
           if (mounted) {
               setListOfEntries(items);
               getJournal(id).then(item => {

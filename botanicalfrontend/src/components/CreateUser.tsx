@@ -58,39 +58,42 @@ const initialUserState = {
 
 export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
     return (
-      <><h2>Create New Account</h2>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
-          <input
-            type="text"
-            id="email"
-            required
-            value={user.email}
-            onChange={handleInputChange}
-            name="email"
-            className="form-control" />
-        </div>
-  
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input
-            type="password"
-            id="password"
-            required
-            value={user.password}
-            onChange={handleInputChange}
-            name="password"
-            className="form-control" />
-        </div>
-  
-        <button type="button" className="btn btn-primary" onClick={saveUser}>
-          Create an Account
-        </button>
-        <div>
-          <text>Already have an account? </text>
-          <Link to="/login">Sign in</Link>
-        </div>
-      </form></>
+      <>
+      <div className="container">
+        <h2>Create New Account</h2>
+        <form>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="text"
+              id="email"
+              required
+              value={user.email}
+              onChange={handleInputChange}
+              name="email"
+              className="form-control" />
+          </div>
+    
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              required
+              value={user.password}
+              onChange={handleInputChange}
+              name="password"
+              className="form-control" />
+          </div>
+    
+          <button type="button" className="btn btn-primary" onClick={saveUser}>
+            Create an Account
+          </button>
+          <div>
+            <text>Already have an account? </text>
+            <Link to="/login">Sign in</Link>
+          </div>
+        </form>
+      </div></>
     )
   }
