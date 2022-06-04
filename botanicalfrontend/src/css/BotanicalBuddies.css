@@ -20,6 +20,13 @@
     margin-bottom:100px;
 }
 
+.threadList {
+    text-align: left;
+    width: 100%;
+    display: block;
+    padding: 20px
+}
+
 .plant-profile-page img {
     max-width: 400px;
     float: left;
