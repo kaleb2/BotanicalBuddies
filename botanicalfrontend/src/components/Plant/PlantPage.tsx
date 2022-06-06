@@ -25,13 +25,10 @@ export function PlantPage() {
     let [plant, setPlant] = useState(initialPlantState);
 
     useEffect(() => {
-        console.log("get plant/" + id);
         let mounted = true;
         getPlant(id).then(item => {
-            console.log(item);
             if (mounted) {
                 setPlant(item);
-                console.log(plant);
             }
         });
         return;

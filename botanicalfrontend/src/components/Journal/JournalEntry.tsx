@@ -34,20 +34,12 @@ export function JournalEntry() {
     let [plant, setPlant] = useState(initialPlantState);
 
     useEffect(() => {
-      console.log("journalID = " + journalId);
-      console.log("get journal /" + id);
       let mounted = true;
       getJournalEntry(journalId, id).then(item => {
-          console.log("journal=");
-          console.log(item);
           if (mounted) {
               setJournalEntry(item);
               getPlant(item.plantId).then(item => {
-                console.log("Plant = ");
-                console.log(item);
                 setPlant(item);
-                console.log("This plant = ");
-                console.log(plant);
             });
           }
       });

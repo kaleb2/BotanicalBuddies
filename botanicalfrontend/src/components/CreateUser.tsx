@@ -38,14 +38,13 @@ const initialUserState = {
     return (
       <div className="container">
         {submitted ? (
-          <>     {/* If we've already submitted, show this piece*/}
+          <>     
             <h4>Account created successfully!</h4>
             <Link to="/login" className="link">Sign in</Link>
           </>
         ) : (
-          <>   {/* If we've NOT already submitted, show this piece*/}
-            {submitFailed && //This will only render if our prior submit failed
-              //we could add a div here and style this separately
+          <>   
+            {submitFailed && 
               <h2>Email already exists!</h2>
             }
             <CreateUserForm handleInputChange={handleInputChange} saveUser={saveUser} user={user} />

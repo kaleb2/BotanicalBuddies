@@ -11,7 +11,6 @@ const initialJournalState = {
     let {
       userId
     } = props;
-    console.log("userid: " + props.userId);
 
 
     const [journal, setJournal] = useState(initialJournalState);
@@ -24,7 +23,7 @@ const initialJournalState = {
     };
 
     const saveJournal = () => {
-      journal.userId =  props.userId;
+      journal.userId = props.userId;
       console.log(journal);
         Journal.createNewJournal(journal)
           .then(res => {
@@ -46,16 +45,15 @@ const initialJournalState = {
     return (
         <div>
             {submitted ? (
-              <>     {/* If we've already submitted, show this piece*/}
+              <>     
                 <h4>You submitted successfully!</h4>
                 <button type="button" className="btn btn-secondary" onClick={resetJournal}>
                   Reset
                 </button>
               </>
             ) : (
-              <>   {/* If we've NOT already submitted, show this piece*/}
-                {submitFailed && //This will only render if our prior submit failed
-                  //we could add a div here and style this separately
+              <>   
+                {submitFailed && 
                   <h2>There was an issue</h2>
                 }
                 <CreateJournalForm handleInputChange={handleInputChange} saveJournal={saveJournal} journal={journal}  />

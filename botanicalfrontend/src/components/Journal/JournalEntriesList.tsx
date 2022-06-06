@@ -20,7 +20,7 @@ export function JournalEntryListing(props) {
       <div className="w-64 flex flex-wrap justify-center">
         <h2 className="w-64 ml-2">{entryTitle}</h2>
         <p>{new Date(dateCreated).toLocaleString()}</p>
-        <Link to={"/journal-entry/"+journalId+"/"+entryId}>Read More</Link>
+        <Link className="link" to={"/journal-entry/"+journalId+"/"+entryId}>Read More</Link>
       </div>
     </div>;
 

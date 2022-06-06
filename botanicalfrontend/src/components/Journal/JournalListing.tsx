@@ -16,7 +16,7 @@ export function JournalListing(props) {
 
       return <div className="journal">
       <div className="w-64 flex flex-wrap justify-center">
-        <h2 className="w-64 ml-2">{journalTitle}</h2>
+        <h3 className="w-64 ml-2">{journalTitle}</h3>
         <p>{new Date(dateCreated).toLocaleString()}</p>
         <Link className="link" to={"/journal/"+journalId}>View Journal</Link>
       </div>

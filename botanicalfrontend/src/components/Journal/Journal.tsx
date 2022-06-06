@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { CreateJournalEntry } from "./CreateJournalEntry";
 import { JournalEntry as JournalEntryType} from "../../types/StateTypes";
 import { JournalEntriesList } from "./JournalEntriesList";
-import { getAllJournalEntries, getJournal, getJournalEntries } from "../../services/JournalService";
+import { getJournal, getJournalEntries } from "../../services/JournalService";
 import { getUserIdFromStorage, useAuth } from "../../services/AuthService";
 
 const initialJournalState = {
@@ -15,7 +15,6 @@ const initialJournalState = {
 export function Journal() {
 
     const savedUserId = getUserIdFromStorage();
-    console.log("userID = "+savedUserId);
 
     let param = useParams().id ?? 0;
     let id = +param;
@@ -32,12 +31,8 @@ export function Journal() {
           if (mounted) {
               setListOfEntries(items);
               getJournal(id).then(item => {
-                console.log(item);
                 if (mounted) {
                     setJournal(item);
-                    console.log(journal);
-                    console.log(journal.userId  + "===" + savedUserId)
-                    console.log(savedUserId === journal.userId);
                 }
             });
           }

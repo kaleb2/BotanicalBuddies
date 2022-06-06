@@ -30,8 +30,7 @@ const initialJournalEntryState = {
     const saveJournalEntry = () => {
       journalEntry.journalId = journalId;
       journalEntry.userId = getUserIdFromStorage();
-      console.log("journalEntry.userId = " + journalEntry.userId);
-      console.log("journalEntry.journalId = " + journalEntry.journalId);
+
         Journal.createEntry(journalEntry)
           .then(res => {
             setSubmitted(true);
@@ -52,16 +51,15 @@ const initialJournalEntryState = {
     return (
         <div>
             {submitted ? (
-              <>     {/* If we've already submitted, show this piece*/}
+              <>     
                 <h4>You submitted successfully!</h4>
                 <button type="button" className="btn btn-secondary" onClick={resetJournalEntry}>
                   Reset
                 </button>
               </>
             ) : (
-              <>   {/* If we've NOT already submitted, show this piece*/}
-                {submitFailed && //This will only render if our prior submit failed
-                  //we could add a div here and style this separately
+              <>   
+                {submitFailed && 
                   <h2>There was an issue</h2>
                 }
                 <CreateJournalEntryForm handleInputChange={handleInputChange} saveJournalEntry={saveJournalEntry} journalEntry={journalEntry}  />
