@@ -5,6 +5,9 @@ public class JournalEntityTypeConfiguration: IEntityTypeConfiguration<Journal>
 {
     public void Configure(EntityTypeBuilder<Journal> builder)
     {
+        builder.Property(t => t.JournalId).ValueGeneratedOnAdd();
+        builder.Property(t => t.DateCreated).HasDefaultValueSql("NOW()");
+
         Console.WriteLine("JournalEntityTypeConfiguration.Configure Start");
         builder.HasKey(p => p.JournalId)
             .HasName("PK_JournalId");
