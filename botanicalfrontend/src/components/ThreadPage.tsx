@@ -95,7 +95,7 @@ export function ThreadPage() {
     //@ts-ignore
     let threadUser = users.find((us) => us.id === thread?.userId);
     return (
-        <div className="threadContainer">
+        <div className="container threadContainer">
             <div>
                 <h2>{thread?.title}</h2>
                 <p style={{margin: "5px"}}>{thread?.body}</p>

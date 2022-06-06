@@ -13,14 +13,14 @@ public class JournalEntityTypeConfiguration: IEntityTypeConfiguration<Journal>
             .HasName("PK_JournalId");
         Console.WriteLine("JournalId added as key.");
 
-        builder.HasData(new Journal{JournalId=1, JournalTitle="User #1's Plant Journal", UserId=1, PlantId=1, DateCreated=DateTimeOffset.Now });
-        Console.WriteLine("User #1's Plant Journal");
+        builder.HasData(new Journal{JournalId=1, JournalTitle="The Fern Diaries", UserId=1, PlantId=1, DateCreated=DateTimeOffset.Now });
+        Console.WriteLine("The Fern Diaries");
 
-        builder.HasData(new Journal() {JournalId=2, JournalTitle="User #2's Plant Journal", UserId=2, PlantId=1, DateCreated=DateTimeOffset.Now });
-        Console.WriteLine("User #2's Plant Journal");
+        builder.HasData(new Journal() {JournalId=2, JournalTitle="Little Monstera", UserId=2, PlantId=1, DateCreated=DateTimeOffset.Now });
+        Console.WriteLine("Little Monstera");
 
-        builder.HasData(new Journal() {JournalId=3, JournalTitle="User #1's OTHER Plant Journal", UserId=1, PlantId=3, DateCreated=DateTimeOffset.Now});
-        Console.WriteLine("User #1's OTHER Plant Journal");
+        builder.HasData(new Journal() {JournalId=3, JournalTitle="Bingo's Monstera Journal", UserId=1, PlantId=3, DateCreated=DateTimeOffset.Now});
+        Console.WriteLine("Bingo's Monstera Journal");
 
         Console.WriteLine("JournalEntityTypeConfiguration.Configure End");
     }

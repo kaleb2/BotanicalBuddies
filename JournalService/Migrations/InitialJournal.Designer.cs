@@ -133,7 +133,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 1, 
-                            JournalTitle = "User #1's Plant Journal", 
+                            JournalTitle = "The Fern Diaries", 
                             UserId = 1, 
                             PlantId = 1, 
                             DateCreated = DateTimeOffset.Now 
@@ -141,7 +141,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 2, 
-                            JournalTitle = "User #2's Plant Journal", 
+                            JournalTitle = "Little Monstera", 
                             UserId = 2, 
                             PlantId = 1, 
                             DateCreated = DateTimeOffset.Now 
@@ -149,7 +149,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 3, 
-                            JournalTitle = "User #1's OTHER Plant Journal", 
+                            JournalTitle = "Bingo's Monstera Journal", 
                             UserId = 1, 
                             PlantId = 3, 
                             DateCreated = DateTimeOffset.Now 
