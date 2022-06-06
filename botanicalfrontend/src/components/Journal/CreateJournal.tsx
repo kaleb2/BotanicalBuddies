@@ -94,7 +94,7 @@ const initialJournalState = {
             className="form-control" />
         </div>
   
-        <button type="button" className="btn btn-primary" onClick={saveJournal}>
+        <button type="button" className="btn botbutton" onClick={saveJournal}>
           Submit
         </button>
       </form></>

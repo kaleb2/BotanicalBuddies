@@ -124,7 +124,7 @@ const initialJournalEntryState = {
             className="form-control" />
         </div>
   
-        <button type="button" className="btn btn-primary" onClick={saveJournalEntry}>
+        <button type="button" className="btn botbutton" onClick={saveJournalEntry}>
           Submit
         </button>
       </form></>

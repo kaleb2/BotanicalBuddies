@@ -1,5 +1,9 @@
 /*Styles*/
 
+ .container .accordion-button:not(.collapsed) {
+    color: green;
+}
+
 .plant-profile .justify-center{
     padding: 30px 0px;
 }

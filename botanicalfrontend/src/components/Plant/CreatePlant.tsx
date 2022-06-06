@@ -191,7 +191,7 @@ export const CreatePlantForm = ({ handleInputChange, savePlant, plant, handleDat
             className="form-control" />
         </div>
   
-        <button type="button" className="btn btn-primary" onClick={savePlant}>
+        <button type="button" className="btn botbutton" onClick={savePlant}>
           Create
         </button>
       </form></>
