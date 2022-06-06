@@ -21,10 +21,6 @@ public class JournalEntry
     public int UserId {get; set;}
 
     [Required]
-    [Column("plantName")]
-    public string PlantName {get; set;}  = "Unknown";
-
-    [Required]
     [Column("plantId")]
     public int PlantId {get; set;}
 

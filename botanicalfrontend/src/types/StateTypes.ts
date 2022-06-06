@@ -16,7 +16,6 @@ export type State = {
     journalId: number,
     entryTitle: string,
     userId: number,
-    plantName: string,
     plantId: number,
     content: string,
     dateCreated: Date

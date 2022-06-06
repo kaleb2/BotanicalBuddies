@@ -7,7 +7,6 @@ export const Journal = {
         , { journalId: journalEntry.journalId,
             entryTitle: journalEntry.entryTitle, 
             userId: journalEntry.userId, 
-            plantName: journalEntry.plantName, 
             plantId: journalEntry.plantId, 
             content: journalEntry.content
          }

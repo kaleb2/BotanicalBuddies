@@ -59,7 +59,7 @@ export function Journal() {
                   
                   <div id="collapseJournal" className="accordion-collapse collapse" aria-labelledby="headingJournal" data-bs-parent="#accordionJournal">
                     <div className="accordion-body">
-                        <CreateJournalEntry journalId={id}/>
+                        <CreateJournalEntry journalId={id} plantId={journal.plantId}/>
                     </div>
                   </div>
                   

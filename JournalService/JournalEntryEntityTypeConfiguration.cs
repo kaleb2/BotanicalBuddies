@@ -13,13 +13,13 @@ public class JournalEntryEntityTypeConfiguration: IEntityTypeConfiguration<Journ
             .HasName("PK_EntryId");
         Console.WriteLine("EntryId added as key.");
 
-        builder.HasData(new JournalEntry{EntryId=1, JournalId=1, EntryTitle="Plant is looking very healthy today!", UserId=1, PlantName="Monstera", PlantId=1, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
+        builder.HasData(new JournalEntry{EntryId=1, JournalId=1, EntryTitle="Plant is looking very healthy today!", UserId=1, PlantId=1, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
         Console.WriteLine("Added Plant is looking very healthy today!");
 
-        builder.HasData(new JournalEntry() {EntryId=2, JournalId=2, EntryTitle="Might need to start watering more...", UserId=1, PlantName="Fern", PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
+        builder.HasData(new JournalEntry() {EntryId=2, JournalId=2, EntryTitle="Might need to start watering more...", UserId=1, PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
         Console.WriteLine("Added Might need to start watering more...");
 
-        builder.HasData(new JournalEntry() {EntryId=3, JournalId=1, EntryTitle="Oh no... it's withering :(", UserId=2, PlantName="Fern", PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
+        builder.HasData(new JournalEntry() {EntryId=3, JournalId=1, EntryTitle="Oh no... it's withering :(", UserId=2, PlantId=2, Content="What's everyone's thoughts?", DateCreated=DateTimeOffset.Now});
             Console.WriteLine("Added Oh no... it's withering :(");
 
         Console.WriteLine("JournalEntryEntityTypeConfiguration.Configure End");

@@ -8,7 +8,6 @@ const initialEntryState = {
     entryTitle: "",
     journalId: 0,
     userId: "",
-    plantName: "",
     plantId: "",
     content: "",
     dateCreated: new Date(),

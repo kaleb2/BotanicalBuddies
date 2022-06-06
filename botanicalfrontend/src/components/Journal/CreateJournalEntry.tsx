@@ -7,7 +7,6 @@ const initialJournalEntryState = {
     entryTitle: "",
     journalId: 0,
     userId: 0,
-    plantName: "",
     plantId: "",
     content: "",
     dateCreated: new Date(),
@@ -15,7 +14,8 @@ const initialJournalEntryState = {
 
   export function CreateJournalEntry(props) {
     let {
-        journalId
+        journalId,
+        plantId
     } = props;
 
     const [journalEntry, setJournalEntry] = useState(initialJournalEntryState);
@@ -29,6 +29,7 @@ const initialJournalEntryState = {
 
     const saveJournalEntry = () => {
       journalEntry.journalId = journalId;
+      journalEntry.plantId = plantId;
       journalEntry.userId = getUserIdFromStorage();
 
         Journal.createEntry(journalEntry)
@@ -95,30 +96,6 @@ const initialJournalEntryState = {
             value={journalEntry.content}
             onChange={handleInputChange}
             name="content"
-            className="form-control" />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">Plant Name</label>
-          <input
-            type="text"
-            id="plantName"
-            required
-            value={journalEntry.plantName}
-            onChange={handleInputChange}
-            name="plantName"
-            className="form-control" />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">Plant Id</label>
-          <input
-            type="number"
-            id="plantId"
-            required
-            value={journalEntry.plantId}
-            onChange={handleInputChange}
-            name="plantId"
             className="form-control" />
         </div>
   
