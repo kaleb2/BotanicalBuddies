@@ -142,7 +142,7 @@ namespace JournalService.Migrations
                         new
                         {
                             JournalId = 3, 
-                            JournalTitle = "Bingo's Monstera Journal", 
+                            JournalTitle = "Bingo's Palm Journal", 
                             UserId = 1, 
                             PlantId = 3, 
                             DateCreated = DateTimeOffset.Now

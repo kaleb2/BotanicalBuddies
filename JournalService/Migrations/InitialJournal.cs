@@ -59,7 +59,7 @@ namespace JournalService.Migrations
                 {
                     { 1, "The Fern Diaries", 1, 1, DateTimeOffset.Now },
                     { 2, "Little Monstera", 2, 1,DateTimeOffset.Now },
-                    { 3,  "Bingo's Monstera Journal", 1, 3, DateTimeOffset.Now }
+                    { 3,  "Bingo's Palm Journal", 1, 3, DateTimeOffset.Now }
                 });
         }
 

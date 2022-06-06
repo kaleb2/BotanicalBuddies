@@ -49,7 +49,7 @@ const seed = async () => {
       console.log(err);
     });
   
-    await Plant.create({ name: "Royal Palm", userId: 1, species: "Palm Tree", image: "http://"+process.env.MINIO_HOST+":"+process.env.MINIO_PORT+"/botanicalbuddies/monstera.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
+    await Plant.create({ name: "Royal Palm", userId: 1, species: "Palm Tree", image: "http://"+process.env.MINIO_HOST+":"+process.env.MINIO_PORT+"/botanicalbuddies/palmy.jpg", dateAcquired: Date.now(), lastRepot: Date.now(), lastFertilize: Date.now() })
       .then(() => {
         console.log("Created single plant");
       })
